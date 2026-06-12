@@ -24,6 +24,7 @@ import certificateAsset from "@/assets/certificate.jpeg.asset.json";
 import quemE1Asset from "@/assets/quemE1.png.asset.json";
 import quemE2Asset from "@/assets/quemE2.png.asset.json";
 import quemE3Asset from "@/assets/quemE3.png.asset.json";
+import paraquemAsset from "@/assets/paraquem.jpg.asset.json";
 
 const heroImage = heroAsset.url;
 const frustratedImg = frustratedAsset.url;
@@ -34,6 +35,7 @@ const anapaulaImgs = [anapaula1Asset.url, anapaula2Asset.url, anapaula3Asset.url
 const daianeImgs = [daiane1Asset.url, daiane2Asset.url, daiane3Asset.url, daiane4Asset.url];
 const logoDesktop = logoDesktopAsset.url;
 const logoMobile = logoMobileAsset.url;
+const paraquemImg = paraquemAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -578,9 +580,17 @@ function LandingPage() {
         <div className="mx-auto max-w-4xl">
           <div className="text-center reveal">
             <Eyebrow>Para você</Eyebrow>
-            <SectionTitle>Pra quem é a formação?</SectionTitle>
+            <SectionTitle>Para quem é a formação?</SectionTitle>
           </div>
-          <div className="mt-16 grid gap-5 text-left">
+          <div className="mt-10 max-w-3xl mx-auto reveal">
+            <img
+              src={paraquemImg}
+              alt="Micropigmentação de sobrancelha hiper-realista"
+              loading="lazy"
+              className="w-full h-64 md:h-80 rounded-2xl object-cover"
+            />
+          </div>
+          <div className="mt-10 grid gap-5 text-left">
             {[
               "Micropigmentadoras que já atuam na área e querem melhorar a qualidade do seu atendimento para ganhar mais e ser reconhecida",
               "Designers de sobrancelha que querem migrar para a micropigmentação com segurança, sem medo de errar o rosto da cliente",

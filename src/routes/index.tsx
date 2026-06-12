@@ -582,33 +582,18 @@ function LandingPage() {
           </div>
           <div className="mt-16 grid gap-5 text-left">
             {[
-              {
-                t: "Micropigmentadoras que já atuam na área e querem melhorar a qualidade do seu atendimento para ganhar mais e ser reconhecida",
-                img: quemE1Asset.url,
-              },
-              {
-                t: "Designers de sobrancelha que querem migrar para a micropigmentação com segurança, sem medo de errar o rosto da cliente",
-                img: quemE2Asset.url,
-              },
-              {
-                t: "Profissionais da área de saúde/estética que querem entrar no mercado de micropigmentação através de uma fonte confiável e com resultados comprovados",
-                img: quemE3Asset.url,
-              },
-            ].map((item, i) => (
+              "Micropigmentadoras que já atuam na área e querem melhorar a qualidade do seu atendimento para ganhar mais e ser reconhecida",
+              "Designers de sobrancelha que querem migrar para a micropigmentação com segurança, sem medo de errar o rosto da cliente",
+              "Profissionais da área de saúde/estética que querem entrar no mercado de micropigmentação através de uma fonte confiável e com resultados comprovados",
+            ].map((t, i) => (
               <div
-                key={item.t}
-                className="reveal glass-card rounded-2xl p-7 flex gap-6 items-center transition hover:border-primary/40"
+                key={t}
+                className="reveal glass-card rounded-2xl p-7 flex gap-6 items-start transition hover:border-primary/40"
               >
-                <img
-                  src={item.img}
-                  alt={`Pra quem é a formação ${i + 1}`}
-                  loading="lazy"
-                  className="w-28 h-28 md:w-32 md:h-32 rounded-xl object-cover shrink-0"
-                />
                 <span className="font-display text-3xl text-primary/70 tabular-nums shrink-0">
                   0{i + 1}
                 </span>
-                <p className="font-light text-lg leading-relaxed">{item.t}</p>
+                <p className="font-light text-lg leading-relaxed">{t}</p>
               </div>
             ))}
           </div>

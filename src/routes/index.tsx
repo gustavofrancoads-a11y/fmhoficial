@@ -529,7 +529,7 @@ function LandingPage() {
           <div className="mt-16 grid gap-8 md:grid-cols-3">
             {[
               { name: "Tanara Miranda", handle: "@magnifictanara", avatar: resultImgs[2], slides: tanaraImgs },
-              { name: "Ana Paula C.", handle: "@anapaullacarvalho_01", avatar: resultImgs[0], slides: [resultImgs[0], resultImgs[1], resultImgs[2]] },
+              { name: "Ana Paula C.", handle: "@anapaullacarvalho_01", avatar: resultImgs[0], slides: anapaulaImgs },
               { name: "Daiane Silva", handle: "@daianesilvadesigner", avatar: resultImgs[1], slides: [resultImgs[1], resultImgs[2], resultImgs[0]] },
             ].map((a) => (
               <ResultCard key={a.name} {...a} />

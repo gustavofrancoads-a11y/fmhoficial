@@ -582,33 +582,18 @@ function LandingPage() {
           </div>
           <div className="mt-16 grid gap-5 text-left">
             {[
-              {
-                t: "Micropigmentadoras que já atuam na área e querem melhorar a qualidade do seu atendimento para ganhar mais e ser reconhecida",
-                img: quemE1Asset.url,
-              },
-              {
-                t: "Designers de sobrancelha que querem migrar para a micropigmentação com segurança, sem medo de errar o rosto da cliente",
-                img: quemE2Asset.url,
-              },
-              {
-                t: "Profissionais da área de saúde/estética que querem entrar no mercado de micropigmentação através de uma fonte confiável e com resultados comprovados",
-                img: quemE3Asset.url,
-              },
-            ].map((item, i) => (
+              "Micropigmentadoras que já atuam na área e querem melhorar a qualidade do seu atendimento para ganhar mais e ser reconhecida",
+              "Designers de sobrancelha que querem migrar para a micropigmentação com segurança, sem medo de errar o rosto da cliente",
+              "Profissionais da área de saúde/estética que querem entrar no mercado de micropigmentação através de uma fonte confiável e com resultados comprovados",
+            ].map((t, i) => (
               <div
-                key={item.t}
-                className="reveal glass-card rounded-2xl p-7 flex gap-6 items-center transition hover:border-primary/40"
+                key={t}
+                className="reveal glass-card rounded-2xl p-7 flex gap-6 items-start transition hover:border-primary/40"
               >
-                <img
-                  src={item.img}
-                  alt={`Pra quem é a formação ${i + 1}`}
-                  loading="lazy"
-                  className="w-28 h-28 md:w-32 md:h-32 rounded-xl object-cover shrink-0"
-                />
                 <span className="font-display text-3xl text-primary/70 tabular-nums shrink-0">
                   0{i + 1}
                 </span>
-                <p className="font-light text-lg leading-relaxed">{item.t}</p>
+                <p className="font-light text-lg leading-relaxed">{t}</p>
               </div>
             ))}
           </div>
@@ -638,38 +623,50 @@ function LandingPage() {
                 n: "01",
                 t: "Design",
                 d: "Técnica italiana para te dar segurança absoluta na etapa mais crucial do atendimento — o design.",
+                img: quemE1Asset.url,
               },
               {
                 icon: "color" as const,
                 n: "02",
                 t: "Colorimetria",
                 d: "Chegue a qualquer tom de pele ou pelo usando apenas 3 cores com um método simples e previsível.",
+                img: quemE2Asset.url,
               },
               {
                 icon: "needle" as const,
                 n: "03",
                 t: "Fixação dos fios",
                 d: "Crie fios finos, delicados, naturais — sem aspecto artificial, sem estouro.",
+                img: quemE3Asset.url,
               },
-            ].map((p) => (
+            ].map((p, i) => (
               <div
                 key={p.n}
-                className="reveal group glass-card rounded-2xl p-10 text-left transition-all duration-500 hover:-translate-y-2 hover:border-primary/50"
+                className="reveal group glass-card rounded-2xl overflow-hidden text-left transition-all duration-500 hover:-translate-y-2 hover:border-primary/50"
               >
-                <div className="flex items-center justify-between">
-                  <PillarIcon kind={p.icon} />
-                  <span className="font-display text-3xl text-primary/40 tabular-nums">
-                    {p.n}
-                  </span>
+                <img
+                  src={p.img}
+                  alt={`Pilar ${p.t}`}
+                  loading="lazy"
+                  className="w-full h-56 object-cover"
+                />
+                <div className="p-10">
+                  <div className="flex items-center justify-between">
+                    <PillarIcon kind={p.icon} />
+                    <span className="font-display text-3xl text-primary/40 tabular-nums">
+                      {p.n}
+                    </span>
+                  </div>
+                  <div className="hairline mt-8 w-12" />
+                  <h3 className="mt-6 font-display text-3xl font-light">{p.t}</h3>
+                  <p className="mt-4 text-muted-foreground font-light leading-relaxed">
+                    {p.d}
+                  </p>
                 </div>
-                <div className="hairline mt-8 w-12" />
-                <h3 className="mt-6 font-display text-3xl font-light">{p.t}</h3>
-                <p className="mt-4 text-muted-foreground font-light leading-relaxed">
-                  {p.d}
-                </p>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 

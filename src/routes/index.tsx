@@ -275,6 +275,13 @@ function ResultCard({
   const [idx, setIdx] = useState(0);
   const prev = () => setIdx((i) => (i - 1 + slides.length) % slides.length);
   const next = () => setIdx((i) => (i + 1) % slides.length);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIdx((i) => (i + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [slides.length]);
   return (
     <div className="reveal group rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-gold)]">
       <div className="p-5 flex items-center gap-4">

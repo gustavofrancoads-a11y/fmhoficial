@@ -81,6 +81,7 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_URL =
   "https://api.whatsapp.com/send?phone=5561985029362&text=Ol%C3%A1,%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20a%20forma%C3%A7%C3%A3o%20de%20micro%20hiper-realista.";
+const CHECKOUT_URL = "https://sun.eduzz.com/60EEZQQK03?";
 
 /* ------------------------------ UI Primitives ------------------------------ */
 

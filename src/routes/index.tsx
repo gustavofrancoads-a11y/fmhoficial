@@ -444,7 +444,7 @@ function LandingPage() {
             </p>
 
             <div className="mt-10 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-8">
-              <CtaButton>Inscreva-se</CtaButton>
+              <CtaButton href={CHECKOUT_URL}>Inscreva-se</CtaButton>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <div className="flex -space-x-2">
                   {resultImgs.map((src) => (
@@ -1055,7 +1055,7 @@ function LandingPage() {
                 à vista
               </p>
               <div className="mt-10">
-                <CtaButton pulse>Quero entrar na formação</CtaButton>
+                <CtaButton href={CHECKOUT_URL} pulse>Quero entrar na formação</CtaButton>
               </div>
               <p className="mt-6 text-[0.7rem] tracking-widest uppercase text-muted-foreground">
                 Acesso imediato · Garantia de 7 dias
@@ -1091,7 +1091,7 @@ function LandingPage() {
             devolvo 100% do seu dinheiro. Sem perguntas.
           </p>
           <div className="mt-12">
-            <CtaButton>Sim, quero testar por 7 dias</CtaButton>
+            <CtaButton href={CHECKOUT_URL}>Sim, quero testar por 7 dias</CtaButton>
           </div>
         </div>
       </section>
@@ -1216,7 +1216,7 @@ function LandingPage() {
             </div>
           </div>
           <div className="mt-12">
-            <CtaButton pulse>Quero entrar na formação</CtaButton>
+            <CtaButton href={CHECKOUT_URL} pulse>Quero entrar na formação</CtaButton>
           </div>
         </div>
       </section>

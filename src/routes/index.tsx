@@ -480,50 +480,6 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* VIDEO TESTIMONIALS */}
-      <section className="py-32 px-6 relative">
-        <div className="absolute inset-0 bg-card/20" />
-        <div className="relative mx-auto max-w-6xl">
-          <div className="text-center reveal">
-            <Eyebrow>Depoimentos</Eyebrow>
-            <SectionTitle>
-              Em vídeo: o que nossas{" "}
-              <em className="text-gold-gradient not-italic">alunas</em>{" "}
-              dizem
-            </SectionTitle>
-          </div>
-
-          <div className="mt-16 grid gap-8 md:grid-cols-3">
-            {[
-              { id: "rh0P7GPmfAw", name: "Tanara Miranda" },
-              { id: "y3BQKruLkDw", name: "Ana Paula" },
-              { id: "61p2K_JfkCs", name: "Vera Lúcia" },
-            ].map((v) => (
-              <div
-                key={v.id}
-                className="reveal group glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50"
-              >
-                <div className="relative aspect-video w-full overflow-hidden bg-black">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1`}
-                    title={`Depoimento de ${v.name}`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full border-0"
-                  />
-                </div>
-                <div className="p-6">
-                  <p className="font-display text-xl">{v.name}</p>
-                  <p className="text-primary text-xs tracking-wider mt-1 uppercase">
-                    Aluna FMH
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* WHO IS IT FOR */}
       <section className="py-32 px-6">
@@ -731,41 +687,56 @@ function LandingPage() {
                 name: "Tanara Miranda",
                 role: "Especialista em micropigmentação",
                 img: resultImgs[0],
+                videoId: "rh0P7GPmfAw",
                 t: "Desisti de estudar para carreira pública e me tornei especialista em design e micropigmentação. Hoje chego a faturar R$20.000 por mês.",
               },
               {
                 name: "Ana Paula C.",
                 role: "Micropigmentadora",
                 img: resultImgs[1],
+                videoId: "y3BQKruLkDw",
                 t: "Lotei minha agenda como designer e, no primeiro mês como micropigmentadora, ganhei mais de R$10.000.",
               },
               {
                 name: "Vera Lúcia",
                 role: "Micropigmentadora",
                 img: resultImgs[2],
+                videoId: "61p2K_JfkCs",
                 t: "Já atuava na área há alguns anos mas não conseguia crescer. Em poucos meses quadrupliquei o meu faturamento.",
               },
             ].map((t) => (
               <div
                 key={t.name}
-                className="reveal glass-card rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 hover:border-primary/50"
+                className="reveal glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50"
               >
-                <div className="flex text-primary text-sm">★★★★★</div>
-                <p className="mt-5 font-light text-base leading-relaxed text-foreground/90">
-                  “{t.t}”
-                </p>
-                <div className="hairline mt-7 w-12" />
-                <div className="mt-6 flex items-center gap-4">
-                  <img
-                    src={t.img}
-                    alt={t.name}
-                    className="h-12 w-12 rounded-full object-cover border border-primary/40"
+                <div className="relative aspect-video w-full overflow-hidden bg-black">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${t.videoId}?rel=0&modestbranding=1`}
+                    title={`Depoimento de ${t.name}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full border-0"
                   />
-                  <div>
-                    <p className="font-display text-lg">{t.name}</p>
-                    <p className="text-[0.7rem] tracking-wider uppercase text-muted-foreground">
-                      {t.role}
-                    </p>
+                </div>
+                <div className="p-8">
+                  <div className="flex text-primary text-sm">★★★★★</div>
+                  <p className="mt-5 font-light text-base leading-relaxed text-foreground/90">
+                    “{t.t}”
+                  </p>
+                  <div className="hairline mt-7 w-12" />
+                  <div className="mt-6 flex items-center gap-4">
+                    <img
+                      src={t.img}
+                      alt={t.name}
+                      className="h-12 w-12 rounded-full object-cover border border-primary/40"
+                    />
+                    <div>
+                      <p className="font-display text-lg">{t.name}</p>
+                      <p className="text-[0.7rem] tracking-wider uppercase text-muted-foreground">
+                        {t.role}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

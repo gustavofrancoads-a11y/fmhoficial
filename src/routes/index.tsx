@@ -185,17 +185,15 @@ function LandingPage() {
               { name: "Tanara Miranda", handle: "@magnifictanara" },
               { name: "Ana Paula C.", handle: "@anapaullacarvalho_01" },
               { name: "Daiane Silva", handle: "@daianesilvadesigner" },
-            ].map((a) => (
+            ].map((a, i) => (
               <div
                 key={a.name}
                 className="rounded-2xl overflow-hidden border border-border bg-card"
               >
                 <img
-                  src={eyebrowImg}
+                  src={resultImgs[i]}
                   alt={`Resultado da aluna ${a.name}`}
                   loading="lazy"
-                  width={1024}
-                  height={768}
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-5">

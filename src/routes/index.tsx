@@ -430,32 +430,11 @@ function LandingPage() {
 
           <div className="mt-16 grid gap-8 md:grid-cols-3">
             {[
-              { name: "Tanara Miranda", handle: "@magnifictanara" },
-              { name: "Ana Paula C.", handle: "@anapaullacarvalho_01" },
-              { name: "Daiane Silva", handle: "@daianesilvadesigner" },
-            ].map((a, i) => (
-              <div
-                key={a.name}
-                className="reveal group rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-gold)]"
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={resultImgs[i]}
-                    alt={`Resultado da aluna ${a.name}`}
-                    loading="lazy"
-                    className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-6 flex items-center justify-between">
-                  <div>
-                    <p className="font-display text-xl">{a.name}</p>
-                    <p className="text-primary text-xs tracking-wider mt-1">
-                      {a.handle}
-                    </p>
-                  </div>
-                  <div className="flex text-primary text-sm">★★★★★</div>
-                </div>
-              </div>
+              { name: "Tanara Miranda", handle: "@magnifictanara", avatar: resultImgs[2], slides: [resultImgs[2], resultImgs[0], resultImgs[1]] },
+              { name: "Ana Paula C.", handle: "@anapaullacarvalho_01", avatar: resultImgs[0], slides: [resultImgs[0], resultImgs[1], resultImgs[2]] },
+              { name: "Daiane Silva", handle: "@daianesilvadesigner", avatar: resultImgs[1], slides: [resultImgs[1], resultImgs[2], resultImgs[0]] },
+            ].map((a) => (
+              <ResultCard key={a.name} {...a} />
             ))}
           </div>
 

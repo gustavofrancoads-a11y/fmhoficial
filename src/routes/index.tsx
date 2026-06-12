@@ -14,6 +14,10 @@ import anapaula1Asset from "@/assets/anapaula1.jpg.asset.json";
 import anapaula2Asset from "@/assets/anapaula2.jpg.asset.json";
 import anapaula3Asset from "@/assets/anapaula3.jpg.asset.json";
 import anapaula4Asset from "@/assets/anapaula4.jpg.asset.json";
+import daiane1Asset from "@/assets/daiane1.jpg.asset.json";
+import daiane2Asset from "@/assets/daiane2.jpg.asset.json";
+import daiane3Asset from "@/assets/daiane3.jpg.asset.json";
+import daiane4Asset from "@/assets/daiane4.jpg.asset.json";
 import logoDesktopAsset from "@/assets/logo-desktop.png.asset.json";
 import logoMobileAsset from "@/assets/logo-mobile.png.asset.json";
 import certificateAsset from "@/assets/certificate.jpeg.asset.json";
@@ -24,6 +28,7 @@ const mentorImg = mentorAsset.url;
 const resultImgs = [result1Asset.url, result2Asset.url, result3Asset.url];
 const tanaraImgs = [tanara1Asset.url, tanara2Asset.url, tanara3Asset.url, tanara4Asset.url];
 const anapaulaImgs = [anapaula1Asset.url, anapaula2Asset.url, anapaula3Asset.url, anapaula4Asset.url];
+const daianeImgs = [daiane1Asset.url, daiane2Asset.url, daiane3Asset.url, daiane4Asset.url];
 const logoDesktop = logoDesktopAsset.url;
 const logoMobile = logoMobileAsset.url;
 
@@ -530,7 +535,7 @@ function LandingPage() {
             {[
               { name: "Tanara Miranda", handle: "@magnifictanara", avatar: resultImgs[2], slides: tanaraImgs },
               { name: "Ana Paula C.", handle: "@anapaullacarvalho_01", avatar: resultImgs[0], slides: anapaulaImgs },
-              { name: "Daiane Silva", handle: "@daianesilvadesigner", avatar: resultImgs[1], slides: [resultImgs[1], resultImgs[2], resultImgs[0]] },
+              { name: "Daiane Silva", handle: "@daianesilvadesigner", avatar: resultImgs[1], slides: daianeImgs },
             ].map((a) => (
               <ResultCard key={a.name} {...a} />
             ))}

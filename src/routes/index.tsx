@@ -6,6 +6,10 @@ import mentorAsset from "@/assets/mentor-marcelo.jpg.asset.json";
 import result1Asset from "@/assets/result1.jpg.asset.json";
 import result2Asset from "@/assets/result2.jpg.asset.json";
 import result3Asset from "@/assets/result3.jpg.asset.json";
+import tanara1Asset from "@/assets/tanara1.jpg.asset.json";
+import tanara2Asset from "@/assets/tanara2.jpg.asset.json";
+import tanara3Asset from "@/assets/tanara3.jpg.asset.json";
+import tanara4Asset from "@/assets/tanara4.jpg.asset.json";
 import logoDesktopAsset from "@/assets/logo-desktop.png.asset.json";
 import logoMobileAsset from "@/assets/logo-mobile.png.asset.json";
 import certificateAsset from "@/assets/certificate.jpeg.asset.json";
@@ -14,6 +18,7 @@ const heroImage = heroAsset.url;
 const frustratedImg = frustratedAsset.url;
 const mentorImg = mentorAsset.url;
 const resultImgs = [result1Asset.url, result2Asset.url, result3Asset.url];
+const tanaraImgs = [tanara1Asset.url, tanara2Asset.url, tanara3Asset.url, tanara4Asset.url];
 const logoDesktop = logoDesktopAsset.url;
 const logoMobile = logoMobileAsset.url;
 
@@ -518,7 +523,7 @@ function LandingPage() {
 
           <div className="mt-16 grid gap-8 md:grid-cols-3">
             {[
-              { name: "Tanara Miranda", handle: "@magnifictanara", avatar: resultImgs[2], slides: [resultImgs[2], resultImgs[0], resultImgs[1]] },
+              { name: "Tanara Miranda", handle: "@magnifictanara", avatar: tanaraImgs[0], slides: tanaraImgs },
               { name: "Ana Paula C.", handle: "@anapaullacarvalho_01", avatar: resultImgs[0], slides: [resultImgs[0], resultImgs[1], resultImgs[2]] },
               { name: "Daiane Silva", handle: "@daianesilvadesigner", avatar: resultImgs[1], slides: [resultImgs[1], resultImgs[2], resultImgs[0]] },
             ].map((a) => (

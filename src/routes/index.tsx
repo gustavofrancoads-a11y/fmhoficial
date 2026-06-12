@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import heroAsset from "@/assets/hero.jpg.asset.json";
+import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 import frustratedAsset from "@/assets/frustrated-new.png.asset.json";
 import mentorAsset from "@/assets/mentor-marcelo.jpg.asset.json";
 import result1Asset from "@/assets/result1.jpg.asset.json";
@@ -398,13 +399,20 @@ function LandingPage() {
       <header className="relative overflow-hidden min-h-[90dvh] md:min-h-[100dvh] md:h-[100dvh] flex items-center pt-24 md:pt-20">
         <div className="absolute inset-0">
           <img
+            src={heroMobileAsset.url}
+            alt=""
+            aria-hidden="true"
+            className="hero-zoom h-full w-full object-cover object-top opacity-70 md:hidden"
+          />
+          <img
             src={heroImage}
             alt="Micropigmentador profissional realizando atendimento de sobrancelha hiper-realista"
             width={1920}
             height={1080}
-            className="hero-zoom h-full w-full object-cover opacity-55"
+            className="hero-zoom hidden md:block h-full w-full object-cover opacity-55"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-background via-background/85 to-background/30" />
+          <div className="absolute inset-0 md:hidden bg-gradient-to-b from-background/85 via-background/40 to-background" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/70" />
           {/* film grain accent */}
           <div
@@ -418,12 +426,6 @@ function LandingPage() {
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-8 md:py-6 w-full">
           <div className="max-w-3xl fade-in-down">
-            <img
-              src={logoWhite}
-              alt="Formação Micropigmentador Hiper-Realista"
-              className="mb-6 h-20 sm:h-24 w-auto md:hidden"
-              loading="eager"
-            />
             <img
               src={logoWhite}
               alt="Formação Micropigmentador Hiper-Realista"

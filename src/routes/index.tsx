@@ -10,6 +10,10 @@ import tanara1Asset from "@/assets/tanara1.jpg.asset.json";
 import tanara2Asset from "@/assets/tanara2.jpg.asset.json";
 import tanara3Asset from "@/assets/tanara3.jpg.asset.json";
 import tanara4Asset from "@/assets/tanara4.jpg.asset.json";
+import anapaula1Asset from "@/assets/anapaula1.jpg.asset.json";
+import anapaula2Asset from "@/assets/anapaula2.jpg.asset.json";
+import anapaula3Asset from "@/assets/anapaula3.jpg.asset.json";
+import anapaula4Asset from "@/assets/anapaula4.jpg.asset.json";
 import logoDesktopAsset from "@/assets/logo-desktop.png.asset.json";
 import logoMobileAsset from "@/assets/logo-mobile.png.asset.json";
 import certificateAsset from "@/assets/certificate.jpeg.asset.json";
@@ -19,6 +23,7 @@ const frustratedImg = frustratedAsset.url;
 const mentorImg = mentorAsset.url;
 const resultImgs = [result1Asset.url, result2Asset.url, result3Asset.url];
 const tanaraImgs = [tanara1Asset.url, tanara2Asset.url, tanara3Asset.url, tanara4Asset.url];
+const anapaulaImgs = [anapaula1Asset.url, anapaula2Asset.url, anapaula3Asset.url, anapaula4Asset.url];
 const logoDesktop = logoDesktopAsset.url;
 const logoMobile = logoMobileAsset.url;
 

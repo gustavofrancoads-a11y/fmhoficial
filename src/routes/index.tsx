@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import heroAsset from "@/assets/hero.jpg.asset.json";
+import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 import frustratedAsset from "@/assets/frustrated-new.png.asset.json";
 import mentorAsset from "@/assets/mentor-marcelo.jpg.asset.json";
 import result1Asset from "@/assets/result1.jpg.asset.json";

@@ -363,7 +363,7 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 py-8 md:py-12 w-full">
+        <div className="relative mx-auto max-w-7xl px-6 py-8 md:py-6 w-full">
           <div className="max-w-3xl fade-in-down">
             <img
               src={logoMobile}
@@ -374,10 +374,10 @@ function LandingPage() {
             <img
               src={logoDesktop}
               alt="Formação Micropigmentador Hiper-Realista"
-              className="mb-6 hidden h-24 w-auto md:block brightness-0 invert"
+              className="mb-4 hidden h-20 w-auto md:block brightness-0 invert"
               loading="eager"
             />
-            <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-light leading-[1.02] tracking-tight">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-light leading-[1.05] tracking-tight">
               Domine a técnica que vai te posicionar como{" "}
               <em className="text-gold-gradient not-italic font-medium">
                 referência
@@ -385,13 +385,13 @@ function LandingPage() {
               na sua cidade
             </h1>
 
-            <p className="mt-8 max-w-xl text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
+            <p className="mt-6 md:mt-5 max-w-xl text-lg md:text-lg text-muted-foreground leading-relaxed font-light">
               E te permitir cobrar até{" "}
               <span className="text-primary font-medium">R$1.000 por atendimento</span>
               {" "}— exclusivo para micropigmentadoras e designers de sobrancelha.
             </p>
 
-            <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-8">
+            <div className="mt-10 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-8">
               <CtaButton>Inscreva-se</CtaButton>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <div className="flex -space-x-2">

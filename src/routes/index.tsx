@@ -973,8 +973,15 @@ function LandingPage() {
       </section>
 
       {/* OFFER */}
-      <section id="inscricao" className="py-32 px-6">
-        <div className="mx-auto max-w-4xl">
+      <section id="inscricao" className="py-32 px-6 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 0%, oklch(0.78 0.13 85 / 0.15), transparent 60%), radial-gradient(ellipse at 50% 100%, oklch(0.78 0.13 85 / 0.1), transparent 50%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-4xl">
           <div className="text-center reveal">
             <Eyebrow>Oferta especial</Eyebrow>
             <SectionTitle>
@@ -983,11 +990,7 @@ function LandingPage() {
             </SectionTitle>
           </div>
 
-          <div className="mt-12 flex justify-center reveal">
-            <Countdown />
-          </div>
-
-          <div className="mt-14 grid gap-3 text-left max-w-2xl mx-auto reveal">
+          <div className="mt-14 grid gap-4 text-left max-w-2xl mx-auto reveal">
             {[
               ["Curso completo de Design de Sobrancelhas", "R$297"],
               ["Curso completo de Colorimetria e Pigmentologia", "R$497"],
@@ -997,13 +1000,15 @@ function LandingPage() {
             ].map(([t, p]) => (
               <div
                 key={t}
-                className="flex items-center justify-between border-b border-border/40 px-2 py-5"
+                className="flex items-center justify-between rounded-xl border border-primary/20 bg-card/60 backdrop-blur-sm px-5 py-4"
               >
                 <span className="flex items-center gap-4">
-                  <span className="text-primary text-sm">✦</span>
-                  <span className="font-light">{t}</span>
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary text-sm font-bold">
+                    ✓
+                  </span>
+                  <span className="font-medium">{t}</span>
                 </span>
-                <span className="text-muted-foreground line-through text-sm tabular-nums">
+                <span className="text-muted-foreground line-through text-sm tabular-nums shrink-0 ml-3">
                   {p}
                 </span>
               </div>
@@ -1020,16 +1025,16 @@ function LandingPage() {
           {/* Price card */}
           <div className="reveal mt-10 mx-auto max-w-lg relative">
             <div
-              className="absolute -inset-6 rounded-[2rem] blur-2xl opacity-50"
+              className="absolute -inset-8 rounded-[2.5rem] blur-3xl opacity-60"
               style={{ background: "var(--gradient-gold)" }}
             />
-            <div className="relative rounded-3xl bg-background border border-primary/40 p-10 text-center overflow-hidden">
+            <div className="relative rounded-3xl bg-background border-2 border-primary/50 p-10 text-center overflow-hidden shadow-2xl">
               <div
-                className="absolute top-0 right-0 px-5 py-2 text-[0.65rem] tracking-[0.3em] uppercase font-semibold"
+                className="absolute top-0 right-0 px-6 py-2.5 text-[0.7rem] tracking-[0.3em] uppercase font-bold"
                 style={{
                   background: "var(--gradient-gold)",
                   color: "var(--primary-foreground)",
-                  borderBottomLeftRadius: "1rem",
+                  borderBottomLeftRadius: "1.25rem",
                 }}
               >
                 Oferta

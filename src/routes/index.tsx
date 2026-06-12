@@ -342,7 +342,7 @@ function LandingPage() {
       </div>
 
       {/* HERO */}
-      <header className="relative overflow-hidden min-h-screen flex items-center pt-24">
+      <header className="relative overflow-hidden min-h-[90dvh] flex items-center pt-24">
         <div className="absolute inset-0">
           <img
             src={heroImage}
@@ -363,7 +363,7 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28 w-full">
+        <div className="relative mx-auto max-w-7xl px-6 py-14 md:py-20 w-full">
           <div className="max-w-3xl fade-in-down">
             <img
               src={logoMobile}

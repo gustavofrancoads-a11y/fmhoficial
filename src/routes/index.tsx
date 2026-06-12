@@ -102,14 +102,14 @@ function CtaButton({
     <a
       href={href}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`shimmer-btn group relative inline-flex items-center justify-center rounded-full px-10 py-5 text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-primary-foreground transition-all duration-500 hover:scale-[1.03] ${pulse ? "pulse-gold" : ""} ${className}`}
+      className={`shimmer-btn group relative inline-flex max-w-full items-center justify-center rounded-full px-6 py-4 md:px-10 md:py-5 text-[0.65rem] md:text-sm font-semibold tracking-[0.2em] md:tracking-[0.25em] uppercase text-primary-foreground transition-all duration-500 hover:scale-[1.03] text-center leading-tight ${pulse ? "pulse-gold" : ""} ${className}`}
       style={{
         background: "var(--gradient-gold)",
         boxShadow: "var(--shadow-gold)",
       }}
     >
       <span className="relative z-10">{children}</span>
-      <span className="relative z-10 ml-3 transition-transform duration-500 group-hover:translate-x-1">
+      <span className="relative z-10 ml-2 md:ml-3 transition-transform duration-500 group-hover:translate-x-1">
         →
       </span>
     </a>

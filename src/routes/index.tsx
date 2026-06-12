@@ -380,14 +380,14 @@ function LandingPage() {
 
       {/* Top brand bar */}
       <div className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/40 border-b border-border/40">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-          <div className="font-display text-lg tracking-[0.3em] uppercase">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
+          <div className="font-display text-sm sm:text-lg tracking-[0.2em] sm:tracking-[0.3em] uppercase truncate">
             <span className="text-foreground">Marcelo</span>{" "}
             <span className="text-gold-gradient italic">Alves</span>
           </div>
           <a
             href="#inscricao"
-            className="hidden md:inline-flex text-[0.7rem] font-medium tracking-[0.3em] uppercase text-primary hover:text-foreground transition-colors"
+            className="hidden md:inline-flex shrink-0 text-[0.7rem] font-medium tracking-[0.3em] uppercase text-primary hover:text-foreground transition-colors"
           >
             Garantir minha vaga →
           </a>

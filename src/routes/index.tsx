@@ -680,7 +680,7 @@ function LandingPage() {
                   src={p.img}
                   alt={`Pilar ${p.t}`}
                   loading="lazy"
-                  className="w-full h-56 object-cover"
+                  className="w-full h-44 sm:h-56 object-cover"
                 />
                 <div className="p-6 md:p-10">
                   <div className="flex items-center justify-between">

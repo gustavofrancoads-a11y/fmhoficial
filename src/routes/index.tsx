@@ -683,6 +683,11 @@ function LandingPage() {
       <section className="py-32 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center reveal">
+            <img
+              src={logoWhite}
+              alt="Logo FHM"
+              className="mx-auto mb-8 h-16 md:h-20 w-auto opacity-90"
+            />
             <Eyebrow>Conteúdo</Eyebrow>
             <SectionTitle>
               Tudo o que você vai aprender na{" "}

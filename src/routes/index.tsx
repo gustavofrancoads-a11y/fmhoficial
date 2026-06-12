@@ -480,6 +480,51 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* VIDEO TESTIMONIALS */}
+      <section className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-card/20" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="text-center reveal">
+            <Eyebrow>Depoimentos</Eyebrow>
+            <SectionTitle>
+              Em vídeo: o que nossas{" "}
+              <em className="text-gold-gradient not-italic">alunas</em>{" "}
+              dizem
+            </SectionTitle>
+          </div>
+
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
+            {[
+              { id: "rh0P7GPmfAw", name: "Tanara Miranda" },
+              { id: "y3BQKruLkDw", name: "Ana Paula" },
+              { id: "61p2K_JfkCs", name: "Vera Lúcia" },
+            ].map((v) => (
+              <div
+                key={v.id}
+                className="reveal group glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50"
+              >
+                <div className="relative aspect-video w-full overflow-hidden bg-black">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1`}
+                    title={`Depoimento de ${v.name}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full border-0"
+                  />
+                </div>
+                <div className="p-6">
+                  <p className="font-display text-xl">{v.name}</p>
+                  <p className="text-primary text-xs tracking-wider mt-1 uppercase">
+                    Aluna FMH
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* WHO IS IT FOR */}
       <section className="py-32 px-6">
         <div className="mx-auto max-w-4xl">

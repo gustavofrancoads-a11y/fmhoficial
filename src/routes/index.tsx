@@ -535,7 +535,7 @@ function LandingPage() {
             {[
               { name: "Tanara Miranda", handle: "@magnifictanara", avatar: resultImgs[2], slides: tanaraImgs },
               { name: "Ana Paula C.", handle: "@anapaullacarvalho_01", avatar: resultImgs[0], slides: anapaulaImgs },
-              { name: "Daiane Silva", handle: "@daianesilvadesigner", avatar: resultImgs[1], slides: [resultImgs[1], resultImgs[2], resultImgs[0]] },
+              { name: "Daiane Silva", handle: "@daianesilvadesigner", avatar: resultImgs[1], slides: daianeImgs },
             ].map((a) => (
               <ResultCard key={a.name} {...a} />
             ))}

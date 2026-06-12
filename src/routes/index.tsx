@@ -134,7 +134,7 @@ function SectionTitle({
 }) {
   return (
     <h2
-      className={`font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] tracking-tight text-foreground ${align === "center" ? "text-center" : ""}`}
+      className={`font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] tracking-tight text-foreground break-words ${align === "center" ? "text-center" : ""}`}
     >
       {children}
     </h2>

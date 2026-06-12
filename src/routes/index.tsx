@@ -28,6 +28,7 @@ const mentorImg = mentorAsset.url;
 const resultImgs = [result1Asset.url, result2Asset.url, result3Asset.url];
 const tanaraImgs = [tanara1Asset.url, tanara2Asset.url, tanara3Asset.url, tanara4Asset.url];
 const anapaulaImgs = [anapaula1Asset.url, anapaula2Asset.url, anapaula3Asset.url, anapaula4Asset.url];
+const daianeImgs = [daiane1Asset.url, daiane2Asset.url, daiane3Asset.url, daiane4Asset.url];
 const logoDesktop = logoDesktopAsset.url;
 const logoMobile = logoMobileAsset.url;
 

@@ -36,6 +36,7 @@ const anapaulaImgs = [anapaula1Asset.url, anapaula2Asset.url, anapaula3Asset.url
 const daianeImgs = [daiane1Asset.url, daiane2Asset.url, daiane3Asset.url, daiane4Asset.url];
 const logoDesktop = logoDesktopAsset.url;
 const logoMobile = logoMobileAsset.url;
+const logoWhite = logoWhiteAsset.url;
 const paraquemImg = paraquemAsset.url;
 
 export const Route = createFileRoute("/")({

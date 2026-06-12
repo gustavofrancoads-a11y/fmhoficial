@@ -96,9 +96,11 @@ function CtaButton({
   className?: string;
   pulse?: boolean;
 }) {
+  const isExternal = /^https?:\/\//.test(href);
   return (
     <a
       href={href}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={`shimmer-btn group relative inline-flex items-center justify-center rounded-full px-10 py-5 text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-primary-foreground transition-all duration-500 hover:scale-[1.03] ${pulse ? "pulse-gold" : ""} ${className}`}
       style={{
         background: "var(--gradient-gold)",

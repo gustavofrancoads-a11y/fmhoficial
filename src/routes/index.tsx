@@ -1046,7 +1046,7 @@ function LandingPage() {
               <p className="text-xs tracking-[0.4em] uppercase text-muted-foreground mt-4">
                 12x de
               </p>
-              <p className="font-display text-7xl md:text-8xl font-light text-gold-gradient leading-none mt-3">
+              <p className="font-display text-5xl sm:text-6xl md:text-8xl font-light text-gold-gradient leading-none mt-3">
                 R$9,70
               </p>
               <div className="hairline mt-8 mx-auto w-16" />
@@ -1204,7 +1204,7 @@ function LandingPage() {
               <p className="text-xs tracking-[0.4em] uppercase text-muted-foreground">
                 12x de
               </p>
-              <p className="font-display text-7xl font-light text-gold-gradient leading-none mt-3">
+              <p className="font-display text-5xl sm:text-6xl md:text-7xl font-light text-gold-gradient leading-none mt-3">
                 R$9,70
               </p>
               <p className="mt-4 font-light text-muted-foreground">

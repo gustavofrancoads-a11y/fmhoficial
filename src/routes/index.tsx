@@ -433,17 +433,14 @@ function LandingPage() {
                   ))}
                 </div>
                 <span className="font-light">
-                  <Counter to={847} />+ alunas formadas
+                  Centenas de alunas formadas
                 </span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* scroll cue */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary/60 text-xs tracking-[0.4em] uppercase float-slow">
-          ↓ Role
-        </div>
+        {/* scroll cue removed */}
       </header>
 
       {/* PROBLEM */}
@@ -556,14 +553,14 @@ function LandingPage() {
           {/* counters */}
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 reveal">
             {[
-              { n: 847, s: "+", l: "Alunas formadas" },
+              { n: null, s: "", l: "Alunas formadas", text: "Centenas" },
               { n: 12, s: "+", l: "Anos de experiência" },
               { n: 40, s: "k", l: "R$/mês no studio" },
               { n: 98, s: "%", l: "Avaliações 5★" },
             ].map((c) => (
               <div key={c.l} className="text-center">
                 <div className="font-display text-5xl md:text-6xl font-light text-gold-gradient">
-                  <Counter to={c.n} suffix={c.s} />
+                  {c.n === null ? c.text : <Counter to={c.n} suffix={c.s} />}
                 </div>
                 <div className="mt-2 text-xs tracking-[0.3em] uppercase text-muted-foreground">
                   {c.l}

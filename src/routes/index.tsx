@@ -6,11 +6,15 @@ import mentorAsset from "@/assets/mentor-marcelo.jpg.asset.json";
 import result1Asset from "@/assets/result1.jpg.asset.json";
 import result2Asset from "@/assets/result2.jpg.asset.json";
 import result3Asset from "@/assets/result3.jpg.asset.json";
+import logoDesktopAsset from "@/assets/logo-desktop.png.asset.json";
+import logoMobileAsset from "@/assets/logo-mobile.png.asset.json";
 
 const heroImage = heroAsset.url;
 const frustratedImg = frustratedAsset.url;
 const mentorImg = mentorAsset.url;
 const resultImgs = [result1Asset.url, result2Asset.url, result3Asset.url];
+const logoDesktop = logoDesktopAsset.url;
+const logoMobile = logoMobileAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({

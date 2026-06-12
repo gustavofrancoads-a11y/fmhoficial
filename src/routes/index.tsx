@@ -429,12 +429,6 @@ function LandingPage() {
             <img
               src={logoWhite}
               alt="Formação Micropigmentador Hiper-Realista"
-              className="mb-6 h-20 sm:h-24 w-auto md:hidden"
-              loading="eager"
-            />
-            <img
-              src={logoWhite}
-              alt="Formação Micropigmentador Hiper-Realista"
               className="mb-4 hidden h-20 w-auto md:block"
               loading="eager"
             />

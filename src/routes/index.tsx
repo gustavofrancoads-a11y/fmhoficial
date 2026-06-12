@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import heroAsset from "@/assets/hero.jpg.asset.json";
 import frustratedAsset from "@/assets/frustrated.png.asset.json";
 import mentorAsset from "@/assets/mentor-marcelo.jpg.asset.json";
@@ -35,127 +36,363 @@ export const Route = createFileRoute("/")({
 const WHATSAPP_URL =
   "https://api.whatsapp.com/send?phone=5561985029362&text=Ol%C3%A1,%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20a%20forma%C3%A7%C3%A3o%20de%20micro%20hiper-realista.";
 
+/* ------------------------------ UI Primitives ------------------------------ */
+
 function CtaButton({
   children,
   href = "#inscricao",
   className = "",
+  pulse = false,
 }: {
   children: React.ReactNode;
   href?: string;
   className?: string;
+  pulse?: boolean;
 }) {
   return (
     <a
       href={href}
-      className={`inline-flex items-center justify-center rounded-md bg-[var(--gradient-gold)] px-8 py-4 text-base font-bold tracking-wide text-primary-foreground uppercase shadow-[var(--shadow-gold)] transition-transform hover:scale-105 ${className}`}
+      className={`shimmer-btn group relative inline-flex items-center justify-center rounded-full px-10 py-5 text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-primary-foreground transition-all duration-500 hover:scale-[1.03] ${pulse ? "pulse-gold" : ""} ${className}`}
+      style={{
+        background: "var(--gradient-gold)",
+        boxShadow: "var(--shadow-gold)",
+      }}
     >
-      {children}
+      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 ml-3 transition-transform duration-500 group-hover:translate-x-1">
+        →
+      </span>
     </a>
   );
 }
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
+function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-3xl md:text-4xl font-extrabold text-foreground uppercase tracking-tight">
+    <div className="inline-flex items-center gap-3 text-[0.7rem] font-medium tracking-[0.4em] uppercase text-primary">
+      <span className="h-px w-8 bg-primary/60" />
+      {children}
+    </div>
+  );
+}
+
+function SectionTitle({
+  children,
+  align = "center",
+}: {
+  children: React.ReactNode;
+  align?: "center" | "left";
+}) {
+  return (
+    <h2
+      className={`font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] tracking-tight text-foreground ${align === "center" ? "text-center" : ""}`}
+    >
       {children}
     </h2>
   );
 }
 
-function LandingPage() {
+/* ------------------------------ Reveal Hook ------------------------------- */
+
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in-view");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+}
+
+/* ------------------------------ Scroll Progress --------------------------- */
+
+function ScrollProgress() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const total = h.scrollHeight - h.clientHeight;
+      setProgress(total > 0 ? (h.scrollTop / total) * 100 : 0);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="fixed top-0 left-0 right-0 z-[60] h-[2px] bg-transparent">
+      <div
+        className="h-full transition-[width] duration-150"
+        style={{ width: `${progress}%`, background: "var(--gradient-gold)" }}
+      />
+    </div>
+  );
+}
+
+/* --------------------------------- Counter -------------------------------- */
+
+function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
+  const [val, setVal] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting && !started.current) {
+          started.current = true;
+          const duration = 1800;
+          const start = performance.now();
+          const tick = (now: number) => {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            setVal(Math.round(to * eased));
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      });
+    });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [to]);
+
+  return (
+    <span ref={ref} className="tabular-nums">
+      {val.toLocaleString("pt-BR")}
+      {suffix}
+    </span>
+  );
+}
+
+/* -------------------------------- Countdown ------------------------------- */
+
+function Countdown() {
+  const target = useRef(Date.now() + 1000 * 60 * 60 * 23 + 1000 * 60 * 47);
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const diff = Math.max(0, target.current - now);
+  const h = Math.floor(diff / 3_600_000);
+  const m = Math.floor((diff % 3_600_000) / 60_000);
+  const s = Math.floor((diff % 60_000) / 1000);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const Box = ({ v, l }: { v: string; l: string }) => (
+    <div className="flex flex-col items-center">
+      <div className="font-display text-4xl md:text-5xl font-light text-primary tabular-nums">
+        {v}
+      </div>
+      <div className="mt-1 text-[0.65rem] tracking-[0.3em] uppercase text-muted-foreground">
+        {l}
+      </div>
+    </div>
+  );
+  return (
+    <div className="inline-flex items-center gap-6 md:gap-10 rounded-2xl glass-card px-8 py-5">
+      <Box v={pad(h)} l="Horas" />
+      <span className="text-primary/40 text-2xl">:</span>
+      <Box v={pad(m)} l="Min" />
+      <span className="text-primary/40 text-2xl">:</span>
+      <Box v={pad(s)} l="Seg" />
+    </div>
+  );
+}
+
+/* --------------------------------- Icons ---------------------------------- */
+
+function PillarIcon({ kind }: { kind: "design" | "color" | "needle" }) {
+  const stroke = "currentColor";
+  const common = { fill: "none", stroke, strokeWidth: 1.2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  if (kind === "design")
+    return (
+      <svg viewBox="0 0 48 48" className="h-10 w-10 text-primary">
+        <path {...common} d="M6 34c8-6 14-8 20-8s10 2 16 6" />
+        <path {...common} d="M10 30c6-10 14-14 22-12" />
+        <circle {...common} cx="36" cy="14" r="2" />
+      </svg>
+    );
+  if (kind === "color")
+    return (
+      <svg viewBox="0 0 48 48" className="h-10 w-10 text-primary">
+        <circle {...common} cx="18" cy="22" r="10" />
+        <circle {...common} cx="30" cy="22" r="10" />
+        <circle {...common} cx="24" cy="32" r="10" />
+      </svg>
+    );
+  return (
+    <svg viewBox="0 0 48 48" className="h-10 w-10 text-primary">
+      <path {...common} d="M8 40 L30 18 L34 22 L12 44 Z" transform="translate(0 -4)" />
+      <path {...common} d="M30 14 L34 18" />
+      <path {...common} d="M36 8 L42 14" />
+    </svg>
+  );
+}
+
+/* --------------------------------- Page ----------------------------------- */
+
+function LandingPage() {
+  useReveal();
+
+  return (
+    <div className="min-h-screen bg-background text-foreground antialiased">
+      <ScrollProgress />
+
+      {/* Top brand bar */}
+      <div className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/40 border-b border-border/40">
+        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+          <div className="font-display text-lg tracking-[0.3em] uppercase">
+            <span className="text-foreground">Marcelo</span>{" "}
+            <span className="text-gold-gradient italic">Alves</span>
+          </div>
+          <a
+            href="#inscricao"
+            className="hidden md:inline-flex text-[0.7rem] font-medium tracking-[0.3em] uppercase text-primary hover:text-foreground transition-colors"
+          >
+            Garantir minha vaga →
+          </a>
+        </div>
+      </div>
+
       {/* HERO */}
-      <header className="relative overflow-hidden">
+      <header className="relative overflow-hidden min-h-screen flex items-center pt-24">
         <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="Micropigmentador profissional realizando atendimento de sobrancelha hiper-realista"
             width={1920}
             height={1080}
-            className="h-full w-full object-cover opacity-70"
+            className="hero-zoom h-full w-full object-cover opacity-55"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/70" />
+          {/* film grain accent */}
+          <div
+            className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 30% 20%, oklch(0.78 0.13 85 / 0.5), transparent 50%)",
+            }}
+          />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-28">
-          <div className="max-w-2xl">
-            <div className="mb-8 inline-block">
-              <div className="text-primary text-sm font-semibold tracking-[0.3em]">
-                FORMAÇÃO
-              </div>
-              <div className="text-foreground text-2xl md:text-3xl font-extrabold tracking-wider">
-                MICROPIGMENTADOR
-              </div>
-              <div className="text-primary text-xs font-semibold tracking-[0.4em]">
-                HIPER-REALISTA
-              </div>
-            </div>
+        <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28 w-full">
+          <div className="max-w-3xl fade-in-down">
+            <Eyebrow>Formação · Hiper-Realista</Eyebrow>
 
-            <h1 className="text-2xl md:text-4xl font-extrabold uppercase leading-tight">
-              Domine a técnica que vai te posicionar como referência na sua cidade
-              e te permitir{" "}
-              <span className="text-primary">
-                cobrar até R$1.000 por atendimento!
-              </span>
+            <h1 className="font-display mt-8 text-5xl md:text-7xl lg:text-[5.5rem] font-light leading-[1.02] tracking-tight">
+              Domine a técnica que vai te posicionar como{" "}
+              <em className="text-gold-gradient not-italic font-medium">
+                referência
+              </em>{" "}
+              na sua cidade
             </h1>
 
-            <p className="mt-6 text-sm md:text-base font-semibold uppercase tracking-wider text-primary">
-              Exclusivo para micropigmentadoras e designers de sobrancelha
+            <p className="mt-8 max-w-xl text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
+              E te permitir cobrar até{" "}
+              <span className="text-primary font-medium">R$1.000 por atendimento</span>
+              {" "}— exclusivo para micropigmentadoras e designers de sobrancelha.
             </p>
 
-            <div className="mt-10">
+            <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-8">
               <CtaButton>Inscreva-se</CtaButton>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <div className="flex -space-x-2">
+                  {resultImgs.map((src) => (
+                    <img
+                      key={src}
+                      src={src}
+                      alt=""
+                      className="h-9 w-9 rounded-full object-cover border-2 border-background"
+                    />
+                  ))}
+                </div>
+                <span className="font-light">
+                  <Counter to={847} />+ alunas formadas
+                </span>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* scroll cue */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary/60 text-xs tracking-[0.4em] uppercase float-slow">
+          ↓ Role
         </div>
       </header>
 
       {/* PROBLEM */}
-      <section className="py-20 px-6">
+      <section className="py-32 px-6">
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary">
-            Você não aguenta mais trabalhar muito e ganhar pouco com a
-            micropigmentação?
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Você está presa em um ciclo que rouba seu tempo e te frustra:
-          </p>
+          <div className="reveal">
+            <Eyebrow>O dilema</Eyebrow>
+            <SectionTitle>
+              Você não aguenta mais trabalhar muito{" "}
+              <em className="text-gold-gradient not-italic">e ganhar pouco</em>{" "}
+              com a micropigmentação?
+            </SectionTitle>
+            <p className="mt-6 text-muted-foreground max-w-2xl mx-auto font-light">
+              Você está presa em um ciclo que rouba seu tempo e te frustra.
+            </p>
+          </div>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2 items-center">
-            <div className="grid gap-4 text-left">
+          <div className="mt-20 grid gap-12 md:grid-cols-2 items-center">
+            <div className="grid gap-4 text-left reveal">
               {[
                 "Você não sabe como se diferenciar da concorrência",
                 "Acaba competindo por preço e cobrando mais barato",
                 "Demora mais do que gostaria nos atendimentos",
                 "Atende poucas pessoas que pagam pouco",
-              ].map((t) => (
+              ].map((t, i) => (
                 <div
                   key={t}
-                  className="rounded-2xl border border-border bg-card p-5 shadow-sm"
+                  className="glass-card rounded-xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/40"
                 >
-                  <p className="font-semibold">{t}</p>
+                  <div className="flex items-start gap-4">
+                    <span className="font-display text-2xl text-primary/60 tabular-nums">
+                      0{i + 1}
+                    </span>
+                    <p className="font-light text-base">{t}</p>
+                  </div>
                 </div>
               ))}
             </div>
-            <img
-              src={frustratedImg}
-              alt="Profissional frustrada"
-              loading="lazy"
-              width={1024}
-              height={1024}
-              className="rounded-2xl mx-auto max-w-sm w-full object-cover"
-            />
+            <div className="relative reveal">
+              <div
+                className="absolute -inset-4 rounded-3xl opacity-30 blur-2xl"
+                style={{ background: "var(--gradient-gold-soft)" }}
+              />
+              <img
+                src={frustratedImg}
+                alt="Profissional frustrada"
+                loading="lazy"
+                width={1024}
+                height={1024}
+                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2]"
+              />
+            </div>
           </div>
 
-          <div className="mt-16">
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              A forma mais rápida de resolver todos esses problemas de uma vez é
-              melhorar sua técnica. Com a técnica certa, você começa a:
+          <div className="mt-24 reveal">
+            <div className="hairline w-32 mx-auto mb-8" />
+            <p className="text-muted-foreground max-w-2xl mx-auto font-light text-lg">
+              A forma mais rápida de resolver tudo isso de uma vez é{" "}
+              <span className="text-foreground">melhorar sua técnica</span>.
+              Com a técnica certa, você começa a:
             </p>
-            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3 text-left">
+            <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 text-left">
               {[
-                "Ter mais segurança na hora de fazer um atendimento",
+                "Ter mais segurança em cada atendimento",
                 "Ter resultados com aspecto mais natural",
                 "Reduzir seu tempo de atendimento pela metade",
                 "Cobrar mais caro pelos seus atendimentos",
@@ -163,9 +400,12 @@ function LandingPage() {
               ].map((t) => (
                 <div
                   key={t}
-                  className="rounded-xl border border-primary/30 bg-card/60 p-5"
+                  className="glass-card rounded-xl p-5 transition hover:border-primary/40"
                 >
-                  <p className="font-medium">✨ {t}</p>
+                  <p className="font-light flex gap-3">
+                    <span className="text-primary">✦</span>
+                    {t}
+                  </p>
                 </div>
               ))}
             </div>
@@ -174,13 +414,21 @@ function LandingPage() {
       </section>
 
       {/* RESULTS */}
-      <section className="bg-card/40 py-20 px-6">
-        <div className="mx-auto max-w-6xl text-center">
-          <SectionTitle>
-            Veja os resultados dos atendimentos das alunas da formação
-          </SectionTitle>
+      <section className="py-32 px-6 relative">
+        <div
+          className="absolute inset-0 opacity-50"
+          style={{ background: "var(--gradient-gold-soft)" }}
+        />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="text-center reveal">
+            <Eyebrow>Galeria</Eyebrow>
+            <SectionTitle>
+              Resultados reais das{" "}
+              <em className="text-gold-gradient not-italic">alunas</em>
+            </SectionTitle>
+          </div>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
             {[
               { name: "Tanara Miranda", handle: "@magnifictanara" },
               { name: "Ana Paula C.", handle: "@anapaullacarvalho_01" },
@@ -188,17 +436,43 @@ function LandingPage() {
             ].map((a, i) => (
               <div
                 key={a.name}
-                className="rounded-2xl overflow-hidden border border-border bg-card"
+                className="reveal group rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-gold)]"
               >
-                <img
-                  src={resultImgs[i]}
-                  alt={`Resultado da aluna ${a.name}`}
-                  loading="lazy"
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-5">
-                  <p className="font-bold">{a.name}</p>
-                  <p className="text-primary text-sm">{a.handle}</p>
+                <div className="overflow-hidden">
+                  <img
+                    src={resultImgs[i]}
+                    alt={`Resultado da aluna ${a.name}`}
+                    loading="lazy"
+                    className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6 flex items-center justify-between">
+                  <div>
+                    <p className="font-display text-xl">{a.name}</p>
+                    <p className="text-primary text-xs tracking-wider mt-1">
+                      {a.handle}
+                    </p>
+                  </div>
+                  <div className="flex text-primary text-sm">★★★★★</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* counters */}
+          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 reveal">
+            {[
+              { n: 847, s: "+", l: "Alunas formadas" },
+              { n: 12, s: "+", l: "Anos de experiência" },
+              { n: 40, s: "k", l: "R$/mês no studio" },
+              { n: 98, s: "%", l: "Avaliações 5★" },
+            ].map((c) => (
+              <div key={c.l} className="text-center">
+                <div className="font-display text-5xl md:text-6xl font-light text-gold-gradient">
+                  <Counter to={c.n} suffix={c.s} />
+                </div>
+                <div className="mt-2 text-xs tracking-[0.3em] uppercase text-muted-foreground">
+                  {c.l}
                 </div>
               </div>
             ))}
@@ -207,21 +481,26 @@ function LandingPage() {
       </section>
 
       {/* WHO IS IT FOR */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <SectionTitle>Pra quem é a formação?</SectionTitle>
-          <div className="mt-10 grid gap-5 text-left">
+      <section className="py-32 px-6">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center reveal">
+            <Eyebrow>Para você</Eyebrow>
+            <SectionTitle>Pra quem é a formação?</SectionTitle>
+          </div>
+          <div className="mt-16 grid gap-5 text-left">
             {[
               "Micropigmentadoras que já atuam na área e querem melhorar a qualidade do seu atendimento para ganhar mais e ser reconhecida",
               "Designers de sobrancelha que querem migrar para a micropigmentação com segurança, sem medo de errar o rosto da cliente",
               "Profissionais da área de saúde/estética que querem entrar no mercado de micropigmentação através de uma fonte confiável e com resultados comprovados",
-            ].map((t) => (
+            ].map((t, i) => (
               <div
                 key={t}
-                className="flex gap-4 rounded-xl border border-border bg-card p-5"
+                className="reveal glass-card rounded-2xl p-7 flex gap-6 items-start transition hover:border-primary/40"
               >
-                <span className="text-primary text-xl">✅</span>
-                <p>{t}</p>
+                <span className="font-display text-3xl text-primary/70 tabular-nums shrink-0">
+                  0{i + 1}
+                </span>
+                <p className="font-light text-lg leading-relaxed">{t}</p>
               </div>
             ))}
           </div>
@@ -229,48 +508,57 @@ function LandingPage() {
       </section>
 
       {/* 3 PILLARS */}
-      <section className="bg-card/40 py-20 px-6">
-        <div className="mx-auto max-w-6xl text-center">
-          <SectionTitle>
-            E é por isso que você precisa da FMH:{" "}
-            <span className="text-primary">
-              Formação de Micropigmentação Hiper Realista
-            </span>
-          </SectionTitle>
-          <p className="mt-6 text-muted-foreground max-w-3xl mx-auto">
-            Tudo o que você precisa pra trabalhar menos e ganhar mais na
-            micropigmentação é focar em 3 pilares apenas:
-          </p>
+      <section className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-card/30" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="text-center reveal">
+            <Eyebrow>Metodologia FMH</Eyebrow>
+            <SectionTitle>
+              Três pilares.{" "}
+              <em className="text-gold-gradient not-italic">Uma técnica.</em>
+            </SectionTitle>
+            <p className="mt-6 text-muted-foreground max-w-2xl mx-auto font-light text-lg">
+              Tudo o que você precisa pra trabalhar menos e ganhar mais é dominar
+              três fundamentos.
+            </p>
+          </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-20 grid gap-8 md:grid-cols-3">
             {[
               {
-                n: "1",
+                icon: "design" as const,
+                n: "01",
                 t: "Design",
-                d: "Você vai aprender uma técnica italiana para te dar segurança na etapa mais crucial do seu atendimento — o design.",
+                d: "Técnica italiana para te dar segurança absoluta na etapa mais crucial do atendimento — o design.",
               },
               {
-                n: "2",
+                icon: "color" as const,
+                n: "02",
                 t: "Colorimetria",
-                d: "Nesse pilar, você vai aprender a chegar em qualquer tom de pele/pêlo usando apenas 3 cores com uma técnica simples.",
+                d: "Chegue a qualquer tom de pele ou pelo usando apenas 3 cores com um método simples e previsível.",
               },
               {
-                n: "3",
+                icon: "needle" as const,
+                n: "03",
                 t: "Fixação dos fios",
-                d: "Crie fios finos e delicados e entenda como impedir que os fios fiquem com um aspecto artificial/estourado.",
+                d: "Crie fios finos, delicados, naturais — sem aspecto artificial, sem estouro.",
               },
             ].map((p) => (
               <div
                 key={p.n}
-                className="rounded-2xl border border-primary/30 bg-card p-8 text-left"
+                className="reveal group glass-card rounded-2xl p-10 text-left transition-all duration-500 hover:-translate-y-2 hover:border-primary/50"
               >
-                <div className="text-5xl font-extrabold text-primary">
-                  {p.n}
+                <div className="flex items-center justify-between">
+                  <PillarIcon kind={p.icon} />
+                  <span className="font-display text-3xl text-primary/40 tabular-nums">
+                    {p.n}
+                  </span>
                 </div>
-                <h3 className="mt-3 text-xl font-bold uppercase">
-                  Pilar {p.n} — {p.t}
-                </h3>
-                <p className="mt-3 text-muted-foreground">{p.d}</p>
+                <div className="hairline mt-8 w-12" />
+                <h3 className="mt-6 font-display text-3xl font-light">{p.t}</h3>
+                <p className="mt-4 text-muted-foreground font-light leading-relaxed">
+                  {p.d}
+                </p>
               </div>
             ))}
           </div>
@@ -278,10 +566,16 @@ function LandingPage() {
       </section>
 
       {/* CURRICULUM */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-5xl text-center">
-          <SectionTitle>Tudo o que você vai aprender na FMH</SectionTitle>
-          <div className="mt-10 grid gap-3 md:grid-cols-2 text-left">
+      <section className="py-32 px-6">
+        <div className="mx-auto max-w-5xl">
+          <div className="text-center reveal">
+            <Eyebrow>Conteúdo</Eyebrow>
+            <SectionTitle>
+              Tudo o que você vai aprender na{" "}
+              <em className="text-gold-gradient not-italic">FMH</em>
+            </SectionTitle>
+          </div>
+          <div className="mt-16 grid gap-2 md:grid-cols-2 text-left reveal">
             {[
               "Design de sobrancelhas",
               "Design e visagismo",
@@ -313,13 +607,15 @@ function LandingPage() {
               "Exercícios de precisão",
               "Biossegurança",
               "Retoque hiper realista",
-            ].map((item) => (
+            ].map((item, i) => (
               <div
                 key={item}
-                className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3"
+                className="flex items-center gap-4 border-b border-border/40 py-3 transition-colors hover:border-primary/40"
               >
-                <span className="text-primary">▸</span>
-                <span className="text-sm">{item}</span>
+                <span className="font-display text-xs text-primary/50 tabular-nums w-6">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-sm font-light">{item}</span>
               </div>
             ))}
           </div>
@@ -327,68 +623,106 @@ function LandingPage() {
       </section>
 
       {/* BONUS */}
-      <section className="bg-card/40 py-20 px-6">
-        <div className="mx-auto max-w-5xl text-center">
-          <SectionTitle>
-            Você ainda vai levar de bônus:{" "}
-            <span className="text-primary">
-              Treinamento completo em marketing e vendas
-            </span>
-          </SectionTitle>
-          <p className="mt-6 text-muted-foreground max-w-3xl mx-auto">
-            Aprenda a captar pessoas interessadas no seu serviço através do
-            Instagram e convertê-las em clientes no WhatsApp. Ao unir uma
-            estrutura mínima de marketing e vendas com uma técnica refinada, seu
-            negócio vai ter muito mais previsibilidade e crescer.
-          </p>
+      <section className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-card/30" />
+        <div className="relative mx-auto max-w-5xl">
+          <div className="text-center reveal">
+            <Eyebrow>Bônus exclusivo</Eyebrow>
+            <SectionTitle>
+              Treinamento completo em{" "}
+              <em className="text-gold-gradient not-italic">marketing e vendas</em>
+            </SectionTitle>
+            <p className="mt-6 text-muted-foreground max-w-2xl mx-auto font-light text-lg">
+              Aprenda a captar interessadas no Instagram e convertê-las em
+              clientes pelo WhatsApp. Técnica refinada + estrutura mínima de
+              vendas = previsibilidade no seu negócio.
+            </p>
+          </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 text-left">
-            <div className="rounded-2xl border border-primary/30 bg-card p-8">
-              <h3 className="text-xl font-bold uppercase text-primary">
-                Atração
-              </h3>
-              <p className="mt-3 font-semibold">
-                Nunca mais veja a sua agenda vazia!
-              </p>
-              <p className="mt-2 text-muted-foreground">
-                Com essa estratégia você terá uma rotatividade de clientes
-                mensal que vai te trazer a sonhada estabilidade para seu
-                negócio.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-primary/30 bg-card p-8">
-              <h3 className="text-xl font-bold uppercase text-primary">
-                Vendas
-              </h3>
-              <p className="mt-3 text-muted-foreground">
-                Aprenda os segredos para apresentar seu trabalho com técnicas de
-                vendas testadas para <strong>fidelizar e demonstrar valor</strong>{" "}
-                para suas clientes. São técnicas que utilizo no meu centro
-                estético há mais de 10 anos!
-              </p>
-            </div>
+          <div className="mt-16 grid gap-8 md:grid-cols-2 text-left">
+            {[
+              {
+                t: "Atração",
+                lead: "Nunca mais veja a sua agenda vazia.",
+                d: "Com essa estratégia você terá uma rotatividade de clientes mensal que vai te trazer a sonhada estabilidade para o seu negócio.",
+              },
+              {
+                t: "Vendas",
+                lead: "Apresente seu trabalho com autoridade.",
+                d: "Aprenda os segredos para apresentar seu trabalho com técnicas testadas para fidelizar e demonstrar valor. As mesmas que uso no meu centro estético há mais de 10 anos.",
+              },
+            ].map((b) => (
+              <div
+                key={b.t}
+                className="reveal glass-card rounded-2xl p-10 transition-all duration-500 hover:-translate-y-1 hover:border-primary/40"
+              >
+                <p className="text-[0.7rem] tracking-[0.4em] uppercase text-primary">
+                  {b.t}
+                </p>
+                <p className="mt-4 font-display text-2xl">{b.lead}</p>
+                <div className="hairline mt-6 w-12" />
+                <p className="mt-6 text-muted-foreground font-light leading-relaxed">
+                  {b.d}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-6xl text-center">
-          <SectionTitle>
-            Veja o que nossas alunas dizem sobre a formação
-          </SectionTitle>
-          <div className="mt-12 grid gap-6 md:grid-cols-3 text-left">
+      <section className="py-32 px-6">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center reveal">
+            <Eyebrow>Depoimentos</Eyebrow>
+            <SectionTitle>
+              O que dizem nossas{" "}
+              <em className="text-gold-gradient not-italic">alunas</em>
+            </SectionTitle>
+          </div>
+          <div className="mt-16 grid gap-8 md:grid-cols-3 text-left">
             {[
-              "Tanara desistiu de estudar para carreira pública e se tornou especialista em design e micropigmentação, chegando a faturar R$20.000 por mês.",
-              "Ana Paula lotou sua agenda como designer de sobrancelhas e no primeiro mês como micropigmentadora ganhou mais de R$10.000.",
-              "Vera Lúcia já atuava na área há alguns anos, mas não conseguia crescer. Em poucos meses ela quadruplicou o seu faturamento!",
+              {
+                name: "Tanara Miranda",
+                role: "Especialista em micropigmentação",
+                img: resultImgs[0],
+                t: "Desisti de estudar para carreira pública e me tornei especialista em design e micropigmentação. Hoje chego a faturar R$20.000 por mês.",
+              },
+              {
+                name: "Ana Paula C.",
+                role: "Micropigmentadora",
+                img: resultImgs[1],
+                t: "Lotei minha agenda como designer e, no primeiro mês como micropigmentadora, ganhei mais de R$10.000.",
+              },
+              {
+                name: "Vera Lúcia",
+                role: "Micropigmentadora",
+                img: resultImgs[2],
+                t: "Já atuava na área há alguns anos mas não conseguia crescer. Em poucos meses quadrupliquei o meu faturamento.",
+              },
             ].map((t) => (
               <div
-                key={t}
-                className="rounded-2xl border border-border bg-card p-6"
+                key={t.name}
+                className="reveal glass-card rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 hover:border-primary/50"
               >
-                <p className="text-primary text-3xl leading-none">❝</p>
-                <p className="mt-2 text-muted-foreground">{t}</p>
+                <div className="flex text-primary text-sm">★★★★★</div>
+                <p className="mt-5 font-light text-base leading-relaxed text-foreground/90">
+                  “{t.t}”
+                </p>
+                <div className="hairline mt-7 w-12" />
+                <div className="mt-6 flex items-center gap-4">
+                  <img
+                    src={t.img}
+                    alt={t.name}
+                    className="h-12 w-12 rounded-full object-cover border border-primary/40"
+                  />
+                  <div>
+                    <p className="font-display text-lg">{t.name}</p>
+                    <p className="text-[0.7rem] tracking-wider uppercase text-muted-foreground">
+                      {t.role}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -396,133 +730,200 @@ function LandingPage() {
       </section>
 
       {/* CERTIFICATE */}
-      <section className="bg-card/40 py-20 px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionTitle>
-            Finalizou o curso? <span className="text-primary">Receba seu certificado!</span>
-          </SectionTitle>
-          <p className="mt-6 text-muted-foreground">
-            Temos um certificado elegante pra você utilizar no seu espaço de
-            atendimento e ser vista com mais credibilidade e autoridade.
-          </p>
-          <div className="mt-10 mx-auto max-w-xl rounded-2xl border-2 border-primary/40 bg-gradient-to-br from-card to-background p-10">
-            <p className="text-sm tracking-[0.3em] text-primary">CERTIFICADO</p>
-            <p className="mt-2 text-2xl font-bold">
-              Formação Micropigmentador Hiper-Realista
+      <section className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-card/30" />
+        <div className="relative mx-auto max-w-3xl text-center">
+          <div className="reveal">
+            <Eyebrow>Certificação</Eyebrow>
+            <SectionTitle>
+              Receba seu{" "}
+              <em className="text-gold-gradient not-italic">certificado</em>
+            </SectionTitle>
+            <p className="mt-6 text-muted-foreground font-light text-lg">
+              Um certificado elegante para o seu espaço — credibilidade e
+              autoridade visíveis a cada cliente que entra.
             </p>
-            <p className="mt-4 text-muted-foreground text-sm">
-              Concedido pela conclusão integral da formação.
-            </p>
+          </div>
+          <div className="reveal mt-12 mx-auto max-w-xl rounded-2xl border border-primary/40 p-12 relative overflow-hidden">
+            <div
+              className="absolute inset-0 opacity-30"
+              style={{ background: "var(--gradient-gold-soft)" }}
+            />
+            <div className="relative">
+              <p className="text-[0.7rem] tracking-[0.5em] text-primary">
+                CERTIFICADO
+              </p>
+              <p className="mt-4 font-display text-3xl md:text-4xl font-light">
+                Formação Micropigmentador
+                <br />
+                <em className="text-gold-gradient">Hiper-Realista</em>
+              </p>
+              <div className="hairline mt-8 mx-auto w-24" />
+              <p className="mt-6 text-muted-foreground text-sm font-light">
+                Concedido pela conclusão integral da formação
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* OFFER / RECAP */}
-      <section id="inscricao" className="py-20 px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <SectionTitle>
-            Recapitulando, ao se inscrever na formação você terá acesso a:
-          </SectionTitle>
+      {/* OFFER */}
+      <section id="inscricao" className="py-32 px-6">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center reveal">
+            <Eyebrow>Oferta especial</Eyebrow>
+            <SectionTitle>
+              Tudo o que você recebe ao{" "}
+              <em className="text-gold-gradient not-italic">se inscrever</em>
+            </SectionTitle>
+          </div>
 
-          <div className="mt-10 grid gap-3 text-left max-w-2xl mx-auto">
+          <div className="mt-12 flex justify-center reveal">
+            <Countdown />
+          </div>
+
+          <div className="mt-14 grid gap-3 text-left max-w-2xl mx-auto reveal">
             {[
               ["Curso completo de Design de Sobrancelhas", "R$297"],
               ["Curso completo de Colorimetria e Pigmentologia", "R$497"],
               ["Curso completo de Fios Hiper Realistas", "R$497"],
-              ["Bônus: Marketing e Vendas pelo Instagram/WhatsApp", "R$297"],
-              ["Certificado", "R$50"],
+              ["Bônus: Marketing e Vendas (Instagram/WhatsApp)", "R$297"],
+              ["Certificado de conclusão", "R$50"],
             ].map(([t, p]) => (
               <div
                 key={t}
-                className="flex items-center justify-between rounded-xl border border-border bg-card px-5 py-4"
+                className="flex items-center justify-between border-b border-border/40 px-2 py-5"
               >
-                <span className="flex items-center gap-3">
-                  <span className="text-primary">✅</span>
-                  <span className="font-medium">{t}</span>
+                <span className="flex items-center gap-4">
+                  <span className="text-primary text-sm">✦</span>
+                  <span className="font-light">{t}</span>
                 </span>
-                <span className="text-muted-foreground line-through text-sm">
+                <span className="text-muted-foreground line-through text-sm tabular-nums">
                   {p}
                 </span>
               </div>
             ))}
           </div>
 
-          <p className="mt-8 text-muted-foreground">
-            Tudo isso junto ultrapassa o valor de R$1.500. Mas nessa oferta,
-            você vai pagar apenas:
-          </p>
-
-          <div className="mt-8 mx-auto max-w-md rounded-3xl bg-[var(--gradient-gold)] p-10 text-primary-foreground shadow-[var(--shadow-gold)]">
-            <p className="text-sm uppercase tracking-widest font-bold">
-              12x de
+          <div className="mt-10 text-center reveal">
+            <p className="text-muted-foreground font-light">
+              Valor total acima de{" "}
+              <span className="line-through">R$1.638</span>. Hoje, por apenas:
             </p>
-            <p className="text-6xl font-extrabold">R$9,70</p>
-            <p className="mt-2 font-semibold">ou R$97,00 à vista</p>
           </div>
 
-          <div className="mt-10">
-            <CtaButton>Quero entrar na formação</CtaButton>
+          {/* Price card */}
+          <div className="reveal mt-10 mx-auto max-w-lg relative">
+            <div
+              className="absolute -inset-6 rounded-[2rem] blur-2xl opacity-50"
+              style={{ background: "var(--gradient-gold)" }}
+            />
+            <div className="relative rounded-3xl bg-background border border-primary/40 p-10 text-center overflow-hidden">
+              <div
+                className="absolute top-0 right-0 px-5 py-2 text-[0.65rem] tracking-[0.3em] uppercase font-semibold"
+                style={{
+                  background: "var(--gradient-gold)",
+                  color: "var(--primary-foreground)",
+                  borderBottomLeftRadius: "1rem",
+                }}
+              >
+                Oferta
+              </div>
+              <p className="text-xs tracking-[0.4em] uppercase text-muted-foreground mt-4">
+                12x de
+              </p>
+              <p className="font-display text-7xl md:text-8xl font-light text-gold-gradient leading-none mt-3">
+                R$9,70
+              </p>
+              <div className="hairline mt-8 mx-auto w-16" />
+              <p className="mt-6 font-light text-muted-foreground">
+                ou{" "}
+                <span className="text-foreground font-medium">R$97,00</span>{" "}
+                à vista
+              </p>
+              <div className="mt-10">
+                <CtaButton pulse>Quero entrar na formação</CtaButton>
+              </div>
+              <p className="mt-6 text-[0.7rem] tracking-widest uppercase text-muted-foreground">
+                Acesso imediato · Garantia de 7 dias
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* GUARANTEE */}
-      <section className="bg-card/40 py-20 px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex h-24 w-24 items-center justify-center rounded-full border-4 border-primary text-primary text-3xl font-extrabold">
+      <section className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-card/30" />
+        <div className="relative mx-auto max-w-3xl text-center reveal">
+          <div
+            className="inline-flex h-28 w-28 items-center justify-center rounded-full font-display text-5xl font-light text-primary"
+            style={{
+              background: "var(--gradient-gold-soft)",
+              border: "1px solid oklch(0.78 0.13 85 / 0.4)",
+            }}
+          >
             7
           </div>
-          <h2 className="mt-6 text-3xl font-extrabold uppercase">
-            Garantia de 7 dias
+          <Eyebrow>
+            <span className="mt-6 inline-block">Sem risco</span>
+          </Eyebrow>
+          <h2 className="mt-6 font-display text-4xl md:text-5xl font-light">
+            Garantia incondicional de{" "}
+            <em className="text-gold-gradient not-italic">7 dias</em>
           </h2>
-          <p className="mt-6 text-muted-foreground">
-            Eu garanto 100% de segurança para você e vou liberar um teste de 7
-            dias totalmente gratuito! Assista às aulas durante 7 dias e, se
-            você não acreditar que a Formação Micropigmentador Hiper-Realista
-            vai revolucionar a sua vida, devolvo 100% do seu dinheiro. Sem
-            perguntas. Apenas o seu dinheiro de volta.
+          <p className="mt-8 text-muted-foreground font-light text-lg leading-relaxed">
+            Garanto 100% de segurança para você. Assista às aulas durante 7 dias
+            e, se não acreditar que a Formação vai revolucionar a sua vida,
+            devolvo 100% do seu dinheiro. Sem perguntas.
           </p>
-          <div className="mt-10">
-            <CtaButton>Sim, eu quero testar por 7 dias!</CtaButton>
+          <div className="mt-12">
+            <CtaButton>Sim, quero testar por 7 dias</CtaButton>
           </div>
         </div>
       </section>
 
       {/* STEPS */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-5xl text-center">
-          <SectionTitle>Apenas 3 passos</SectionTitle>
-          <p className="mt-4 text-muted-foreground">
-            Após sua compra, você vai receber a Formação no seu e-mail
-          </p>
+      <section className="py-32 px-6">
+        <div className="mx-auto max-w-5xl">
+          <div className="text-center reveal">
+            <Eyebrow>Como funciona</Eyebrow>
+            <SectionTitle>Apenas 3 passos</SectionTitle>
+            <p className="mt-6 text-muted-foreground font-light">
+              Após sua compra, você recebe a Formação no seu e-mail.
+            </p>
+          </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3 text-left">
+          <div className="mt-16 grid gap-8 md:grid-cols-3 text-left">
             {[
               {
-                n: "1",
+                n: "01",
                 t: "Acesse seu e-mail",
-                d: "Está com o nome de FORMAÇÃO EM MICROPIGMENTAÇÃO HIPER REALISTA.",
+                d: "Procure pela mensagem com o nome FORMAÇÃO EM MICROPIGMENTAÇÃO HIPER REALISTA.",
               },
               {
-                n: "2",
-                t: "Acesse a plataforma",
-                d: "As aulas já estão 100% liberadas pra você acessar.",
+                n: "02",
+                t: "Entre na plataforma",
+                d: "As aulas já estarão 100% liberadas para você acessar a hora que quiser.",
               },
               {
-                n: "3",
-                t: "Tudo pronto!",
-                d: "Finalize o curso no seu ritmo e nos envie um e-mail com a tarefa final para receber o certificado.",
+                n: "03",
+                t: "Conclua e certifique-se",
+                d: "Finalize no seu ritmo e nos envie a tarefa final por e-mail para receber seu certificado.",
               },
             ].map((s) => (
               <div
                 key={s.n}
-                className="rounded-2xl border border-border bg-card p-8"
+                className="reveal glass-card rounded-2xl p-8 transition hover:-translate-y-1 hover:border-primary/40"
               >
-                <div className="text-5xl font-extrabold text-primary">
+                <div className="font-display text-5xl font-light text-primary/70">
                   {s.n}
                 </div>
-                <h3 className="mt-3 text-lg font-bold uppercase">{s.t}</h3>
-                <p className="mt-2 text-muted-foreground text-sm">{s.d}</p>
+                <div className="hairline mt-6 w-10" />
+                <h3 className="mt-6 font-display text-2xl">{s.t}</h3>
+                <p className="mt-4 text-muted-foreground text-sm font-light leading-relaxed">
+                  {s.d}
+                </p>
               </div>
             ))}
           </div>
@@ -530,37 +931,46 @@ function LandingPage() {
       </section>
 
       {/* MENTOR */}
-      <section className="bg-card/40 py-20 px-6">
-        <div className="mx-auto max-w-5xl grid gap-12 md:grid-cols-2 items-center">
-          <img
-            src={mentorImg}
-            alt="Marcelo Alves, mentor da formação"
-            loading="lazy"
-            width={1024}
-            height={1280}
-            className="rounded-2xl w-full max-w-sm mx-auto object-cover"
-          />
-          <div>
-            <h2 className="text-3xl font-extrabold uppercase">
-              Quem é seu mentor?
+      <section className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-card/30" />
+        <div className="relative mx-auto max-w-5xl grid gap-16 md:grid-cols-2 items-center">
+          <div className="relative reveal">
+            <div
+              className="absolute -inset-6 rounded-3xl opacity-30 blur-2xl"
+              style={{ background: "var(--gradient-gold)" }}
+            />
+            <img
+              src={mentorImg}
+              alt="Marcelo Alves, mentor da formação"
+              loading="lazy"
+              width={1024}
+              height={1280}
+              className="relative rounded-2xl w-full max-w-sm mx-auto object-cover"
+            />
+          </div>
+          <div className="reveal">
+            <Eyebrow>Seu mentor</Eyebrow>
+            <h2 className="mt-6 font-display text-4xl md:text-5xl font-light leading-[1.05]">
+              Marcelo{" "}
+              <em className="text-gold-gradient not-italic">Alves</em>
             </h2>
-            <div className="mt-6 space-y-4 text-muted-foreground">
+            <div className="hairline mt-8 w-16" />
+            <div className="mt-8 space-y-5 text-muted-foreground font-light leading-relaxed">
               <p>
-                Marcelo Alves é micropigmentador há mais de 12 anos. Formou-se
-                com as maiores referências nacionais (Alan Spadone, James Olaya)
-                e internacionais (Ennio Orsine e Toni Bellfato, criadores da
+                Micropigmentador há mais de 12 anos. Formado com as maiores
+                referências nacionais (Alan Spadone, James Olaya) e
+                internacionais (Ennio Orsine e Toni Bellfato, criadores da
                 técnica italiana de hiper-realismo).
               </p>
               <p>
-                Além de suas habilidades como micropigmentador, tornou-se
-                também especialista em despigmentação a laser pela primeira
-                escola europeia sobre o tema, com o Dr. André Dorring.
+                Especialista em despigmentação a laser pela primeira escola
+                europeia sobre o tema, com o Dr. André Dorring.
               </p>
               <p>
-                Tudo isso o tornou uma referência na área, com um studio
-                privado que fatura mais de R$40 mil todos os meses — resultado
-                da aplicação de tudo aquilo que ele ensina e defende:
-                desenvolvimento técnico, marketing e vendas.
+                Studio privado que fatura mais de{" "}
+                <span className="text-foreground">R$40 mil por mês</span> —
+                resultado da aplicação de tudo o que ele ensina: técnica,
+                marketing e vendas.
               </p>
             </div>
           </div>
@@ -568,47 +978,62 @@ function LandingPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionTitle>Comece agora mesmo a formação!</SectionTitle>
-          <div className="mt-8 mx-auto max-w-md rounded-3xl bg-[var(--gradient-gold)] p-10 text-primary-foreground shadow-[var(--shadow-gold)]">
-            <p className="text-sm uppercase tracking-widest font-bold">
-              12x de
-            </p>
-            <p className="text-6xl font-extrabold">R$9,70</p>
-            <p className="mt-2 font-semibold">ou R$97,00 à vista</p>
+      <section className="py-32 px-6">
+        <div className="mx-auto max-w-3xl text-center reveal">
+          <Eyebrow>Última chamada</Eyebrow>
+          <SectionTitle>
+            Comece agora mesmo a{" "}
+            <em className="text-gold-gradient not-italic">formação</em>
+          </SectionTitle>
+          <div className="mt-12 mx-auto max-w-md relative">
+            <div
+              className="absolute -inset-6 rounded-[2rem] blur-2xl opacity-50"
+              style={{ background: "var(--gradient-gold)" }}
+            />
+            <div className="relative rounded-3xl bg-background border border-primary/40 p-10">
+              <p className="text-xs tracking-[0.4em] uppercase text-muted-foreground">
+                12x de
+              </p>
+              <p className="font-display text-7xl font-light text-gold-gradient leading-none mt-3">
+                R$9,70
+              </p>
+              <p className="mt-4 font-light text-muted-foreground">
+                ou R$97,00 à vista
+              </p>
+            </div>
           </div>
-          <div className="mt-10">
-            <CtaButton>Quero entrar na formação</CtaButton>
+          <div className="mt-12">
+            <CtaButton pulse>Quero entrar na formação</CtaButton>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="bg-card/40 py-20 px-6">
-        <div className="mx-auto max-w-3xl">
-          <div className="text-center">
+      <section className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-card/30" />
+        <div className="relative mx-auto max-w-3xl">
+          <div className="text-center reveal">
+            <Eyebrow>FAQ</Eyebrow>
             <SectionTitle>Perguntas frequentes</SectionTitle>
-            <p className="mt-3 text-muted-foreground">Ficou alguma dúvida?</p>
           </div>
 
-          <div className="mt-10 space-y-4">
+          <div className="mt-16 space-y-3">
             {[
               {
                 q: "Quais as formas de pagamento?",
-                a: "Você pode pagar à vista, com cartão de crédito ou pix. Ou parcelado em até 12x pelo cartão de crédito.",
+                a: "Você pode pagar à vista (cartão de crédito ou Pix), ou parcelado em até 12x pelo cartão de crédito.",
               },
               {
                 q: "Posso cancelar?",
-                a: "Assinando agora, você terá acesso a todas as aulas de forma imediata. Caso, em até 7 dias, você não goste, devolvemos todo o seu dinheiro de forma simples e segura.",
+                a: "Sim. Você terá acesso imediato a todas as aulas. Se em até 7 dias não gostar, devolvemos todo o seu dinheiro de forma simples e segura.",
               },
               {
                 q: "Posso dividir com mais pessoas?",
-                a: "A inscrição na Formação é individual, então outras pessoas precisam adquirir sua inscrição caso desejem participar.",
+                a: "A inscrição é individual. Outras pessoas precisam adquirir a própria vaga.",
               },
               {
                 q: "Vai ter certificado?",
-                a: "Sim. Ao final do curso, você nos envia a tarefa final por e-mail e nós enviamos seu certificado pronto para impressão.",
+                a: "Sim. Ao final, você envia a tarefa final por e-mail e nós enviamos seu certificado pronto para impressão.",
               },
               {
                 q: "Como saber se é pra mim?",
@@ -617,15 +1042,18 @@ function LandingPage() {
             ].map((f) => (
               <details
                 key={f.q}
-                className="group rounded-xl border border-border bg-card p-5"
+                className="reveal group glass-card rounded-2xl p-6 transition-all hover:border-primary/40"
               >
-                <summary className="cursor-pointer font-semibold flex justify-between items-center">
-                  {f.q}
-                  <span className="text-primary group-open:rotate-45 transition-transform">
+                <summary className="cursor-pointer font-light text-lg flex justify-between items-center list-none">
+                  <span>{f.q}</span>
+                  <span className="text-primary text-2xl font-light ml-4 transition-transform duration-300 group-open:rotate-45">
                     +
                   </span>
                 </summary>
-                <p className="mt-3 text-muted-foreground text-sm">{f.a}</p>
+                <div className="hairline mt-5 w-12" />
+                <p className="mt-5 text-muted-foreground font-light leading-relaxed">
+                  {f.a}
+                </p>
               </details>
             ))}
           </div>
@@ -633,43 +1061,52 @@ function LandingPage() {
       </section>
 
       {/* CONTACT */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <SectionTitle>Ficou com dúvida?</SectionTitle>
-          <p className="mt-4 text-muted-foreground">
-            Chama a Luísa que ela vai conversar com você!
+      <section className="py-32 px-6">
+        <div className="mx-auto max-w-2xl text-center reveal">
+          <Eyebrow>Atendimento</Eyebrow>
+          <SectionTitle>Ainda com dúvida?</SectionTitle>
+          <p className="mt-6 text-muted-foreground font-light text-lg">
+            Chama a Luísa — ela vai conversar com você.
           </p>
-          <div className="mt-8">
+          <div className="mt-10">
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-md border-2 border-primary px-8 py-4 text-base font-bold uppercase text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              className="inline-flex items-center justify-center rounded-full border border-primary/60 px-10 py-5 text-xs font-semibold uppercase tracking-[0.25em] text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:scale-[1.03]"
             >
-              Entrar em contato
+              Falar no WhatsApp →
             </a>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-border bg-card/60 py-12 px-6">
-        <div className="mx-auto max-w-4xl text-center text-xs text-muted-foreground space-y-3">
-          <p className="font-semibold">
-            M.V. CURSOS E TREINAMENTOS EIRELI – CNPJ 37.800.789/0001-75
-          </p>
-          <p>
-            No âmbito do consentimento para tratamento dos dados pessoais,
-            incluem-se autorização para contatar o titular via telefone, e-mail
-            e SMS. Os dados coletados serão utilizados para envio de informações
-            sobre os produtos da M.V. Cursos e Treinamentos EIRELI.
-          </p>
-          <p>
-            Este site não faz parte do site do META ou do META, Inc. Este site
-            não é endossado pela META de forma alguma. META é uma marca
-            comercial da META, Inc.
-          </p>
-          <p>Política de Privacidade e Termos de Uso | Aviso Legal</p>
+      <footer className="border-t border-border/40 py-16 px-6">
+        <div className="mx-auto max-w-4xl text-center space-y-6">
+          <div className="font-display text-xl tracking-[0.3em] uppercase">
+            <span className="text-foreground">Marcelo</span>{" "}
+            <span className="text-gold-gradient italic">Alves</span>
+          </div>
+          <div className="hairline mx-auto w-24" />
+          <div className="text-xs text-muted-foreground space-y-3 font-light leading-relaxed">
+            <p className="font-medium tracking-wider">
+              M.V. CURSOS E TREINAMENTOS EIRELI · CNPJ 37.800.789/0001-75
+            </p>
+            <p>
+              No âmbito do consentimento para tratamento dos dados pessoais,
+              incluem-se autorização para contatar o titular via telefone,
+              e-mail e SMS. Os dados coletados serão utilizados para envio de
+              informações sobre os produtos da M.V. Cursos e Treinamentos
+              EIRELI.
+            </p>
+            <p>
+              Este site não faz parte do site do META ou do META, Inc. Este site
+              não é endossado pela META de forma alguma. META é uma marca
+              comercial da META, Inc.
+            </p>
+            <p>Política de Privacidade · Termos de Uso · Aviso Legal</p>
+          </div>
         </div>
       </footer>
 

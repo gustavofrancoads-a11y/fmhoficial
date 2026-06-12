@@ -21,6 +21,9 @@ import daiane4Asset from "@/assets/daiane4.jpg.asset.json";
 import logoDesktopAsset from "@/assets/logo-desktop.png.asset.json";
 import logoMobileAsset from "@/assets/logo-mobile.png.asset.json";
 import certificateAsset from "@/assets/certificate.jpeg.asset.json";
+import quemE1Asset from "@/assets/quemE1.png.asset.json";
+import quemE2Asset from "@/assets/quemE2.png.asset.json";
+import quemE3Asset from "@/assets/quemE3.png.asset.json";
 
 const heroImage = heroAsset.url;
 const frustratedImg = frustratedAsset.url;
@@ -579,18 +582,33 @@ function LandingPage() {
           </div>
           <div className="mt-16 grid gap-5 text-left">
             {[
-              "Micropigmentadoras que já atuam na área e querem melhorar a qualidade do seu atendimento para ganhar mais e ser reconhecida",
-              "Designers de sobrancelha que querem migrar para a micropigmentação com segurança, sem medo de errar o rosto da cliente",
-              "Profissionais da área de saúde/estética que querem entrar no mercado de micropigmentação através de uma fonte confiável e com resultados comprovados",
-            ].map((t, i) => (
+              {
+                t: "Micropigmentadoras que já atuam na área e querem melhorar a qualidade do seu atendimento para ganhar mais e ser reconhecida",
+                img: quemE1Asset.url,
+              },
+              {
+                t: "Designers de sobrancelha que querem migrar para a micropigmentação com segurança, sem medo de errar o rosto da cliente",
+                img: quemE2Asset.url,
+              },
+              {
+                t: "Profissionais da área de saúde/estética que querem entrar no mercado de micropigmentação através de uma fonte confiável e com resultados comprovados",
+                img: quemE3Asset.url,
+              },
+            ].map((item, i) => (
               <div
-                key={t}
-                className="reveal glass-card rounded-2xl p-7 flex gap-6 items-start transition hover:border-primary/40"
+                key={item.t}
+                className="reveal glass-card rounded-2xl p-7 flex gap-6 items-center transition hover:border-primary/40"
               >
+                <img
+                  src={item.img}
+                  alt={`Pra quem é a formação ${i + 1}`}
+                  loading="lazy"
+                  className="w-28 h-28 md:w-32 md:h-32 rounded-xl object-cover shrink-0"
+                />
                 <span className="font-display text-3xl text-primary/70 tabular-nums shrink-0">
                   0{i + 1}
                 </span>
-                <p className="font-light text-lg leading-relaxed">{t}</p>
+                <p className="font-light text-lg leading-relaxed">{item.t}</p>
               </div>
             ))}
           </div>

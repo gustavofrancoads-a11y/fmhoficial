@@ -102,14 +102,14 @@ function CtaButton({
     <a
       href={href}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`shimmer-btn group relative inline-flex items-center justify-center rounded-full px-10 py-5 text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-primary-foreground transition-all duration-500 hover:scale-[1.03] ${pulse ? "pulse-gold" : ""} ${className}`}
+      className={`shimmer-btn group relative inline-flex max-w-full items-center justify-center rounded-full px-6 py-4 md:px-10 md:py-5 text-[0.65rem] md:text-sm font-semibold tracking-[0.2em] md:tracking-[0.25em] uppercase text-primary-foreground transition-all duration-500 hover:scale-[1.03] text-center leading-tight ${pulse ? "pulse-gold" : ""} ${className}`}
       style={{
         background: "var(--gradient-gold)",
         boxShadow: "var(--shadow-gold)",
       }}
     >
       <span className="relative z-10">{children}</span>
-      <span className="relative z-10 ml-3 transition-transform duration-500 group-hover:translate-x-1">
+      <span className="relative z-10 ml-2 md:ml-3 transition-transform duration-500 group-hover:translate-x-1">
         →
       </span>
     </a>
@@ -134,7 +134,7 @@ function SectionTitle({
 }) {
   return (
     <h2
-      className={`font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] tracking-tight text-foreground ${align === "center" ? "text-center" : ""}`}
+      className={`font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] tracking-tight text-foreground break-words ${align === "center" ? "text-center" : ""}`}
     >
       {children}
     </h2>
@@ -335,7 +335,7 @@ function ResultCard({
               src={src}
               alt={`Resultado ${i + 1} de ${name}`}
               loading="lazy"
-              className="w-full h-96 object-cover shrink-0"
+              className="w-full h-72 sm:h-80 md:h-96 object-cover shrink-0"
             />
           ))}
         </div>
@@ -380,14 +380,14 @@ function LandingPage() {
 
       {/* Top brand bar */}
       <div className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/40 border-b border-border/40">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-          <div className="font-display text-lg tracking-[0.3em] uppercase">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
+          <div className="font-display text-sm sm:text-lg tracking-[0.2em] sm:tracking-[0.3em] uppercase truncate">
             <span className="text-foreground">Marcelo</span>{" "}
             <span className="text-gold-gradient italic">Alves</span>
           </div>
           <a
             href="#inscricao"
-            className="hidden md:inline-flex text-[0.7rem] font-medium tracking-[0.3em] uppercase text-primary hover:text-foreground transition-colors"
+            className="hidden md:inline-flex shrink-0 text-[0.7rem] font-medium tracking-[0.3em] uppercase text-primary hover:text-foreground transition-colors"
           >
             Garantir minha vaga →
           </a>
@@ -416,12 +416,12 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 py-8 md:py-6 w-full">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-8 md:py-6 w-full">
           <div className="max-w-3xl fade-in-down">
             <img
               src={logoWhite}
               alt="Formação Micropigmentador Hiper-Realista"
-              className="mb-6 h-28 w-auto md:hidden"
+              className="mb-6 h-20 sm:h-24 w-auto md:hidden"
               loading="eager"
             />
             <img
@@ -430,7 +430,7 @@ function LandingPage() {
               className="mb-4 hidden h-20 w-auto md:block"
               loading="eager"
             />
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-light leading-[1.05] tracking-tight">
+            <h1 className="font-display text-[2.25rem] leading-[1.08] sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight break-words">
               Domine a técnica que vai te posicionar como{" "}
               <em className="text-gold-gradient not-italic font-medium">
                 referência
@@ -438,13 +438,13 @@ function LandingPage() {
               na sua cidade
             </h1>
 
-            <p className="mt-6 md:mt-5 max-w-xl text-lg md:text-lg text-muted-foreground leading-relaxed font-light">
+            <p className="mt-5 md:mt-5 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed font-light">
               E te permitir cobrar até{" "}
               <span className="text-primary font-medium">R$1.000 por atendimento</span>
               {" "}— exclusivo para micropigmentadoras e designers de sobrancelha.
             </p>
 
-            <div className="mt-10 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-8">
+            <div className="mt-8 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
               <CtaButton href={CHECKOUT_URL}>Inscreva-se</CtaButton>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <div className="flex -space-x-2">
@@ -469,7 +469,7 @@ function LandingPage() {
       </header>
 
       {/* PROBLEM */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-5xl text-center">
           <div className="reveal">
             <Eyebrow>O dilema</Eyebrow>
@@ -551,7 +551,7 @@ function LandingPage() {
       </section>
 
       {/* RESULTS */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div
           className="absolute inset-0 opacity-50"
           style={{ background: "var(--gradient-gold-soft)" }}
@@ -584,8 +584,8 @@ function LandingPage() {
               { n: 98, s: "%", l: "Avaliações 5★" },
             ].map((c) => (
               <div key={c.l} className="text-center">
-                <div className="font-display text-5xl md:text-6xl font-light text-gold-gradient">
-                  {c.n === null ? c.text : <Counter to={c.n} suffix={c.s} />}
+                <div className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-gold-gradient">
+                  {c.n === null ? <span className="text-3xl sm:text-4xl md:text-5xl">{c.text}</span> : <Counter to={c.n} suffix={c.s} />}
                 </div>
                 <div className="mt-2 text-xs tracking-[0.3em] uppercase text-muted-foreground">
                   {c.l}
@@ -598,7 +598,7 @@ function LandingPage() {
 
 
       {/* WHO IS IT FOR */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-4xl">
           <div className="text-center reveal">
             <Eyebrow>Para você</Eyebrow>
@@ -620,7 +620,7 @@ function LandingPage() {
             ].map((t, i) => (
               <div
                 key={t}
-                className="reveal glass-card rounded-2xl p-7 flex gap-6 items-start transition hover:border-primary/40"
+                className="reveal glass-card rounded-2xl p-5 md:p-7 flex gap-6 items-start transition hover:border-primary/40"
               >
                 <span className="font-display text-3xl text-primary/70 tabular-nums shrink-0">
                   0{i + 1}
@@ -633,7 +633,7 @@ function LandingPage() {
       </section>
 
       {/* 3 PILLARS */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-6xl">
           <div className="text-center reveal">
@@ -680,9 +680,9 @@ function LandingPage() {
                   src={p.img}
                   alt={`Pilar ${p.t}`}
                   loading="lazy"
-                  className="w-full h-56 object-cover"
+                  className="w-full h-44 sm:h-56 object-cover"
                 />
-                <div className="p-10">
+                <div className="p-6 md:p-10">
                   <div className="flex items-center justify-between">
                     <PillarIcon kind={p.icon} />
                     <span className="font-display text-3xl text-primary/40 tabular-nums">
@@ -703,7 +703,7 @@ function LandingPage() {
       </section>
 
       {/* CURRICULUM */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center reveal">
             <img
@@ -765,7 +765,7 @@ function LandingPage() {
       </section>
 
       {/* TESTIMONIALS — Facebook prints */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-6xl">
           <div className="text-center reveal">
@@ -813,7 +813,7 @@ function LandingPage() {
 
 
       {/* BONUS */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-5xl">
           <div className="text-center reveal">
@@ -856,7 +856,7 @@ function LandingPage() {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-10">
+                <div className="p-6 md:p-10">
                   <p className="text-[0.7rem] tracking-[0.4em] uppercase text-primary">
                     {b.t}
                   </p>
@@ -873,7 +873,7 @@ function LandingPage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center reveal">
             <Eyebrow>Depoimentos</Eyebrow>
@@ -920,7 +920,7 @@ function LandingPage() {
                     className="absolute inset-0 h-full w-full border-0"
                   />
                 </div>
-                <div className="p-8">
+                <div className="p-5 md:p-8">
                   <div className="flex text-primary text-sm">★★★★★</div>
                   <p className="mt-5 font-light text-base leading-relaxed text-foreground/90">
                     “{t.t}”
@@ -947,7 +947,7 @@ function LandingPage() {
       </section>
 
       {/* CERTIFICATE */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-3xl text-center">
           <div className="reveal">
@@ -977,7 +977,7 @@ function LandingPage() {
       </section>
 
       {/* OFFER */}
-      <section id="inscricao" className="py-32 px-6 relative overflow-hidden">
+      <section id="inscricao" className="py-16 md:py-32 px-4 sm:px-6 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-30"
           style={{
@@ -1032,7 +1032,7 @@ function LandingPage() {
               className="absolute -inset-8 rounded-[2.5rem] blur-3xl opacity-60"
               style={{ background: "var(--gradient-gold)" }}
             />
-            <div className="relative rounded-3xl bg-background border-2 border-primary/50 p-10 text-center overflow-hidden shadow-2xl">
+            <div className="relative rounded-3xl bg-background border-2 border-primary/50 p-6 md:p-10 text-center overflow-hidden shadow-2xl">
               <div
                 className="absolute top-0 right-0 px-6 py-2.5 text-[0.7rem] tracking-[0.3em] uppercase font-bold"
                 style={{
@@ -1046,7 +1046,7 @@ function LandingPage() {
               <p className="text-xs tracking-[0.4em] uppercase text-muted-foreground mt-4">
                 12x de
               </p>
-              <p className="font-display text-7xl md:text-8xl font-light text-gold-gradient leading-none mt-3">
+              <p className="font-display text-5xl sm:text-6xl md:text-8xl font-light text-gold-gradient leading-none mt-3">
                 R$9,70
               </p>
               <div className="hairline mt-8 mx-auto w-16" />
@@ -1067,7 +1067,7 @@ function LandingPage() {
       </section>
 
       {/* GUARANTEE */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-3xl text-center reveal">
           <img
@@ -1094,7 +1094,7 @@ function LandingPage() {
       </section>
 
       {/* STEPS */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center reveal">
             <Eyebrow>Como funciona</Eyebrow>
@@ -1124,7 +1124,7 @@ function LandingPage() {
             ].map((s) => (
               <div
                 key={s.n}
-                className="reveal glass-card rounded-2xl p-8 transition hover:-translate-y-1 hover:border-primary/40"
+                className="reveal glass-card rounded-2xl p-5 md:p-8 transition hover:-translate-y-1 hover:border-primary/40"
               >
                 <div className="font-display text-5xl font-light text-primary/70">
                   {s.n}
@@ -1141,9 +1141,9 @@ function LandingPage() {
       </section>
 
       {/* MENTOR */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
-        <div className="relative mx-auto max-w-5xl grid gap-16 md:grid-cols-2 items-center">
+        <div className="relative mx-auto max-w-5xl grid gap-10 md:gap-16 md:grid-cols-2 items-center">
           <div className="relative reveal">
             <div
               className="absolute -inset-6 rounded-3xl opacity-30 blur-2xl"
@@ -1188,7 +1188,7 @@ function LandingPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-3xl text-center reveal">
           <Eyebrow>Última chamada</Eyebrow>
           <SectionTitle>
@@ -1200,11 +1200,11 @@ function LandingPage() {
               className="absolute -inset-6 rounded-[2rem] blur-2xl opacity-50"
               style={{ background: "var(--gradient-gold)" }}
             />
-            <div className="relative rounded-3xl bg-background border border-primary/40 p-10">
+            <div className="relative rounded-3xl bg-background border border-primary/40 p-6 md:p-10">
               <p className="text-xs tracking-[0.4em] uppercase text-muted-foreground">
                 12x de
               </p>
-              <p className="font-display text-7xl font-light text-gold-gradient leading-none mt-3">
+              <p className="font-display text-5xl sm:text-6xl md:text-7xl font-light text-gold-gradient leading-none mt-3">
                 R$9,70
               </p>
               <p className="mt-4 font-light text-muted-foreground">
@@ -1219,7 +1219,7 @@ function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-3xl">
           <div className="text-center reveal">
@@ -1271,7 +1271,7 @@ function LandingPage() {
       </section>
 
       {/* CONTACT */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center reveal">
           <Eyebrow>Atendimento</Eyebrow>
           <SectionTitle>Ainda com dúvida?</SectionTitle>

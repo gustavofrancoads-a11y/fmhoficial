@@ -584,8 +584,8 @@ function LandingPage() {
               { n: 98, s: "%", l: "Avaliações 5★" },
             ].map((c) => (
               <div key={c.l} className="text-center">
-                <div className="font-display text-5xl md:text-6xl font-light text-gold-gradient">
-                  {c.n === null ? c.text : <Counter to={c.n} suffix={c.s} />}
+                <div className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-gold-gradient">
+                  {c.n === null ? <span className="text-3xl sm:text-4xl md:text-5xl">{c.text}</span> : <Counter to={c.n} suffix={c.s} />}
                 </div>
                 <div className="mt-2 text-xs tracking-[0.3em] uppercase text-muted-foreground">
                   {c.l}

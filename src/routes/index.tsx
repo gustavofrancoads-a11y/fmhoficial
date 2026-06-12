@@ -20,6 +20,7 @@ import daiane3Asset from "@/assets/daiane3.jpg.asset.json";
 import daiane4Asset from "@/assets/daiane4.jpg.asset.json";
 import logoDesktopAsset from "@/assets/logo-desktop.png.asset.json";
 import logoMobileAsset from "@/assets/logo-mobile.png.asset.json";
+import logoWhiteAsset from "@/assets/logo.png.asset.json";
 import certificateAsset from "@/assets/certificate.jpeg.asset.json";
 import quemE1Asset from "@/assets/quemE1.png.asset.json";
 import quemE2Asset from "@/assets/quemE2.png.asset.json";
@@ -35,6 +36,7 @@ const anapaulaImgs = [anapaula1Asset.url, anapaula2Asset.url, anapaula3Asset.url
 const daianeImgs = [daiane1Asset.url, daiane2Asset.url, daiane3Asset.url, daiane4Asset.url];
 const logoDesktop = logoDesktopAsset.url;
 const logoMobile = logoMobileAsset.url;
+const logoWhite = logoWhiteAsset.url;
 const paraquemImg = paraquemAsset.url;
 
 export const Route = createFileRoute("/")({
@@ -681,6 +683,11 @@ function LandingPage() {
       <section className="py-32 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center reveal">
+            <img
+              src={logoWhite}
+              alt="Logo FHM"
+              className="mx-auto mb-8 h-16 md:h-20 w-auto opacity-90"
+            />
             <Eyebrow>Conteúdo</Eyebrow>
             <SectionTitle>
               Tudo o que você vai aprender na{" "}
@@ -724,7 +731,7 @@ function LandingPage() {
                 key={item}
                 className="flex items-center gap-4 border-b border-border/40 py-3 transition-colors hover:border-primary/40"
               >
-                <span className="font-display text-xs text-primary/50 tabular-nums w-6">
+                <span className="font-display text-base md:text-lg text-primary/50 tabular-nums w-8">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="text-sm font-light">{item}</span>

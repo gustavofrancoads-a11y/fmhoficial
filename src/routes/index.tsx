@@ -433,7 +433,7 @@ function LandingPage() {
                   ))}
                 </div>
                 <span className="font-light">
-                  <Counter to={847} />+ alunas formadas
+                  Centenas de alunas formadas
                 </span>
               </div>
             </div>

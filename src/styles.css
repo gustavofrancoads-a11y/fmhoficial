@@ -217,20 +217,6 @@
   box-shadow: 0 8px 32px oklch(0 0 0 / 0.4), inset 0 1px 0 oklch(1 0 0 / 0.04);
 }
 
-.section-alt {
-  background-color: var(--surface-alt);
-  color: var(--surface-alt-foreground);
-}
-.section-alt .text-foreground { color: var(--surface-alt-foreground); }
-.section-alt .text-muted-foreground { color: var(--surface-alt-muted); }
-.section-alt .border-border\/40,
-.section-alt .border-border { border-color: var(--surface-alt-border) !important; }
-.section-alt .glass-card {
-  background: linear-gradient(135deg, oklch(1 0 0 / 0.7), oklch(1 0 0 / 0.4));
-  border: 1px solid var(--surface-alt-border);
-  box-shadow: 0 12px 40px oklch(0.2 0.02 70 / 0.08), inset 0 1px 0 oklch(1 0 0 / 0.6);
-}
-
 @utility shimmer-btn {
   position: relative;
   overflow: hidden;

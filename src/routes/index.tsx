@@ -469,7 +469,7 @@ function LandingPage() {
       </header>
 
       {/* PROBLEM */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-5xl text-center">
           <div className="reveal">
             <Eyebrow>O dilema</Eyebrow>
@@ -551,7 +551,7 @@ function LandingPage() {
       </section>
 
       {/* RESULTS */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div
           className="absolute inset-0 opacity-50"
           style={{ background: "var(--gradient-gold-soft)" }}
@@ -598,7 +598,7 @@ function LandingPage() {
 
 
       {/* WHO IS IT FOR */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-4xl">
           <div className="text-center reveal">
             <Eyebrow>Para você</Eyebrow>
@@ -633,7 +633,7 @@ function LandingPage() {
       </section>
 
       {/* 3 PILLARS */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-6xl">
           <div className="text-center reveal">
@@ -703,7 +703,7 @@ function LandingPage() {
       </section>
 
       {/* CURRICULUM */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center reveal">
             <img
@@ -765,7 +765,7 @@ function LandingPage() {
       </section>
 
       {/* TESTIMONIALS — Facebook prints */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-6xl">
           <div className="text-center reveal">
@@ -813,7 +813,7 @@ function LandingPage() {
 
 
       {/* BONUS */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-5xl">
           <div className="text-center reveal">
@@ -873,7 +873,7 @@ function LandingPage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center reveal">
             <Eyebrow>Depoimentos</Eyebrow>
@@ -947,7 +947,7 @@ function LandingPage() {
       </section>
 
       {/* CERTIFICATE */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-3xl text-center">
           <div className="reveal">
@@ -977,7 +977,7 @@ function LandingPage() {
       </section>
 
       {/* OFFER */}
-      <section id="inscricao" className="py-32 px-6 relative overflow-hidden">
+      <section id="inscricao" className="py-16 md:py-32 px-4 sm:px-6 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-30"
           style={{
@@ -1067,7 +1067,7 @@ function LandingPage() {
       </section>
 
       {/* GUARANTEE */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-3xl text-center reveal">
           <img
@@ -1094,7 +1094,7 @@ function LandingPage() {
       </section>
 
       {/* STEPS */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center reveal">
             <Eyebrow>Como funciona</Eyebrow>
@@ -1141,7 +1141,7 @@ function LandingPage() {
       </section>
 
       {/* MENTOR */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-5xl grid gap-16 md:grid-cols-2 items-center">
           <div className="relative reveal">
@@ -1188,7 +1188,7 @@ function LandingPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-3xl text-center reveal">
           <Eyebrow>Última chamada</Eyebrow>
           <SectionTitle>
@@ -1219,7 +1219,7 @@ function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-32 px-6 relative">
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-3xl">
           <div className="text-center reveal">
@@ -1271,7 +1271,7 @@ function LandingPage() {
       </section>
 
       {/* CONTACT */}
-      <section className="py-32 px-6">
+      <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center reveal">
           <Eyebrow>Atendimento</Eyebrow>
           <SectionTitle>Ainda com dúvida?</SectionTitle>

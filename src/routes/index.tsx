@@ -620,7 +620,7 @@ function LandingPage() {
             ].map((t, i) => (
               <div
                 key={t}
-                className="reveal glass-card rounded-2xl p-7 flex gap-6 items-start transition hover:border-primary/40"
+                className="reveal glass-card rounded-2xl p-5 md:p-7 flex gap-6 items-start transition hover:border-primary/40"
               >
                 <span className="font-display text-3xl text-primary/70 tabular-nums shrink-0">
                   0{i + 1}
@@ -1032,7 +1032,7 @@ function LandingPage() {
               className="absolute -inset-8 rounded-[2.5rem] blur-3xl opacity-60"
               style={{ background: "var(--gradient-gold)" }}
             />
-            <div className="relative rounded-3xl bg-background border-2 border-primary/50 p-10 text-center overflow-hidden shadow-2xl">
+            <div className="relative rounded-3xl bg-background border-2 border-primary/50 p-6 md:p-10 text-center overflow-hidden shadow-2xl">
               <div
                 className="absolute top-0 right-0 px-6 py-2.5 text-[0.7rem] tracking-[0.3em] uppercase font-bold"
                 style={{
@@ -1124,7 +1124,7 @@ function LandingPage() {
             ].map((s) => (
               <div
                 key={s.n}
-                className="reveal glass-card rounded-2xl p-8 transition hover:-translate-y-1 hover:border-primary/40"
+                className="reveal glass-card rounded-2xl p-5 md:p-8 transition hover:-translate-y-1 hover:border-primary/40"
               >
                 <div className="font-display text-5xl font-light text-primary/70">
                   {s.n}
@@ -1200,7 +1200,7 @@ function LandingPage() {
               className="absolute -inset-6 rounded-[2rem] blur-2xl opacity-50"
               style={{ background: "var(--gradient-gold)" }}
             />
-            <div className="relative rounded-3xl bg-background border border-primary/40 p-10">
+            <div className="relative rounded-3xl bg-background border border-primary/40 p-6 md:p-10">
               <p className="text-xs tracking-[0.4em] uppercase text-muted-foreground">
                 12x de
               </p>

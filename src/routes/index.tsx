@@ -335,7 +335,7 @@ function ResultCard({
               src={src}
               alt={`Resultado ${i + 1} de ${name}`}
               loading="lazy"
-              className="w-full h-96 object-cover shrink-0"
+              className="w-full h-72 sm:h-80 md:h-96 object-cover shrink-0"
             />
           ))}
         </div>

@@ -419,7 +419,7 @@ function LandingPage() {
       </header>
 
       {/* PROBLEM */}
-      <section className="py-32 px-6">
+      <section className="section-alt py-32 px-6">
         <div className="mx-auto max-w-5xl text-center">
           <div className="reveal">
             <Eyebrow>O dilema</Eyebrow>
@@ -548,7 +548,7 @@ function LandingPage() {
 
 
       {/* WHO IS IT FOR */}
-      <section className="py-32 px-6">
+      <section className="section-alt py-32 px-6">
         <div className="mx-auto max-w-4xl">
           <div className="text-center reveal">
             <Eyebrow>Para você</Eyebrow>
@@ -633,7 +633,7 @@ function LandingPage() {
       </section>
 
       {/* CURRICULUM */}
-      <section className="py-32 px-6">
+      <section className="section-alt py-32 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center reveal">
             <Eyebrow>Conteúdo</Eyebrow>
@@ -738,7 +738,7 @@ function LandingPage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-32 px-6">
+      <section className="section-alt py-32 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center reveal">
             <Eyebrow>Depoimentos</Eyebrow>
@@ -850,7 +850,7 @@ function LandingPage() {
       </section>
 
       {/* OFFER */}
-      <section id="inscricao" className="py-32 px-6">
+      <section id="inscricao" className="section-alt py-32 px-6">
         <div className="mx-auto max-w-4xl">
           <div className="text-center reveal">
             <Eyebrow>Oferta especial</Eyebrow>
@@ -966,7 +966,7 @@ function LandingPage() {
       </section>
 
       {/* STEPS */}
-      <section className="py-32 px-6">
+      <section className="section-alt py-32 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center reveal">
             <Eyebrow>Como funciona</Eyebrow>
@@ -1060,7 +1060,7 @@ function LandingPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-32 px-6">
+      <section className="section-alt py-32 px-6">
         <div className="mx-auto max-w-3xl text-center reveal">
           <Eyebrow>Última chamada</Eyebrow>
           <SectionTitle>
@@ -1143,7 +1143,7 @@ function LandingPage() {
       </section>
 
       {/* CONTACT */}
-      <section className="py-32 px-6">
+      <section className="section-alt py-32 px-6">
         <div className="mx-auto max-w-2xl text-center reveal">
           <Eyebrow>Atendimento</Eyebrow>
           <SectionTitle>Ainda com dúvida?</SectionTitle>

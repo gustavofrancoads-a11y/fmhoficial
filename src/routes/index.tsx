@@ -43,7 +43,6 @@ import {
 } from "@/components/ui/carousel";
 
 const heroImage = heroAsset.url;
-const frustratedImg = frustratedAsset.url;
 const mentorImg = mentorAsset.url;
 const resultImgs = [result1Asset.url, result2Asset.url, result3Asset.url];
 const tanaraImgs = [tanara1Asset.url, tanara2Asset.url, tanara3Asset.url, tanara4Asset.url];

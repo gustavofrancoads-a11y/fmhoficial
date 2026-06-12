@@ -20,7 +20,7 @@ import daiane3Asset from "@/assets/daiane3.jpg.asset.json";
 import daiane4Asset from "@/assets/daiane4.jpg.asset.json";
 import logoDesktopAsset from "@/assets/logo-desktop.png.asset.json";
 import logoMobileAsset from "@/assets/logo-mobile.png.asset.json";
-import logoWhiteAsset from "@/assets/logo.png.asset.json";
+import logoWhiteAsset from "@/assets/logo-white.png.asset.json";
 import certificateAsset from "@/assets/certificate.jpeg.asset.json";
 import quemE1Asset from "@/assets/quemE1.png.asset.json";
 import quemE2Asset from "@/assets/quemE2.png.asset.json";
@@ -396,15 +396,15 @@ function LandingPage() {
         <div className="relative mx-auto max-w-7xl px-6 py-8 md:py-6 w-full">
           <div className="max-w-3xl fade-in-down">
             <img
-              src={logoMobile}
+              src={logoWhite}
               alt="Formação Micropigmentador Hiper-Realista"
-              className="mb-6 h-28 w-auto md:hidden brightness-0 invert"
+              className="mb-6 h-28 w-auto md:hidden"
               loading="eager"
             />
             <img
-              src={logoDesktop}
+              src={logoWhite}
               alt="Formação Micropigmentador Hiper-Realista"
-              className="mb-4 hidden h-20 w-auto md:block brightness-0 invert"
+              className="mb-4 hidden h-20 w-auto md:block"
               loading="eager"
             />
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-light leading-[1.05] tracking-tight">

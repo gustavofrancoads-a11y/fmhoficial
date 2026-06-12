@@ -8,6 +8,7 @@ import result2Asset from "@/assets/result2.jpg.asset.json";
 import result3Asset from "@/assets/result3.jpg.asset.json";
 import logoDesktopAsset from "@/assets/logo-desktop.png.asset.json";
 import logoMobileAsset from "@/assets/logo-mobile.png.asset.json";
+import certificateAsset from "@/assets/certificate.jpeg.asset.json";
 
 const heroImage = heroAsset.url;
 const frustratedImg = frustratedAsset.url;
@@ -826,25 +827,17 @@ function LandingPage() {
               autoridade visíveis a cada cliente que entra.
             </p>
           </div>
-          <div className="reveal mt-12 mx-auto max-w-xl rounded-2xl border border-primary/40 p-12 relative overflow-hidden">
+          <div className="reveal mt-12 mx-auto max-w-2xl rounded-2xl border border-primary/40 overflow-hidden relative">
             <div
-              className="absolute inset-0 opacity-30"
+              className="absolute -inset-8 opacity-40 blur-3xl"
               style={{ background: "var(--gradient-gold-soft)" }}
             />
-            <div className="relative">
-              <p className="text-[0.7rem] tracking-[0.5em] text-primary">
-                CERTIFICADO
-              </p>
-              <p className="mt-4 font-display text-3xl md:text-4xl font-light">
-                Formação Micropigmentador
-                <br />
-                <em className="text-gold-gradient">Hiper-Realista</em>
-              </p>
-              <div className="hairline mt-8 mx-auto w-24" />
-              <p className="mt-6 text-muted-foreground text-sm font-light">
-                Concedido pela conclusão integral da formação
-              </p>
-            </div>
+            <img
+              src={certificateAsset.url}
+              alt="Certificado de conclusão da Formação Micropigmentador Hiper-Realista"
+              className="relative w-full h-auto block"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>

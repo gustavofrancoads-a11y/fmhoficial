@@ -241,6 +241,79 @@ function PillarIcon({ kind }: { kind: "design" | "color" | "needle" }) {
 
 /* --------------------------------- Page ----------------------------------- */
 
+function ResultCard({
+  name,
+  handle,
+  avatar,
+  slides,
+}: {
+  name: string;
+  handle: string;
+  avatar: string;
+  slides: string[];
+}) {
+  const [idx, setIdx] = useState(0);
+  const prev = () => setIdx((i) => (i - 1 + slides.length) % slides.length);
+  const next = () => setIdx((i) => (i + 1) % slides.length);
+  return (
+    <div className="reveal group rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-gold)]">
+      <div className="p-5 flex items-center gap-4">
+        <div className="h-14 w-14 shrink-0 rounded-full overflow-hidden ring-2 ring-primary/40">
+          <img src={avatar} alt={name} loading="lazy" className="h-full w-full object-cover" />
+        </div>
+        <div className="min-w-0">
+          <p className="font-display text-lg truncate">{name}</p>
+          <p className="text-primary text-xs tracking-wider mt-1 truncate">{handle}</p>
+        </div>
+      </div>
+      <div className="h-2 w-full" style={{ background: "var(--gradient-gold)" }} />
+      <div className="relative overflow-hidden">
+        <div
+          className="flex transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${idx * 100}%)` }}
+        >
+          {slides.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={`Resultado ${i + 1} de ${name}`}
+              loading="lazy"
+              className="w-full h-96 object-cover shrink-0"
+            />
+          ))}
+        </div>
+        <button
+          type="button"
+          aria-label="Anterior"
+          onClick={prev}
+          className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 grid place-items-center rounded-full bg-background/70 backdrop-blur text-primary hover:bg-background transition"
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          aria-label="Próximo"
+          onClick={next}
+          className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 grid place-items-center rounded-full bg-background/70 backdrop-blur text-primary hover:bg-background transition"
+        >
+          ›
+        </button>
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Ir para slide ${i + 1}`}
+              onClick={() => setIdx(i)}
+              className={`h-1.5 rounded-full transition-all ${i === idx ? "w-6 bg-primary" : "w-1.5 bg-foreground/40"}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function LandingPage() {
   useReveal();
 

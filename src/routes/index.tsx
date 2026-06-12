@@ -580,9 +580,17 @@ function LandingPage() {
         <div className="mx-auto max-w-4xl">
           <div className="text-center reveal">
             <Eyebrow>Para você</Eyebrow>
-            <SectionTitle>Pra quem é a formação?</SectionTitle>
+            <SectionTitle>Para quem é a formação?</SectionTitle>
           </div>
-          <div className="mt-16 grid gap-5 text-left">
+          <div className="mt-10 max-w-3xl mx-auto reveal">
+            <img
+              src={paraquemImg}
+              alt="Micropigmentação de sobrancelha hiper-realista"
+              loading="lazy"
+              className="w-full h-64 md:h-80 rounded-2xl object-cover"
+            />
+          </div>
+          <div className="mt-10 grid gap-5 text-left">
             {[
               "Micropigmentadoras que já atuam na área e querem melhorar a qualidade do seu atendimento para ganhar mais e ser reconhecida",
               "Designers de sobrancelha que querem migrar para a micropigmentação com segurança, sem medo de errar o rosto da cliente",

@@ -26,6 +26,17 @@ import quemE1Asset from "@/assets/quemE1.png.asset.json";
 import quemE2Asset from "@/assets/quemE2.png.asset.json";
 import quemE3Asset from "@/assets/quemE3.png.asset.json";
 import paraquemAsset from "@/assets/paraquem2.jpg.asset.json";
+import printKatiaAsset from "@/assets/print-katia.png.asset.json";
+import printPatriciaAsset from "@/assets/print-patricia.png.asset.json";
+import printQueziaAsset from "@/assets/print-quezia.png.asset.json";
+import printPriscillaAsset from "@/assets/print-priscilla.png.asset.json";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const heroImage = heroAsset.url;
 const frustratedImg = frustratedAsset.url;
@@ -38,6 +49,12 @@ const logoDesktop = logoDesktopAsset.url;
 const logoMobile = logoMobileAsset.url;
 const logoWhite = logoWhiteAsset.url;
 const paraquemImg = paraquemAsset.url;
+const printImgs = [
+  { src: printKatiaAsset.url, name: "Kátia Ribeiro" },
+  { src: printPatriciaAsset.url, name: "Patricia Leite" },
+  { src: printQueziaAsset.url, name: "Quezia Leal" },
+  { src: printPriscillaAsset.url, name: "Priscilla Oliveira" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -740,6 +757,54 @@ function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* TESTIMONIALS — Facebook prints */}
+      <section className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-card/30" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="text-center reveal">
+            <Eyebrow>Provas reais</Eyebrow>
+            <SectionTitle>
+              Alunas que já aprenderam a{" "}
+              <em className="text-gold-gradient not-italic">crescer na área</em>{" "}
+              e ganhar mais
+            </SectionTitle>
+            <p className="mt-6 text-muted-foreground max-w-2xl mx-auto font-light text-lg">
+              Depoimentos espontâneos publicados no Facebook por alunas que
+              passaram pela formação.
+            </p>
+          </div>
+
+          <div className="mt-16 reveal">
+            <Carousel
+              opts={{ align: "start", loop: true }}
+              className="w-full max-w-5xl mx-auto"
+            >
+              <CarouselContent className="-ml-4">
+                {printImgs.map((p) => (
+                  <CarouselItem
+                    key={p.name}
+                    className="pl-4 md:basis-1/2"
+                  >
+                    <div className="glass-card rounded-2xl p-3 md:p-4 h-full">
+                      <img
+                        src={p.src}
+                        alt={`Depoimento de ${p.name} no Facebook`}
+                        className="w-full h-auto rounded-xl"
+                        loading="lazy"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-12" />
+              <CarouselNext className="hidden md:flex -right-12" />
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* BONUS */}
       <section className="py-32 px-6 relative">

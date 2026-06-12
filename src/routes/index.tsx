@@ -24,7 +24,7 @@ import certificateAsset from "@/assets/certificate.jpeg.asset.json";
 import quemE1Asset from "@/assets/quemE1.png.asset.json";
 import quemE2Asset from "@/assets/quemE2.png.asset.json";
 import quemE3Asset from "@/assets/quemE3.png.asset.json";
-import paraquemAsset from "@/assets/paraquem.jpg.asset.json";
+import paraquemAsset from "@/assets/paraquem2.jpg.asset.json";
 
 const heroImage = heroAsset.url;
 const frustratedImg = frustratedAsset.url;

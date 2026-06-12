@@ -440,10 +440,7 @@ function LandingPage() {
           </div>
         </div>
 
-        {/* scroll cue */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary/60 text-xs tracking-[0.4em] uppercase float-slow">
-          ↓ Role
-        </div>
+        {/* scroll cue removed */}
       </header>
 
       {/* PROBLEM */}

@@ -682,7 +682,7 @@ function LandingPage() {
                   loading="lazy"
                   className="w-full h-56 object-cover"
                 />
-                <div className="p-10">
+                <div className="p-6 md:p-10">
                   <div className="flex items-center justify-between">
                     <PillarIcon kind={p.icon} />
                     <span className="font-display text-3xl text-primary/40 tabular-nums">
@@ -856,7 +856,7 @@ function LandingPage() {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-10">
+                <div className="p-6 md:p-10">
                   <p className="text-[0.7rem] tracking-[0.4em] uppercase text-primary">
                     {b.t}
                   </p>
@@ -920,7 +920,7 @@ function LandingPage() {
                     className="absolute inset-0 h-full w-full border-0"
                   />
                 </div>
-                <div className="p-8">
+                <div className="p-5 md:p-8">
                   <div className="flex text-primary text-sm">★★★★★</div>
                   <p className="mt-5 font-light text-base leading-relaxed text-foreground/90">
                     “{t.t}”

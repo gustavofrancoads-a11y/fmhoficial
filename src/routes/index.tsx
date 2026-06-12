@@ -731,7 +731,7 @@ function LandingPage() {
                 key={item}
                 className="flex items-center gap-4 border-b border-border/40 py-3 transition-colors hover:border-primary/40"
               >
-                <span className="font-display text-xs text-primary/50 tabular-nums w-6">
+                <span className="font-display text-base md:text-lg text-primary/50 tabular-nums w-8">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="text-sm font-light">{item}</span>

@@ -81,6 +81,7 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_URL =
   "https://api.whatsapp.com/send?phone=5561985029362&text=Ol%C3%A1,%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20a%20forma%C3%A7%C3%A3o%20de%20micro%20hiper-realista.";
+const CHECKOUT_URL = "https://sun.eduzz.com/60EEZQQK03?";
 
 /* ------------------------------ UI Primitives ------------------------------ */
 
@@ -95,9 +96,11 @@ function CtaButton({
   className?: string;
   pulse?: boolean;
 }) {
+  const isExternal = /^https?:\/\//.test(href);
   return (
     <a
       href={href}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={`shimmer-btn group relative inline-flex items-center justify-center rounded-full px-10 py-5 text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-primary-foreground transition-all duration-500 hover:scale-[1.03] ${pulse ? "pulse-gold" : ""} ${className}`}
       style={{
         background: "var(--gradient-gold)",
@@ -441,7 +444,7 @@ function LandingPage() {
             </p>
 
             <div className="mt-10 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-8">
-              <CtaButton>Inscreva-se</CtaButton>
+              <CtaButton href={CHECKOUT_URL}>Inscreva-se</CtaButton>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <div className="flex -space-x-2">
                   {resultImgs.map((src) => (
@@ -1052,7 +1055,7 @@ function LandingPage() {
                 à vista
               </p>
               <div className="mt-10">
-                <CtaButton pulse>Quero entrar na formação</CtaButton>
+                <CtaButton href={CHECKOUT_URL} pulse>Quero entrar na formação</CtaButton>
               </div>
               <p className="mt-6 text-[0.7rem] tracking-widest uppercase text-muted-foreground">
                 Acesso imediato · Garantia de 7 dias
@@ -1088,7 +1091,7 @@ function LandingPage() {
             devolvo 100% do seu dinheiro. Sem perguntas.
           </p>
           <div className="mt-12">
-            <CtaButton>Sim, quero testar por 7 dias</CtaButton>
+            <CtaButton href={CHECKOUT_URL}>Sim, quero testar por 7 dias</CtaButton>
           </div>
         </div>
       </section>
@@ -1213,7 +1216,7 @@ function LandingPage() {
             </div>
           </div>
           <div className="mt-12">
-            <CtaButton pulse>Quero entrar na formação</CtaButton>
+            <CtaButton href={CHECKOUT_URL} pulse>Quero entrar na formação</CtaButton>
           </div>
         </div>
       </section>

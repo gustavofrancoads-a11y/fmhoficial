@@ -21,6 +21,9 @@ import daiane4Asset from "@/assets/daiane4.jpg.asset.json";
 import logoDesktopAsset from "@/assets/logo-desktop.png.asset.json";
 import logoMobileAsset from "@/assets/logo-mobile.png.asset.json";
 import certificateAsset from "@/assets/certificate.jpeg.asset.json";
+import quemE1Asset from "@/assets/quemE1.png.asset.json";
+import quemE2Asset from "@/assets/quemE2.png.asset.json";
+import quemE3Asset from "@/assets/quemE3.png.asset.json";
 
 const heroImage = heroAsset.url;
 const frustratedImg = frustratedAsset.url;

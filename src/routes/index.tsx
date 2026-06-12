@@ -1143,7 +1143,7 @@ function LandingPage() {
       {/* MENTOR */}
       <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
-        <div className="relative mx-auto max-w-5xl grid gap-16 md:grid-cols-2 items-center">
+        <div className="relative mx-auto max-w-5xl grid gap-10 md:gap-16 md:grid-cols-2 items-center">
           <div className="relative reveal">
             <div
               className="absolute -inset-6 rounded-3xl opacity-30 blur-2xl"

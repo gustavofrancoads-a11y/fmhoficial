@@ -363,23 +363,21 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 py-14 md:py-20 w-full">
+        <div className="relative mx-auto max-w-7xl px-6 py-8 md:py-12 w-full">
           <div className="max-w-3xl fade-in-down">
             <img
               src={logoMobile}
               alt="Formação Micropigmentador Hiper-Realista"
-              className="mb-10 h-28 w-auto md:hidden brightness-0 invert"
+              className="mb-6 h-28 w-auto md:hidden brightness-0 invert"
               loading="eager"
             />
             <img
               src={logoDesktop}
               alt="Formação Micropigmentador Hiper-Realista"
-              className="mb-10 hidden h-24 w-auto md:block brightness-0 invert"
+              className="mb-6 hidden h-24 w-auto md:block brightness-0 invert"
               loading="eager"
             />
-            <Eyebrow>Formação · Hiper-Realista</Eyebrow>
-
-            <h1 className="font-display mt-8 text-5xl md:text-7xl lg:text-[5.5rem] font-light leading-[1.02] tracking-tight">
+            <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-light leading-[1.02] tracking-tight">
               Domine a técnica que vai te posicionar como{" "}
               <em className="text-gold-gradient not-italic font-medium">
                 referência

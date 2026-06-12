@@ -513,12 +513,20 @@ function LandingPage() {
                 style={{ background: "var(--gradient-gold-soft)" }}
               />
               <img
+                src={frustratedMobileAsset.url}
+                alt="Profissional de micropigmentação frustrada no estúdio"
+                loading="lazy"
+                width={1024}
+                height={1280}
+                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover md:hidden"
+              />
+              <img
                 src={frustratedImg}
                 alt="Profissional frustrada"
                 loading="lazy"
                 width={1024}
                 height={1024}
-                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2]"
+                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2] hidden md:block"
               />
             </div>
           </div>

@@ -638,38 +638,50 @@ function LandingPage() {
                 n: "01",
                 t: "Design",
                 d: "Técnica italiana para te dar segurança absoluta na etapa mais crucial do atendimento — o design.",
+                img: quemE1Asset.url,
               },
               {
                 icon: "color" as const,
                 n: "02",
                 t: "Colorimetria",
                 d: "Chegue a qualquer tom de pele ou pelo usando apenas 3 cores com um método simples e previsível.",
+                img: quemE2Asset.url,
               },
               {
                 icon: "needle" as const,
                 n: "03",
                 t: "Fixação dos fios",
                 d: "Crie fios finos, delicados, naturais — sem aspecto artificial, sem estouro.",
+                img: quemE3Asset.url,
               },
-            ].map((p) => (
+            ].map((p, i) => (
               <div
                 key={p.n}
-                className="reveal group glass-card rounded-2xl p-10 text-left transition-all duration-500 hover:-translate-y-2 hover:border-primary/50"
+                className="reveal group glass-card rounded-2xl overflow-hidden text-left transition-all duration-500 hover:-translate-y-2 hover:border-primary/50"
               >
-                <div className="flex items-center justify-between">
-                  <PillarIcon kind={p.icon} />
-                  <span className="font-display text-3xl text-primary/40 tabular-nums">
-                    {p.n}
-                  </span>
+                <img
+                  src={p.img}
+                  alt={`Pilar ${p.t}`}
+                  loading="lazy"
+                  className="w-full h-56 object-cover"
+                />
+                <div className="p-10">
+                  <div className="flex items-center justify-between">
+                    <PillarIcon kind={p.icon} />
+                    <span className="font-display text-3xl text-primary/40 tabular-nums">
+                      {p.n}
+                    </span>
+                  </div>
+                  <div className="hairline mt-8 w-12" />
+                  <h3 className="mt-6 font-display text-3xl font-light">{p.t}</h3>
+                  <p className="mt-4 text-muted-foreground font-light leading-relaxed">
+                    {p.d}
+                  </p>
                 </div>
-                <div className="hairline mt-8 w-12" />
-                <h3 className="mt-6 font-display text-3xl font-light">{p.t}</h3>
-                <p className="mt-4 text-muted-foreground font-light leading-relaxed">
-                  {p.d}
-                </p>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 

@@ -32,6 +32,7 @@ import printQueziaAsset from "@/assets/print-quezia.png.asset.json";
 import printPriscillaAsset from "@/assets/print-priscilla.png.asset.json";
 import bonusAtracaoAsset from "@/assets/bonus-atracao.jpg.asset.json";
 import bonusVendasAsset from "@/assets/bonus-vendas.jpg.asset.json";
+import seloGarantiaAsset from "@/assets/selo-garantia-7dias.png.asset.json";
 import {
   Carousel,
   CarouselContent,
@@ -1069,15 +1070,11 @@ function LandingPage() {
       <section className="py-32 px-6 relative">
         <div className="absolute inset-0 bg-card/30" />
         <div className="relative mx-auto max-w-3xl text-center reveal">
-          <div
-            className="inline-flex h-28 w-28 items-center justify-center rounded-full font-display text-5xl font-light text-primary"
-            style={{
-              background: "var(--gradient-gold-soft)",
-              border: "1px solid oklch(0.78 0.13 85 / 0.4)",
-            }}
-          >
-            7
-          </div>
+          <img
+            src={seloGarantiaAsset.url}
+            alt="Selo 7 dias - Reembolso garantido"
+            className="mx-auto h-40 md:h-48 w-auto drop-shadow-[0_10px_30px_rgba(212,175,55,0.35)]"
+          />
           <Eyebrow>
             <span className="mt-6 inline-block">Sem risco</span>
           </Eyebrow>

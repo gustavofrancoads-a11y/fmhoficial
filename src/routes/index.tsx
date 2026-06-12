@@ -30,6 +30,8 @@ import printKatiaAsset from "@/assets/print-katia.png.asset.json";
 import printPatriciaAsset from "@/assets/print-patricia.png.asset.json";
 import printQueziaAsset from "@/assets/print-quezia.png.asset.json";
 import printPriscillaAsset from "@/assets/print-priscilla.png.asset.json";
+import bonusAtracaoAsset from "@/assets/bonus-atracao.jpg.asset.json";
+import bonusVendasAsset from "@/assets/bonus-vendas.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
@@ -829,25 +831,37 @@ function LandingPage() {
                 t: "Atração",
                 lead: "Nunca mais veja a sua agenda vazia.",
                 d: "Com essa estratégia você terá uma rotatividade de clientes mensal que vai te trazer a sonhada estabilidade para o seu negócio.",
+                img: bonusAtracaoAsset.url,
               },
               {
                 t: "Vendas",
                 lead: "Apresente seu trabalho com autoridade.",
                 d: "Aprenda os segredos para apresentar seu trabalho com técnicas testadas para fidelizar e demonstrar valor. As mesmas que uso no meu centro estético há mais de 10 anos.",
+                img: bonusVendasAsset.url,
               },
             ].map((b) => (
               <div
                 key={b.t}
-                className="reveal glass-card rounded-2xl p-10 transition-all duration-500 hover:-translate-y-1 hover:border-primary/40"
+                className="reveal glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-primary/40"
               >
-                <p className="text-[0.7rem] tracking-[0.4em] uppercase text-primary">
-                  {b.t}
-                </p>
-                <p className="mt-4 font-display text-2xl">{b.lead}</p>
-                <div className="hairline mt-6 w-12" />
-                <p className="mt-6 text-muted-foreground font-light leading-relaxed">
-                  {b.d}
-                </p>
+                <div className="aspect-[16/10] overflow-hidden">
+                  <img
+                    src={b.img}
+                    alt={b.t}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-10">
+                  <p className="text-[0.7rem] tracking-[0.4em] uppercase text-primary">
+                    {b.t}
+                  </p>
+                  <p className="mt-4 font-display text-2xl">{b.lead}</p>
+                  <div className="hairline mt-6 w-12" />
+                  <p className="mt-6 text-muted-foreground font-light leading-relaxed">
+                    {b.d}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import heroAsset from "@/assets/hero.jpg.asset.json";
 import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 import frustratedAsset from "@/assets/frustrated-new.png.asset.json";
+import frustratedMobileAsset from "@/assets/frustrated-context.jpg.asset.json";
 import mentorAsset from "@/assets/mentor-marcelo.jpg.asset.json";
 import result1Asset from "@/assets/result1.jpg.asset.json";
 import result2Asset from "@/assets/result2.jpg.asset.json";
@@ -512,12 +513,20 @@ function LandingPage() {
                 style={{ background: "var(--gradient-gold-soft)" }}
               />
               <img
+                src={frustratedMobileAsset.url}
+                alt="Profissional de micropigmentação frustrada no estúdio"
+                loading="lazy"
+                width={1024}
+                height={1280}
+                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover md:hidden"
+              />
+              <img
                 src={frustratedImg}
                 alt="Profissional frustrada"
                 loading="lazy"
                 width={1024}
                 height={1024}
-                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2]"
+                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2] hidden md:block"
               />
             </div>
           </div>

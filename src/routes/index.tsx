@@ -518,14 +518,6 @@ function LandingPage() {
                 loading="lazy"
                 width={1024}
                 height={1280}
-                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover md:hidden"
-              />
-              <img
-                src={frustratedMobileAsset.url}
-                alt="Profissional de micropigmentação frustrada no estúdio"
-                loading="lazy"
-                width={1024}
-                height={1280}
                 className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2]"
               />
             </div>

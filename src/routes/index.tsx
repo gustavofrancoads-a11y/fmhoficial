@@ -401,7 +401,7 @@ function LandingPage() {
             src={heroMobileAsset.url}
             alt=""
             aria-hidden="true"
-            className="hero-zoom h-full w-full object-cover object-top opacity-85 md:hidden"
+            className="hero-zoom h-full w-full object-cover object-top opacity-100 md:hidden"
           />
           <img
             src={heroImage}
@@ -411,8 +411,7 @@ function LandingPage() {
             className="hero-zoom hidden md:block h-full w-full object-cover opacity-55"
           />
           <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-background via-background/85 to-background/30" />
-          <div className="absolute inset-0 md:hidden bg-gradient-to-b from-background/60 via-background/20 to-background/80" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-t from-background via-transparent to-background/40" />
           {/* film grain accent */}
           <div
             className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"

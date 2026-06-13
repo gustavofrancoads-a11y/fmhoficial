@@ -463,7 +463,7 @@ function LandingPage() {
           <img
             src={heroMobileAsset.url}
             alt="Marcelo Alves realizando procedimento de micropigmentação hiper-realista"
-            className="block h-full w-full object-cover object-[center_62%] opacity-100"
+            className="block h-full w-full object-cover object-bottom opacity-100"
             loading="eager"
           />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-background to-transparent" />

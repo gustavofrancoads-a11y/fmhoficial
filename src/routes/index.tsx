@@ -946,7 +946,7 @@ function LandingPage() {
                     title={`Depoimento de ${t.name}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
-                    loading="lazy" decoding="async"
+                    loading="lazy"
                     className="absolute inset-0 h-full w-full border-0"
                   />
                 </div>

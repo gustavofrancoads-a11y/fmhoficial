@@ -401,7 +401,7 @@ function LandingPage() {
             src={heroMobileAsset.url}
             alt=""
             aria-hidden="true"
-            className="hero-zoom absolute inset-x-0 bottom-0 h-[62svh] w-full object-cover object-top opacity-100 md:hidden"
+            className="hero-zoom absolute inset-x-0 bottom-0 h-[58svh] w-full object-cover object-top opacity-100 md:hidden"
           />
           <img
             src={heroImage}
@@ -412,8 +412,8 @@ function LandingPage() {
           />
           <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-background via-background/85 to-background/30" />
           <div className="absolute inset-0 hidden md:block bg-gradient-to-t from-background via-transparent to-background/40" />
-          <div className="absolute inset-x-0 top-0 h-[48svh] bg-gradient-to-b from-background via-background/95 to-background/65 md:hidden" />
-          <div className="absolute inset-x-0 top-[40svh] h-[16svh] bg-gradient-to-b from-background/65 to-transparent md:hidden" />
+          <div className="absolute inset-x-0 top-0 h-[44svh] bg-gradient-to-b from-background via-background/95 to-background/80 md:hidden" />
+          <div className="absolute inset-x-0 top-[38svh] h-[10svh] bg-gradient-to-b from-background/80 to-transparent md:hidden" />
           {/* film grain accent */}
           <div
             className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"
@@ -432,7 +432,7 @@ function LandingPage() {
               className="mb-4 hidden h-20 w-auto md:block"
               loading="eager"
             />
-            <h1 className="font-display max-w-[21rem] text-[2.05rem] leading-[1.06] sm:text-5xl md:max-w-none md:text-6xl lg:text-7xl font-light tracking-tight break-words">
+            <h1 className="font-display max-w-[20.5rem] text-[1.9rem] leading-[1.04] sm:text-5xl md:max-w-none md:text-6xl lg:text-7xl font-light tracking-tight break-words">
               Domine a técnica que vai te posicionar como{" "}
               <em className="text-gold-gradient not-italic font-medium">
                 referência
@@ -440,15 +440,15 @@ function LandingPage() {
               na sua cidade
             </h1>
 
-            <p className="mt-4 md:mt-5 max-w-[21rem] md:max-w-xl text-[0.95rem] sm:text-lg text-muted-foreground leading-relaxed font-light">
+            <p className="mt-3 md:mt-5 max-w-[21rem] md:max-w-xl text-[0.9rem] sm:text-lg text-muted-foreground leading-relaxed font-light">
               E te permitir cobrar até{" "}
               <span className="text-primary font-medium">R$1.000 por atendimento</span>
               {" "}— exclusivo para micropigmentadoras e designers de sobrancelha.
             </p>
 
-            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8">
+            <div className="mt-5 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
               <CtaButton href={CHECKOUT_URL}>Inscreva-se</CtaButton>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <div className="flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
                 <div className="flex -space-x-2">
                   {resultImgs.map((src) => (
                     <img

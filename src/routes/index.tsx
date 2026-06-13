@@ -416,7 +416,7 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 pt-[4.75rem] pb-4 md:py-6 w-full">
+        <div className="relative z-10 mx-auto flex min-h-[46svh] w-full max-w-7xl items-start px-4 pb-6 pt-[4.75rem] sm:px-6 md:min-h-0 md:items-center md:py-6">
           <div className="max-w-3xl fade-in-down md:max-w-3xl">
             <img
               src={logoWhite}
@@ -424,7 +424,7 @@ function LandingPage() {
               className="mb-4 hidden h-20 w-auto md:block"
               loading="eager"
             />
-            <h1 className="font-display max-w-[20.5rem] text-[1.9rem] leading-[1.04] sm:text-5xl md:max-w-none md:text-6xl lg:text-7xl font-light tracking-tight break-words">
+            <h1 className="font-display max-w-[20.5rem] text-[1.82rem] leading-[1.04] sm:text-5xl md:max-w-none md:text-6xl lg:text-7xl font-light tracking-tight break-words">
               Domine a técnica que vai te posicionar como{" "}
               <em className="text-gold-gradient not-italic font-medium">
                 referência
@@ -432,7 +432,7 @@ function LandingPage() {
               na sua cidade
             </h1>
 
-            <p className="mt-3 md:mt-5 max-w-[21rem] md:max-w-xl text-[0.9rem] sm:text-lg text-muted-foreground leading-relaxed font-light">
+            <p className="mt-3 md:mt-5 max-w-[21rem] md:max-w-xl text-[0.875rem] sm:text-lg text-muted-foreground leading-relaxed font-light">
               E te permitir cobrar até{" "}
               <span className="text-primary font-medium">R$1.000 por atendimento</span>
               {" "}— exclusivo para micropigmentadoras e designers de sobrancelha.
@@ -459,7 +459,7 @@ function LandingPage() {
           </div>
         </div>
 
-        <div className="relative z-0 h-[50svh] min-h-[390px] md:hidden">
+        <div className="relative z-0 h-[54svh] min-h-[390px] md:hidden">
           <img
             src={heroMobileAsset.url}
             alt="Marcelo Alves realizando procedimento de micropigmentação hiper-realista"

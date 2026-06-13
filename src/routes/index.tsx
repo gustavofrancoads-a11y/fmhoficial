@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import heroAsset from "@/assets/hero.jpg.asset.json";
 import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
-import frustratedAsset from "@/assets/frustrated-new.png.asset.json";
 import frustratedMobileAsset from "@/assets/frustrated-context.jpg.asset.json";
 import mentorAsset from "@/assets/mentor-marcelo.jpg.asset.json";
 import result1Asset from "@/assets/result1.jpg.asset.json";
@@ -44,7 +43,6 @@ import {
 } from "@/components/ui/carousel";
 
 const heroImage = heroAsset.url;
-const frustratedImg = frustratedAsset.url;
 const mentorImg = mentorAsset.url;
 const resultImgs = [result1Asset.url, result2Asset.url, result3Asset.url];
 const tanaraImgs = [tanara1Asset.url, tanara2Asset.url, tanara3Asset.url, tanara4Asset.url];
@@ -518,15 +516,7 @@ function LandingPage() {
                 loading="lazy"
                 width={1024}
                 height={1280}
-                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover md:hidden"
-              />
-              <img
-                src={frustratedImg}
-                alt="Profissional frustrada"
-                loading="lazy"
-                width={1024}
-                height={1024}
-                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2] hidden md:block"
+                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2]"
               />
             </div>
           </div>

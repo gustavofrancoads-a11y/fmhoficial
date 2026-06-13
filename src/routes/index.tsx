@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import heroMobileCropped from "@/assets/hero-mobile-cropped.webp";
 import heroAsset from "@/assets/hero.jpg.asset.json";
-import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 import frustratedMobileAsset from "@/assets/frustrated-context.jpg.asset.json";
 import mentorAsset from "@/assets/mentor-marcelo.jpg.asset.json";
 import result1Asset from "@/assets/result1.jpg.asset.json";
@@ -395,14 +395,8 @@ function LandingPage() {
       </div>
 
       {/* HERO */}
-      <header className="relative overflow-hidden min-h-[90dvh] md:min-h-[100dvh] md:h-[100dvh] flex items-start md:items-center pt-16 md:pt-20">
-        <div className="absolute inset-0">
-          <img
-            src={heroMobileAsset.url}
-            alt=""
-            aria-hidden="true"
-            className="hero-zoom h-full w-full object-cover object-top opacity-100 md:hidden"
-          />
+      <header className="relative overflow-hidden min-h-[100svh] bg-background md:min-h-[100dvh] md:h-[100dvh] md:flex md:items-center md:pt-20">
+        <div className="absolute inset-0 hidden md:block">
           <img
             src={heroImage}
             alt="Micropigmentador profissional realizando atendimento de sobrancelha hiper-realista"
@@ -422,15 +416,15 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-2 md:py-6 w-full">
-          <div className="max-w-3xl fade-in-down">
+        <div className="relative z-10 w-full bg-background px-4 pb-8 pt-[4.75rem] sm:px-6 md:mx-auto md:flex md:max-w-7xl md:items-center md:bg-transparent md:py-6">
+          <div className="max-w-3xl fade-in-down md:max-w-3xl">
             <img
               src={logoWhite}
               alt="Formação Micropigmentador Hiper-Realista"
               className="mb-4 hidden h-20 w-auto md:block"
               loading="eager"
             />
-            <h1 className="font-display text-[2.25rem] leading-[1.08] sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight break-words">
+            <h1 className="font-display max-w-[20.5rem] text-[1.82rem] leading-[1.04] sm:text-5xl md:max-w-none md:text-6xl lg:text-7xl font-light tracking-tight break-words">
               Domine a técnica que vai te posicionar como{" "}
               <em className="text-gold-gradient not-italic font-medium">
                 referência
@@ -438,15 +432,15 @@ function LandingPage() {
               na sua cidade
             </h1>
 
-            <p className="mt-5 md:mt-5 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed font-light">
+            <p className="mt-3 md:mt-5 max-w-[21rem] md:max-w-xl text-[0.875rem] sm:text-lg text-muted-foreground leading-relaxed font-light">
               E te permitir cobrar até{" "}
               <span className="text-primary font-medium">R$1.000 por atendimento</span>
               {" "}— exclusivo para micropigmentadoras e designers de sobrancelha.
             </p>
 
-            <div className="mt-8 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
+            <div className="mt-5 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
               <CtaButton href={CHECKOUT_URL}>Inscreva-se</CtaButton>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <div className="flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
                 <div className="flex -space-x-2">
                   {resultImgs.map((src) => (
                     <img
@@ -463,6 +457,16 @@ function LandingPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="relative z-0 h-[50svh] min-h-[340px] md:hidden">
+          <img
+            src={heroMobileCropped}
+            alt="Marcelo Alves realizando procedimento de micropigmentação hiper-realista"
+            className="block h-full w-full object-cover object-bottom opacity-100"
+            loading="eager"
+          />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-background to-transparent" />
         </div>
 
         {/* scroll cue removed */}

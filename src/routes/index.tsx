@@ -437,7 +437,7 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative z-10 w-full bg-background px-4 pb-8 pt-[4.75rem] sm:px-6 md:mx-auto md:flex md:max-w-7xl md:items-center md:bg-transparent md:py-6">
+        <div className="relative z-10 w-full bg-background px-4 pb-3 pt-[4.75rem] sm:px-6 md:mx-auto md:flex md:max-w-7xl md:items-center md:bg-transparent md:py-6">
           <div className="max-w-3xl fade-in-down md:max-w-3xl">
             <img
               src={logoWhite}
@@ -491,7 +491,7 @@ function LandingPage() {
             width={1080}
             height={1350}
           />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-background to-transparent" />
         </div>
 
 

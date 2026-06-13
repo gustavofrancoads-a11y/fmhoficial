@@ -484,8 +484,22 @@ function LandingPage() {
             </p>
           </div>
 
-          <div className="mt-20 grid gap-12 md:grid-cols-2 items-center">
-            <div className="grid gap-4 text-left reveal">
+          <div className="mt-20 flex flex-col gap-12 md:grid md:grid-cols-2 items-center">
+            <div className="relative reveal order-1 md:order-2">
+              <div
+                className="absolute -inset-4 rounded-3xl opacity-30 blur-2xl"
+                style={{ background: "var(--gradient-gold-soft)" }}
+              />
+              <img
+                src={frustratedMobileAsset.url}
+                alt="Profissional de micropigmentação frustrada no estúdio"
+                loading="lazy"
+                width={1024}
+                height={1280}
+                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2]"
+              />
+            </div>
+            <div className="grid gap-4 text-left reveal order-2 md:order-1">
               {[
                 "Você não sabe como se diferenciar da concorrência",
                 "Acaba competindo por preço e cobrando mais barato",
@@ -504,20 +518,6 @@ function LandingPage() {
                   </div>
                 </div>
               ))}
-            </div>
-            <div className="relative reveal">
-              <div
-                className="absolute -inset-4 rounded-3xl opacity-30 blur-2xl"
-                style={{ background: "var(--gradient-gold-soft)" }}
-              />
-              <img
-                src={frustratedMobileAsset.url}
-                alt="Profissional de micropigmentação frustrada no estúdio"
-                loading="lazy"
-                width={1024}
-                height={1280}
-                className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2]"
-              />
             </div>
           </div>
 

@@ -76,7 +76,24 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:image", content: heroImage },
     ],
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: heroImage,
+        fetchpriority: "high",
+        media: "(min-width: 768px)",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        href: heroMobileCropped,
+        fetchpriority: "high",
+        media: "(max-width: 767px)",
+      },
+    ],
   }),
+
   component: LandingPage,
 });
 
@@ -316,7 +333,7 @@ function ResultCard({
     <div className="reveal group rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-gold)]">
       <div className="p-5 flex items-center gap-4">
         <div className="h-14 w-14 shrink-0 rounded-full overflow-hidden ring-2 ring-primary/40">
-          <img src={avatar} alt={name} loading="lazy" className="h-full w-full object-cover" />
+          <img src={avatar} alt={name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
         </div>
         <div className="min-w-0">
           <p className="font-display text-lg truncate">{name}</p>
@@ -334,7 +351,7 @@ function ResultCard({
               key={i}
               src={src}
               alt={`Resultado ${i + 1} de ${name}`}
-              loading="lazy"
+              loading="lazy" decoding="async"
               className="w-full h-72 sm:h-80 md:h-96 object-cover shrink-0"
             />
           ))}
@@ -402,8 +419,12 @@ function LandingPage() {
             alt="Micropigmentador profissional realizando atendimento de sobrancelha hiper-realista"
             width={1920}
             height={1080}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="hero-zoom hidden md:block h-full w-full object-cover opacity-100"
           />
+
           <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-background via-background/85 to-background/30" />
           <div className="absolute inset-0 hidden md:block bg-gradient-to-t from-background via-transparent to-background/40" />
           {/* film grain accent */}
@@ -465,9 +486,14 @@ function LandingPage() {
             alt="Marcelo Alves realizando procedimento de micropigmentação hiper-realista"
             className="block h-full w-full object-cover object-bottom opacity-100"
             loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            width={1080}
+            height={1350}
           />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-background to-transparent" />
         </div>
+
 
         {/* scroll cue removed */}
       </header>
@@ -496,7 +522,7 @@ function LandingPage() {
               <img
                 src={frustratedMobileAsset.url}
                 alt="Profissional de micropigmentação frustrada no estúdio"
-                loading="lazy"
+                loading="lazy" decoding="async"
                 width={1024}
                 height={1280}
                 className="relative rounded-2xl mx-auto max-w-sm w-full object-cover grayscale-[0.2]"
@@ -612,7 +638,7 @@ function LandingPage() {
             <img
               src={paraquemImg}
               alt="Micropigmentação de sobrancelha hiper-realista"
-              loading="lazy"
+              loading="lazy" decoding="async"
               className="w-full h-64 md:h-80 rounded-2xl object-cover"
             />
           </div>
@@ -683,7 +709,7 @@ function LandingPage() {
                 <img
                   src={p.img}
                   alt={`Pilar ${p.t}`}
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                   className="w-full h-44 sm:h-56 object-cover"
                 />
                 <div className="p-6 md:p-10">
@@ -801,7 +827,7 @@ function LandingPage() {
                         src={p.src}
                         alt={`Depoimento de ${p.name} no Facebook`}
                         className="w-full h-auto rounded-xl"
-                        loading="lazy"
+                        loading="lazy" decoding="async"
                       />
                     </div>
                   </CarouselItem>
@@ -857,7 +883,7 @@ function LandingPage() {
                     src={b.img}
                     alt={b.t}
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="lazy" decoding="async"
                   />
                 </div>
                 <div className="p-6 md:p-10">
@@ -920,7 +946,7 @@ function LandingPage() {
                     title={`Depoimento de ${t.name}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
-                    loading="lazy"
+                    loading="lazy" decoding="async"
                     className="absolute inset-0 h-full w-full border-0"
                   />
                 </div>
@@ -974,7 +1000,7 @@ function LandingPage() {
               src={certificateAsset.url}
               alt="Certificado de conclusão da Formação Micropigmentador Hiper-Realista"
               className="relative w-full h-auto block"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
         </div>
@@ -1156,7 +1182,7 @@ function LandingPage() {
             <img
               src={mentorImg}
               alt="Marcelo Alves, mentor da formação"
-              loading="lazy"
+              loading="lazy" decoding="async"
               width={1024}
               height={1280}
               className="relative rounded-2xl w-full max-w-sm mx-auto object-cover"

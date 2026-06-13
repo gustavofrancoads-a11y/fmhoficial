@@ -395,7 +395,7 @@ function LandingPage() {
       </div>
 
       {/* HERO */}
-      <header className="relative overflow-hidden min-h-[90dvh] md:min-h-[100dvh] md:h-[100dvh] flex items-start md:items-center pt-24 md:pt-20">
+      <header className="relative overflow-hidden min-h-[90dvh] md:min-h-[100dvh] md:h-[100dvh] flex items-start md:items-center pt-16 md:pt-20">
         <div className="absolute inset-0">
           <img
             src={heroMobileAsset.url}
@@ -422,7 +422,7 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-8 md:py-6 w-full">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-2 md:py-6 w-full">
           <div className="max-w-3xl fade-in-down">
             <img
               src={logoWhite}

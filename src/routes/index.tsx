@@ -419,8 +419,12 @@ function LandingPage() {
             alt="Micropigmentador profissional realizando atendimento de sobrancelha hiper-realista"
             width={1920}
             height={1080}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="hero-zoom hidden md:block h-full w-full object-cover opacity-100"
           />
+
           <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-background via-background/85 to-background/30" />
           <div className="absolute inset-0 hidden md:block bg-gradient-to-t from-background via-transparent to-background/40" />
           {/* film grain accent */}

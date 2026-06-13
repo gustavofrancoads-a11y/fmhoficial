@@ -395,14 +395,8 @@ function LandingPage() {
       </div>
 
       {/* HERO */}
-      <header className="relative overflow-hidden min-h-[100svh] md:min-h-[100dvh] md:h-[100dvh] flex items-start md:items-center pt-14 md:pt-20">
-        <div className="absolute inset-0">
-          <img
-            src={heroMobileAsset.url}
-            alt=""
-            aria-hidden="true"
-            className="hero-zoom absolute inset-x-0 bottom-0 h-[58svh] w-full object-cover object-top opacity-100 md:hidden"
-          />
+      <header className="relative overflow-hidden min-h-[100svh] bg-background md:min-h-[100dvh] md:h-[100dvh] md:flex md:items-center md:pt-20">
+        <div className="absolute inset-0 hidden md:block">
           <img
             src={heroImage}
             alt="Micropigmentador profissional realizando atendimento de sobrancelha hiper-realista"
@@ -412,8 +406,6 @@ function LandingPage() {
           />
           <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-background via-background/85 to-background/30" />
           <div className="absolute inset-0 hidden md:block bg-gradient-to-t from-background via-transparent to-background/40" />
-          <div className="absolute inset-x-0 top-0 h-[44svh] bg-gradient-to-b from-background via-background/95 to-background/80 md:hidden" />
-          <div className="absolute inset-x-0 top-[38svh] h-[10svh] bg-gradient-to-b from-background/80 to-transparent md:hidden" />
           {/* film grain accent */}
           <div
             className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"
@@ -424,7 +416,7 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-0 md:py-6 w-full">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 pt-[4.75rem] pb-4 md:py-6 w-full">
           <div className="max-w-3xl fade-in-down md:max-w-3xl">
             <img
               src={logoWhite}
@@ -465,6 +457,16 @@ function LandingPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="relative z-0 h-[50svh] min-h-[390px] md:hidden">
+          <img
+            src={heroMobileAsset.url}
+            alt="Marcelo Alves realizando procedimento de micropigmentação hiper-realista"
+            className="h-full w-full object-cover object-top opacity-100"
+            loading="eager"
+          />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-background to-transparent" />
         </div>
 
         {/* scroll cue removed */}

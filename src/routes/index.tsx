@@ -31,8 +31,8 @@ import printKatiaAsset from "@/assets/print-katia.png.asset.json";
 import printPatriciaAsset from "@/assets/print-patricia.png.asset.json";
 import printQueziaAsset from "@/assets/print-quezia.png.asset.json";
 import printPriscillaAsset from "@/assets/print-priscilla.png.asset.json";
-import bonusAtracaoAsset from "@/assets/bonus-atracao.jpg.asset.json";
-import bonusVendasAsset from "@/assets/bonus-vendas.jpg.asset.json";
+import bonusAtracaoAsset from "@/assets/bonus-atracao-funil.png.asset.json";
+import bonusVendasAsset from "@/assets/bonus-vendas-foto.png.asset.json";
 import seloGarantiaAsset from "@/assets/selo-garantia-7dias.png.asset.json";
 import {
   Carousel,

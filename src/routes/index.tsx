@@ -416,7 +416,7 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-8 pt-[4.75rem] sm:px-6 md:flex md:items-center md:py-6">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-[4.75rem] sm:px-6 md:flex md:items-center md:py-6">
           <div className="max-w-3xl fade-in-down md:max-w-3xl">
             <img
               src={logoWhite}
@@ -459,7 +459,7 @@ function LandingPage() {
           </div>
         </div>
 
-        <div className="relative z-0 h-[52svh] min-h-[360px] md:hidden">
+        <div className="relative z-0 h-[50svh] min-h-[340px] md:hidden">
           <img
             src={heroMobileAsset.url}
             alt="Marcelo Alves realizando procedimento de micropigmentação hiper-realista"

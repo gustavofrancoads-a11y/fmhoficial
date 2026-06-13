@@ -395,13 +395,13 @@ function LandingPage() {
       </div>
 
       {/* HERO */}
-      <header className="relative overflow-hidden min-h-[90dvh] md:min-h-[100dvh] md:h-[100dvh] flex items-start md:items-center pt-16 md:pt-20">
+      <header className="relative overflow-hidden min-h-[100svh] md:min-h-[100dvh] md:h-[100dvh] flex items-start md:items-center pt-14 md:pt-20">
         <div className="absolute inset-0">
           <img
             src={heroMobileAsset.url}
             alt=""
             aria-hidden="true"
-            className="hero-zoom h-full w-full object-cover object-top opacity-100 md:hidden"
+            className="hero-zoom absolute inset-x-0 bottom-0 h-[62svh] w-full object-cover object-top opacity-100 md:hidden"
           />
           <img
             src={heroImage}
@@ -412,6 +412,8 @@ function LandingPage() {
           />
           <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-background via-background/85 to-background/30" />
           <div className="absolute inset-0 hidden md:block bg-gradient-to-t from-background via-transparent to-background/40" />
+          <div className="absolute inset-x-0 top-0 h-[48svh] bg-gradient-to-b from-background via-background/95 to-background/65 md:hidden" />
+          <div className="absolute inset-x-0 top-[40svh] h-[16svh] bg-gradient-to-b from-background/65 to-transparent md:hidden" />
           {/* film grain accent */}
           <div
             className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"
@@ -422,15 +424,15 @@ function LandingPage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-2 md:py-6 w-full">
-          <div className="max-w-3xl fade-in-down">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-0 md:py-6 w-full">
+          <div className="max-w-3xl fade-in-down md:max-w-3xl">
             <img
               src={logoWhite}
               alt="Formação Micropigmentador Hiper-Realista"
               className="mb-4 hidden h-20 w-auto md:block"
               loading="eager"
             />
-            <h1 className="font-display text-[2.25rem] leading-[1.08] sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight break-words">
+            <h1 className="font-display max-w-[21rem] text-[2.05rem] leading-[1.06] sm:text-5xl md:max-w-none md:text-6xl lg:text-7xl font-light tracking-tight break-words">
               Domine a técnica que vai te posicionar como{" "}
               <em className="text-gold-gradient not-italic font-medium">
                 referência
@@ -438,13 +440,13 @@ function LandingPage() {
               na sua cidade
             </h1>
 
-            <p className="mt-5 md:mt-5 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed font-light">
+            <p className="mt-4 md:mt-5 max-w-[21rem] md:max-w-xl text-[0.95rem] sm:text-lg text-muted-foreground leading-relaxed font-light">
               E te permitir cobrar até{" "}
               <span className="text-primary font-medium">R$1.000 por atendimento</span>
               {" "}— exclusivo para micropigmentadoras e designers de sobrancelha.
             </p>
 
-            <div className="mt-8 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
+            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8">
               <CtaButton href={CHECKOUT_URL}>Inscreva-se</CtaButton>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <div className="flex -space-x-2">

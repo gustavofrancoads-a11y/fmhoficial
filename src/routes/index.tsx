@@ -76,7 +76,24 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:image", content: heroImage },
     ],
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: heroImage,
+        fetchpriority: "high",
+        media: "(min-width: 768px)",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        href: heroMobileCropped,
+        fetchpriority: "high",
+        media: "(max-width: 767px)",
+      },
+    ],
   }),
+
   component: LandingPage,
 });
 

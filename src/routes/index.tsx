@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import heroMobileCropped from "@/assets/hero-mobile-cropped.webp";
 import heroAsset from "@/assets/hero.jpg.asset.json";
 import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 import frustratedMobileAsset from "@/assets/frustrated-context.jpg.asset.json";
@@ -461,7 +462,7 @@ function LandingPage() {
 
         <div className="relative z-0 h-[50svh] min-h-[340px] md:hidden">
           <img
-            src={heroMobileAsset.url}
+            src={heroMobileCropped}
             alt="Marcelo Alves realizando procedimento de micropigmentação hiper-realista"
             className="block h-full w-full object-cover object-bottom opacity-100"
             loading="eager"

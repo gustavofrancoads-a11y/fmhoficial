@@ -1394,6 +1394,83 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* TEXT TESTIMONIALS */}
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
+        <div className="absolute inset-0 bg-card/30" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="text-center reveal">
+            <Eyebrow>O que dizem sobre o método</Eyebrow>
+            <SectionTitle>
+              Depoimentos de{" "}
+              <em className="text-gold-gradient not-italic">alunas</em>
+            </SectionTitle>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                n: "Rosimeire Mendonça",
+                t: "Explicações claras e objetivas de fácil entendimento.",
+              },
+              {
+                n: "Ana Cristina Ferreira Lima",
+                t: "Ele me tirou da minha zona de conforto, estou mais segura e quero mais e mais. Venha conhecer o Marcelo, tenho certeza que nunca mais será a mesma assim como eu!",
+              },
+              {
+                n: "Quezia Leal",
+                t: "Super indico, ele é top!! Estou aprendendo muito com ele.",
+              },
+              {
+                n: "Suelly Souza",
+                t: "Assisti a primeira aula e fiquei muito satisfeita. Este é um curso online muito bom e proveitoso pelo jeito.",
+              },
+              {
+                n: "Alessandra Lima",
+                t: "Estou adorando as aulas, ele é excelente, tem um linguajar prático e profissional, nos dá toda base para se tornar um micropigmentador de sucesso.",
+              },
+              {
+                n: "Kátia Ribeiro",
+                t: "Melhor curso que já vi, com Marcelo Alves. Super indico!",
+              },
+              {
+                n: "Diana Veras",
+                t: "Excelente trabalho, acompanho tudo que é postado, tenho vontade de fazer o curso.",
+              },
+              {
+                n: "Fernanda Estevão",
+                t: "Esse menino é top!!! Tive o prazer de assistir alguns vídeos onde o rapaz mostra que sabe mesmo. Sem estrelismo, na simpatia, respondeu minhas mensagens muito atencioso.",
+              },
+            ].map((d) => (
+              <figure
+                key={d.n}
+                className="reveal glass-card rounded-3xl p-6 md:p-8 flex flex-col h-full"
+              >
+                <div
+                  className="font-display text-5xl leading-none text-gold-gradient"
+                  aria-hidden="true"
+                >
+                  “
+                </div>
+                <blockquote className="mt-2 text-muted-foreground font-light leading-relaxed flex-1">
+                  {d.t}
+                </blockquote>
+                <div className="hairline mt-6 w-10" />
+                <figcaption className="mt-4 text-xs tracking-[0.25em] uppercase text-foreground/90">
+                  {d.n}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <div className="mt-14 text-center reveal">
+            <CtaButton href={CHECKOUT_URL} pulse>
+              Quero entrar agora por R$97
+            </CtaButton>
+          </div>
+        </div>
+      </section>
+
+
       {/* CONTACT */}
       <section className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center reveal">

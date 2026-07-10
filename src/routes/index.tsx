@@ -574,7 +574,55 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* MENTOR */}
+      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
+        <div className="absolute inset-0 bg-card/30" />
+        <div className="relative mx-auto max-w-5xl grid gap-10 md:gap-16 md:grid-cols-2 items-center">
+          <div className="relative reveal">
+            <div
+              className="absolute -inset-6 rounded-3xl opacity-30 blur-2xl"
+              style={{ background: "var(--gradient-gold)" }}
+            />
+            <img
+              src={mentorImg}
+              alt="Marcelo Alves, mentor da formação"
+              loading="lazy" decoding="async"
+              width={1024}
+              height={1280}
+              className="relative rounded-2xl w-full max-w-sm mx-auto object-cover"
+            />
+          </div>
+          <div className="reveal">
+            <Eyebrow>Quem vai te ensinar isso</Eyebrow>
+            <h2 className="mt-6 font-display text-4xl md:text-5xl font-light leading-[1.05]">
+              Marcelo{" "}
+              <em className="text-gold-gradient not-italic">Alves</em>
+            </h2>
+            <div className="hairline mt-8 w-16" />
+            <div className="mt-8 space-y-5 text-muted-foreground font-light leading-relaxed">
+              <p>
+                Micropigmentador há <span className="text-foreground">14 anos</span>, foi formado pelas maiores referências do Brasil — Alan Spadone e James Olaya — e aprendeu a técnica de hiper-realismo diretamente com seus criadores: <span className="text-foreground">Ennio Orsine e Toni Bellfato</span>.
+              </p>
+              <p>
+                Buscando se aprofundar em casos de correção, fez a especialização em laserterapia com a maior referência mundial em despigmentação a laser, <span className="text-foreground">Dr. André Borring</span>, na primeira escola europeia de laserterapia em Portugal.
+              </p>
+              <p>
+                Não aplica o que ensina em teoria. Aplica no seu studio privado — que fatura mais de{" "}
+                <span className="text-foreground">R$40.000 por mês</span>.
+              </p>
+              <p>
+                Hoje forma micropigmentadoras com o mesmo método que usa nos próprios atendimentos: sem atalho, sem técnica genérica, sem "receita de bolo". O que você aprende aqui é o que funciona de verdade na prática real, testado durante mais de uma década.
+              </p>
+              <p>
+                Mais de <span className="text-foreground">500 alunas</span> já passaram pela formação. Os resultados estão abaixo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* RESULTS */}
+
       <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div
           className="absolute inset-0 opacity-50"

@@ -479,7 +479,7 @@ function LandingPage() {
           </div>
         </div>
 
-        <div className="relative z-0 h-[50svh] min-h-[340px] md:hidden">
+        <div className="relative z-0 h-[56svh] min-h-[360px] md:hidden">
           <img
             src={heroMobileCropped}
             alt="Marcelo Alves realizando procedimento de micropigmentação hiper-realista"
@@ -491,6 +491,7 @@ function LandingPage() {
             height={1350}
           />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-background/80 to-background" />
         </div>
 
 

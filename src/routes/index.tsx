@@ -1146,6 +1146,19 @@ function LandingPage() {
               </p>
             </div>
           </div>
+
+          <div className="reveal mt-10 mx-auto max-w-2xl text-center space-y-4">
+            <p className="text-sm md:text-base font-light text-foreground/90 leading-relaxed">
+              <span aria-hidden="true">⚠️</span>{" "}
+              <span className="font-medium text-gold-gradient">Atenção:</span>{" "}
+              Este preço é de lançamento. Quando encerrar esta fase, o valor
+              volta ao preço cheio sem aviso prévio.
+            </p>
+            <p className="text-[0.7rem] md:text-xs tracking-[0.3em] uppercase text-muted-foreground">
+              Acesso imediato · Garantia incondicional de 7 dias · Sem risco
+            </p>
+          </div>
+
         </div>
       </section>
 

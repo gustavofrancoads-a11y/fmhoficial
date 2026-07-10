@@ -1440,7 +1440,60 @@ function LandingPage() {
                 n: "Fernanda Estevão",
                 t: "Esse menino é top!!! Tive o prazer de assistir alguns vídeos onde o rapaz mostra que sabe mesmo. Sem estrelismo, na simpatia, respondeu minhas mensagens muito atencioso.",
               },
+              {
+                n: "Mosaine Maria",
+                t: "Estava triste com a sobrancelha que havia feito em outro profissional, até que achei o Marcelo...",
+              },
+              {
+                n: "Gardênia Moura",
+                t: "Estava muito receosa, pois há anos atrás eu fiz uma definitiva que ficou horrível! Amei minha nova sobrancelha.",
+              },
+              {
+                n: "Edilene Gomes",
+                t: "Amei o resultado, confesso que estava com muito medo, mas ficou perfeito.",
+              },
+              {
+                n: "Adriana Orletti Costa",
+                t: "Confesso que sempre quis fazer mas nunca tive indicação de um profissional que me desse segurança, então eu ficava no lápis de sobrancelha mesmo... Tudo foi como desejava! Parabéns Marcelo pelo seu talento!",
+              },
+              {
+                n: "Andreia Coelho Serra Santos",
+                t: "Amei o resultado. Fiquei 1 ano namorando para definir. Recomendarei sempre.",
+              },
+              {
+                n: "Elizete Matos",
+                t: "Após alguns percalços pelo caminho, encontrei o Marcelo e depositei minha confiança no trabalho dele. Não me arrependi, um profissional super capacitado.",
+              },
+              {
+                n: "Mari Souza",
+                t: "Ele é um excelente profissional, que te ensina muito detalhado onde está o erro e onde você vai acertar.",
+              },
+              {
+                n: "Rejane Carvalho",
+                t: "Resultado supernatural após o procedimento, trabalho maravilhoso, amei!!! Super recomendo!!!",
+              },
+              {
+                n: "Ley Lopes da Cruz",
+                t: "A página é fiel ao trabalho do Marcelo, que é um profissional muito hábil e capacitado... Valeu!",
+              },
+              {
+                n: "Luiza Rodrigues",
+                t: "Fiz micro nas minhas sobrancelhas com o Marcelo e super indico!",
+              },
+              {
+                n: "Valdemira Leite",
+                t: "Gostei muito do resultado, ficou bem natural. O Marcelo é super profissional. Eu indico, muito bom.",
+              },
+              {
+                n: "Rose Leal",
+                t: "Simplesmente maravilhoso, ótimo trabalho. Parabéns!! Super recomendo, não indico outro.",
+              },
+              {
+                n: "Rubia Cristina",
+                t: "Super indico!!!!! Profissional super competente!!!!",
+              },
             ].map((d) => (
+
               <figure
                 key={d.n}
                 className="reveal glass-card rounded-3xl p-6 md:p-8 flex flex-col h-full"

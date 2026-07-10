@@ -1268,6 +1268,79 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* THREE PATHS */}
+      <section className="py-16 md:py-32 px-4 sm:px-6">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center reveal">
+            <Eyebrow>A escolha é sua</Eyebrow>
+            <SectionTitle>
+              Você tem{" "}
+              <em className="text-gold-gradient not-italic">três caminhos</em>{" "}
+              daqui pra frente
+            </SectionTitle>
+          </div>
+
+          <div className="mt-16 space-y-6">
+            {[
+              {
+                n: "01",
+                t: "Não faz nada",
+                d: "Continua atendendo pelo mesmo preço, no mesmo ritmo, esperando que algo mude por conta própria. Talvez mude. Provavelmente não.",
+                muted: true,
+              },
+              {
+                n: "02",
+                t: "Continua tentando evoluir sozinha",
+                d: "Assistindo tutoriais no YouTube, testando técnicas nas clientes, errando e corrigindo. Pode funcionar. Vai levar anos e vai custar muito mais em produto desperdiçado, clientes insatisfeitas e confiança abalada.",
+                muted: true,
+              },
+              {
+                n: "03",
+                t: "Entra na formação hoje por R$97",
+                d: "Em 7 dias, se não estiver satisfeita com o que viu, devolvo 100% do seu dinheiro — sem perguntas, sem burocracia.",
+                muted: false,
+              },
+            ].map((p) => (
+              <div
+                key={p.n}
+                className={`reveal glass-card rounded-3xl p-6 md:p-10 flex flex-col md:flex-row md:items-start gap-6 ${
+                  p.muted ? "opacity-70" : "border-2 border-primary/50"
+                }`}
+              >
+                <div
+                  className={`font-display text-5xl md:text-6xl font-light leading-none shrink-0 ${
+                    p.muted ? "text-muted-foreground/60" : "text-gold-gradient"
+                  }`}
+                >
+                  {p.n}
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl md:text-3xl font-light">
+                    {p.t}
+                  </h3>
+                  <p className="mt-3 text-muted-foreground font-light leading-relaxed">
+                    {p.d}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-14 text-center reveal space-y-6">
+            <p className="font-display text-2xl md:text-3xl font-light">
+              O risco é <em className="text-gold-gradient not-italic">zero</em>.
+              A decisão é sua.
+            </p>
+            <div>
+              <CtaButton href={CHECKOUT_URL} pulse>
+                Quero entrar agora por R$97
+              </CtaButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* FAQ */}
       <section className="py-16 md:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-card/30" />

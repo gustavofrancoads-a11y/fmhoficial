@@ -1353,26 +1353,27 @@ function LandingPage() {
           <div className="mt-16 space-y-3">
             {[
               {
-                q: "Quais as formas de pagamento?",
-                a: "Você pode pagar à vista (cartão de crédito ou Pix), ou parcelado em até 12x pelo cartão de crédito.",
+                q: "Funciona para quem está começando na micropigmentação?",
+                a: "Sim. A formação foi desenhada tanto para quem quer começar com o pé direito quanto para quem já atua e quer melhorar resultados. Você não precisa de experiência prévia com a técnica hiper-realista — é exatamente isso que vamos construir do zero.",
+              },
+              {
+                q: "Preciso de equipamento especial para aplicar o que aprendo?",
+                a: "Não. A metodologia funciona com os equipamentos mais comuns do mercado. Dentro da formação você aprende a adaptar a técnica para o que você já tem.",
+              },
+              {
+                q: "Em quanto tempo consigo cobrar mais depois de concluir o curso?",
+                a: "Depende da sua dedicação, mas alunas relatam mudança nos primeiros atendimentos após aplicar o método. Quanto mais rápido você praticar, mais rápido os resultados aparecem na sua agenda e no seu faturamento.",
+              },
+              {
+                q: "Tem suporte após a compra?",
+                a: "Sim. Qualquer dúvida técnica pode ser enviada por e-mail. Além disso, você terá acesso a um grupo VIP no WhatsApp para te ajudar no que precisar.",
               },
               {
                 q: "Posso cancelar?",
-                a: "Sim. Você terá acesso imediato a todas as aulas. Se em até 7 dias não gostar, devolvemos todo o seu dinheiro de forma simples e segura.",
-              },
-              {
-                q: "Posso dividir com mais pessoas?",
-                a: "A inscrição é individual. Outras pessoas precisam adquirir a própria vaga.",
-              },
-              {
-                q: "Vai ter certificado?",
-                a: "Sim. Ao final, você envia a tarefa final por e-mail e nós enviamos seu certificado pronto para impressão.",
-              },
-              {
-                q: "Como saber se é pra mim?",
-                a: "Se você quer ganhar mais trabalhando menos na micropigmentação, a Formação é pra você.",
+                a: "Você tem 7 dias de garantia incondicional. Se não gostar por qualquer motivo, devolvemos 100% do valor pago, sem perguntas. Além disso, temos uma garantia condicional de 30 dias: se você assistir o curso todo, aplicar o que está lá e não tiver aumento do seu faturamento ou desenvolvimento da sua técnica, devolvemos seu dinheiro.",
               },
             ].map((f) => (
+
               <details
                 key={f.q}
                 className="reveal group glass-card rounded-2xl p-6 transition-all hover:border-primary/40"

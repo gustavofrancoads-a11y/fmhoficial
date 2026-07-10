@@ -549,33 +549,28 @@ function LandingPage() {
             </div>
           </div>
 
-          <div className="mt-24 reveal">
+          <div className="mt-24 reveal max-w-3xl mx-auto">
             <div className="hairline w-32 mx-auto mb-8" />
-            <p className="text-muted-foreground max-w-2xl mx-auto font-light text-lg">
-              A forma mais rápida de resolver tudo isso de uma vez é{" "}
-              <span className="text-foreground">melhorar sua técnica</span>.
-              Com a técnica certa, você começa a:
+            <p className="font-display text-2xl md:text-3xl font-light leading-tight text-center">
+              O problema não é você.{" "}
+              <em className="text-gold-gradient not-italic font-medium">
+                É que ninguém te ensinou a técnica certa.
+              </em>
             </p>
-            <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 text-left">
-              {[
-                "Ter mais segurança em cada atendimento",
-                "Ter resultados com aspecto mais natural",
-                "Reduzir seu tempo de atendimento pela metade",
-                "Cobrar mais caro pelos seus atendimentos",
-                "Ser reconhecida pelas suas clientes e seguidoras",
-              ].map((t) => (
-                <div
-                  key={t}
-                  className="glass-card rounded-xl p-5 transition hover:border-primary/40"
-                >
-                  <p className="font-light flex gap-3">
-                    <span className="text-primary">✦</span>
-                    {t}
-                  </p>
-                </div>
-              ))}
+
+            <div className="mt-10 space-y-6 text-muted-foreground font-light text-lg leading-relaxed">
+              <p>
+                Micropigmentadoras que não crescem não falharam por falta de esforço — falharam porque foram formadas com métodos genéricos que não entregam o resultado visual que justifica um preço alto. A cliente não paga R$800, R$1.000 por atendimento porque você <span className="text-foreground">"é boa"</span>. Ela paga porque o resultado parece impossível de ser feito.
+              </p>
+              <p>
+                E é exatamente isso que a <span className="text-foreground">técnica italiana de hiper-realismo</span> entrega: fios tão naturais, tão precisos, que as próprias clientes não conseguem identificar que é micropigmentação.
+              </p>
+              <p>
+                Quando o resultado fala por si, você para de negociar preço. Para de depender de indicação. E começa a construir uma <span className="text-primary">agenda que se paga</span>.
+              </p>
             </div>
           </div>
+
         </div>
       </section>
 

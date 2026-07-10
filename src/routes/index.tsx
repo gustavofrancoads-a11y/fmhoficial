@@ -1091,12 +1091,23 @@ function LandingPage() {
             ))}
           </div>
 
-          <div className="mt-10 text-center reveal">
+          <div className="mt-10 text-center reveal space-y-3">
             <p className="text-muted-foreground font-light">
               Valor total acima de{" "}
-              <span className="line-through">R$1.638</span>. Hoje, por apenas:
+              <span className="line-through">R$1.638</span>.
+            </p>
+            <p className="font-light text-foreground/90">
+              Você não paga <span className="line-through">R$1.638</span>.
+              <br />
+              Não paga <span className="line-through">R$497</span>.
+              <br />
+              Não paga nem <span className="line-through">R$297</span>.
+            </p>
+            <p className="text-muted-foreground font-light">
+              Hoje, por tempo limitado:
             </p>
           </div>
+
 
           {/* Price card */}
           <div className="reveal mt-10 mx-auto max-w-lg relative">

@@ -445,19 +445,18 @@ function LandingPage() {
               className="mb-4 hidden h-20 w-auto md:block"
               loading="eager"
             />
-            <h1 className="font-display max-w-[20.5rem] text-[1.82rem] leading-[1.04] sm:text-5xl md:max-w-none md:text-6xl lg:text-7xl font-light tracking-tight break-words">
-              Domine a técnica que vai te posicionar como{" "}
-              <em className="text-gold-gradient not-italic font-medium">
-                referência
-              </em>{" "}
-              na sua cidade
+            <h1 className="font-display max-w-[20.5rem] text-[1.6rem] leading-[1.08] sm:text-4xl md:max-w-none md:text-5xl lg:text-6xl font-light tracking-tight break-words">
+              A técnica italiana usada por menos de{" "}
+              <em className="text-gold-gradient not-italic font-medium">1%</em>{" "}
+              das micropigmentadoras — que permite cobrar{" "}
+              <em className="text-gold-gradient not-italic font-medium">R$1.000 por atendimento</em>{" "}
+              sem depender de desconto, indicação ou sorte
             </h1>
 
             <p className="mt-3 md:mt-5 max-w-[21rem] md:max-w-xl text-[0.875rem] sm:text-lg text-muted-foreground leading-relaxed font-light">
-              E te permitir cobrar até{" "}
-              <span className="text-primary font-medium">R$1.000 por atendimento</span>
-              {" "}— exclusivo para micropigmentadoras e designers de sobrancelha.
+              Enquanto a maioria compete por preço e se esgota atendendo muito para ganhar pouco, micropigmentadoras que dominam o <span className="text-primary font-medium">hiper-realismo</span> constroem uma agenda fechada, cobram o que querem e são reconhecidas como referência — antes mesmo de completar 6 meses no método.
             </p>
+
 
             <div className="mt-5 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
               <CtaButton href={CHECKOUT_URL}>Inscreva-se</CtaButton>

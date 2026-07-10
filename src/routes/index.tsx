@@ -1164,52 +1164,6 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* MENTOR */}
-      <section className="py-16 md:py-32 px-4 sm:px-6 relative">
-        <div className="absolute inset-0 bg-card/30" />
-        <div className="relative mx-auto max-w-5xl grid gap-10 md:gap-16 md:grid-cols-2 items-center">
-          <div className="relative reveal">
-            <div
-              className="absolute -inset-6 rounded-3xl opacity-30 blur-2xl"
-              style={{ background: "var(--gradient-gold)" }}
-            />
-            <img
-              src={mentorImg}
-              alt="Marcelo Alves, mentor da formação"
-              loading="lazy" decoding="async"
-              width={1024}
-              height={1280}
-              className="relative rounded-2xl w-full max-w-sm mx-auto object-cover"
-            />
-          </div>
-          <div className="reveal">
-            <Eyebrow>Seu mentor</Eyebrow>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl font-light leading-[1.05]">
-              Marcelo{" "}
-              <em className="text-gold-gradient not-italic">Alves</em>
-            </h2>
-            <div className="hairline mt-8 w-16" />
-            <div className="mt-8 space-y-5 text-muted-foreground font-light leading-relaxed">
-              <p>
-                Micropigmentador há mais de 12 anos. Formado com as maiores
-                referências nacionais (Alan Spadone, James Olaya) e
-                internacionais (Ennio Orsine e Toni Bellfato, criadores da
-                técnica italiana de hiper-realismo).
-              </p>
-              <p>
-                Especialista em despigmentação a laser pela primeira escola
-                europeia sobre o tema, com o Dr. André Dorring.
-              </p>
-              <p>
-                Studio privado que fatura mais de{" "}
-                <span className="text-foreground">R$40 mil por mês</span> —
-                resultado da aplicação de tudo o que ele ensina: técnica,
-                marketing e vendas.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FINAL CTA */}
       <section className="py-16 md:py-32 px-4 sm:px-6">

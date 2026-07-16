@@ -412,7 +412,7 @@ function LandingPage() {
       </div>
 
       {/* HERO */}
-      <header className="relative overflow-hidden min-h-[100svh] bg-background md:min-h-[100dvh] md:h-auto md:flex md:items-center md:py-28 lg:py-32">
+      <header className="relative overflow-hidden min-h-[100svh] bg-background md:min-h-[100dvh] md:h-auto md:flex md:items-center md:pt-24 md:pb-10">
         <div className="absolute inset-0 hidden md:block">
           <img
             src={heroImage}

@@ -439,7 +439,7 @@ function LandingPage() {
 
         <div className="relative z-10 w-full bg-background px-4 pb-3 pt-[4.75rem] sm:px-6 md:mx-auto md:flex md:max-w-7xl md:items-center md:bg-transparent md:py-6">
           <div className="max-w-3xl fade-in-down md:max-w-3xl">
-            <h1 className="font-display max-w-[20.5rem] text-[1.6rem] leading-[1.08] sm:text-4xl md:max-w-none md:text-5xl lg:text-6xl font-light tracking-tight break-words">
+            <h1 className="font-display max-w-[20.5rem] text-[1.6rem] leading-[1.08] sm:text-4xl md:max-w-none md:text-[2.5rem] lg:text-5xl md:leading-[1.1] font-light tracking-tight break-words">
               A técnica italiana usada por menos de{" "}
               <em className="text-gold-gradient not-italic font-medium">1%</em>{" "}
               das micropigmentadoras — que permite cobrar{" "}
@@ -447,12 +447,12 @@ function LandingPage() {
               sem depender de desconto, indicação ou sorte
             </h1>
 
-            <p className="mt-3 md:mt-5 max-w-[21rem] md:max-w-xl text-[0.875rem] sm:text-lg text-muted-foreground leading-relaxed font-light">
+            <p className="mt-3 md:mt-4 max-w-[21rem] md:max-w-xl text-[0.875rem] sm:text-lg md:text-base lg:text-lg text-muted-foreground leading-relaxed font-light">
               Enquanto a maioria compete por preço e se esgota atendendo muito para ganhar pouco, micropigmentadoras que dominam o <span className="text-primary font-medium">hiper-realismo</span> constroem uma agenda fechada, cobram o que querem e são reconhecidas como referência — antes mesmo de completar 6 meses no método.
             </p>
 
 
-            <div className="mt-5 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+            <div className="mt-5 md:mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
               <CtaButton href={CHECKOUT_URL}>Inscreva-se</CtaButton>
               <div className="flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
                 <div className="flex -space-x-2">

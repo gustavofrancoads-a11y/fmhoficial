@@ -439,12 +439,6 @@ function LandingPage() {
 
         <div className="relative z-10 w-full bg-background px-4 pb-3 pt-[4.75rem] sm:px-6 md:mx-auto md:flex md:max-w-7xl md:items-center md:bg-transparent md:py-6">
           <div className="max-w-3xl fade-in-down md:max-w-3xl">
-            <img
-              src={logoWhite}
-              alt="Formação Micropigmentador Hiper-Realista"
-              className="mb-4 hidden h-20 w-auto md:block"
-              loading="eager"
-            />
             <h1 className="font-display max-w-[20.5rem] text-[1.6rem] leading-[1.08] sm:text-4xl md:max-w-none md:text-5xl lg:text-6xl font-light tracking-tight break-words">
               A técnica italiana usada por menos de{" "}
               <em className="text-gold-gradient not-italic font-medium">1%</em>{" "}

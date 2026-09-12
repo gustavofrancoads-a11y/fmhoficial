@@ -92,7 +92,7 @@ export const Route = createFileRoute("/")({
         as: "image",
         href: heroMobileCropped,
         fetchPriority: "high",
-        media: "(max-width:  767px)",
+        media: "(max-width: 767px)",
       },
     ],
     scripts: [

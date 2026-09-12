@@ -1334,7 +1334,7 @@ function LandingPage() {
 
 
       {/* FINAL CTA */}
-      <section className="py-16 md:py-32 px-4 sm:px-6">
+      <section id="oferta" className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-3xl text-center reveal">
           <Eyebrow>Última chamada</Eyebrow>
           <SectionTitle>

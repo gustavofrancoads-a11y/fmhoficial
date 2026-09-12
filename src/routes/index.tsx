@@ -401,8 +401,85 @@ function ResultCard({
   );
 }
 
+function useClarityTracking() {
+  useEffect(() => {
+    const clarity = (...args: [string, ...unknown[]]) => {
+      const w = window as unknown as { clarity?: (...a: unknown[]) => void };
+      w.clarity?.(...args);
+    };
+
+    // Identifica o projeto e marca sessão
+    clarity("set", "page", "landing-fmh");
+
+    // Tempo na página: marcos de 15s, 30s, 60s, 2min e 5min
+    const timeMarks = [15, 30, 60, 120, 300].map((s) =>
+      window.setTimeout(() => clarity("event", `time_${s}s`), s * 1000)
+    );
+
+    // Profundidade de rolagem: 25%, 50%, 75%, 100%
+    const scrollMarks = [25, 50, 75, 100];
+    const fired = new Set<number>();
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      if (max <= 0) return;
+      const pct = Math.round((window.scrollY / max) * 100);
+      for (const mark of scrollMarks) {
+        if (pct >= mark && !fired.has(mark)) {
+          fired.add(mark);
+          clarity("event", `scroll_${mark}`);
+        }
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Cliques relevantes: checkout (Eduzz), WhatsApp e FAQ
+    const onClick = (e: MouseEvent) => {
+      const el = (e.target as HTMLElement).closest(
+        "a, button, summary"
+      ) as HTMLElement | null;
+      if (!el) return;
+      const href = el.getAttribute("href") ?? "";
+      if (href.includes("eduzz.com")) {
+        clarity("event", "click_checkout");
+        clarity("set", "clicked_checkout", "true");
+      } else if (href.includes("wa.me") || href.includes("whatsapp")) {
+        clarity("event", "click_whatsapp");
+      } else if (el.tagName === "SUMMARY" || el.closest("details")) {
+        const q = el.textContent?.trim().slice(0, 80) ?? "faq";
+        clarity("event", `faq_open: ${q}`);
+      }
+    };
+    document.addEventListener("click", onClick);
+
+    // Interesse no card de preço (visibilidade)
+    let priceObserver: IntersectionObserver | undefined;
+    const priceEl = document.getElementById("oferta");
+    if (priceEl && "IntersectionObserver" in window) {
+      priceObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((en) => en.isIntersecting)) {
+            clarity("event", "view_offer");
+            priceObserver?.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
+      priceObserver.observe(priceEl);
+    }
+
+    return () => {
+      timeMarks.forEach(clearTimeout);
+      window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("click", onClick);
+      priceObserver?.disconnect();
+    };
+  }, []);
+}
+
 function LandingPage() {
   useReveal();
+  useClarityTracking();
 
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
@@ -1257,7 +1334,7 @@ function LandingPage() {
 
 
       {/* FINAL CTA */}
-      <section className="py-16 md:py-32 px-4 sm:px-6">
+      <section id="oferta" className="py-16 md:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-3xl text-center reveal">
           <Eyebrow>Última chamada</Eyebrow>
           <SectionTitle>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const offers = [
@@ -116,6 +117,33 @@ function OfferCard({ offer }: { offer: Offer }) {
 }
 
 export function ResinaExtremeLanding() {
+  const [showMobileCta, setShowMobileCta] = useState(true);
+
+  useEffect(() => {
+    if (!("IntersectionObserver" in window)) return;
+
+    const visibleSections = new Set<Element>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            visibleSections.add(entry.target);
+          } else {
+            visibleSections.delete(entry.target);
+          }
+        }
+        setShowMobileCta(visibleSections.size === 0);
+      },
+      { rootMargin: "0px 0px 128px 0px", threshold: 0 },
+    );
+
+    document.querySelectorAll("#ofertas, #fechamento, #rodape").forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background font-sans text-foreground antialiased [overflow-wrap:anywhere] pb-[calc(9rem+env(safe-area-inset-bottom))] md:pb-0">
       <a
@@ -147,8 +175,16 @@ export function ResinaExtremeLanding() {
               Resina Extreme
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Escolha entre as ofertas de 1, 2 ou 3 unidades.
+              Escolha o kit ideal para você.
             </p>
+            <ul aria-label="Resumo das ofertas" className="mx-auto mt-5 flex max-w-2xl flex-wrap justify-center gap-3">
+              {offers.map((offer) => (
+                <li key={offer.quantity} className="rounded-lg border border-border bg-card px-4 py-3 text-sm leading-relaxed text-card-foreground">
+                  <span className="block text-muted-foreground">{offer.title}</span>
+                  <span className="block font-bold tabular-nums">{offer.price}</span>
+                </li>
+              ))}
+            </ul>
             <p className="mx-auto mt-8 max-w-2xl text-2xl font-extrabold leading-tight text-primary sm:text-4xl">
               PEÇA AGORA E PAGUE NA ENTREGA!
             </p>
@@ -180,7 +216,7 @@ export function ResinaExtremeLanding() {
           </div>
         </section>
 
-        <section aria-labelledby="closing-title" className="border-y border-border bg-card px-4 py-12 text-card-foreground sm:px-6 sm:py-16">
+        <section id="fechamento" aria-labelledby="closing-title" className="border-y border-border bg-card px-4 py-12 text-card-foreground sm:px-6 sm:py-16">
           <div className="mx-auto max-w-3xl text-center">
             <h2 id="closing-title" className="text-2xl font-extrabold leading-tight text-primary sm:text-4xl">
               PEÇA AGORA E PAGUE NA ENTREGA!
@@ -195,13 +231,13 @@ export function ResinaExtremeLanding() {
         </section>
       </main>
 
-      <footer className="px-4 py-8 sm:px-6">
+      <footer id="rodape" className="px-4 py-8 sm:px-6">
         <div className="mx-auto max-w-6xl text-center">
           <p className="text-base font-bold tracking-tight">Resina Extreme</p>
         </div>
       </footer>
 
-      <aside aria-label="Acesso rápido às ofertas" className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden">
+      <aside aria-label="Acesso rápido às ofertas" className={`fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden ${showMobileCta ? "" : "hidden focus-within:block md:focus-within:hidden"}`}>
         <div className="mx-auto max-w-lg">
           <OffersLink placement="mobile" label="PEDIR E PAGAR NA ENTREGA" className="w-full py-3" />
           <p className="mt-2 text-center text-xs leading-relaxed text-muted-foreground">

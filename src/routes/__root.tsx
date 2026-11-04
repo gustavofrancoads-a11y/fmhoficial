@@ -77,18 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Fomração Micropigmentação Hiper-Realista | Marcelo Alves" },
-      { name: "description", content: "Creates a faithful clone of a landing page, replicating its structure, copy, and visual elements." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Fomração Micropigmentação Hiper-Realista | Marcelo Alves" },
-      { property: "og:description", content: "Creates a faithful clone of a landing page, replicating its structure, copy, and visual elements." },
+      { title: "Resina Extreme" },
+      { name: "description", content: "Confira as ofertas da Resina Extreme e consulte cobertura e condições de pagamento no checkout." },
+      { property: "og:title", content: "Resina Extreme" },
+      { property: "og:description", content: "Confira as ofertas da Resina Extreme e consulte cobertura e condições de pagamento no checkout." },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Fomração Micropigmentação Hiper-Realista | Marcelo Alves" },
-      { name: "twitter:description", content: "Creates a faithful clone of a landing page, replicating its structure, copy, and visual elements." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1ac992cd-4a0a-4afe-ab48-e9e23f835ea3/id-preview-52b59c34--4d5aa640-130c-4d96-bc9a-90adcf3f8b63.lovable.app-1781301000455.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1ac992cd-4a0a-4afe-ab48-e9e23f835ea3/id-preview-52b59c34--4d5aa640-130c-4d96-bc9a-90adcf3f8b63.lovable.app-1781301000455.png" },
     ],
     links: [
       {
@@ -105,7 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>

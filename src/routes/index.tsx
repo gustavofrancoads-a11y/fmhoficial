@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import heroMobileCropped from "@/assets/hero-mobile-cropped.webp";
+import { ResinaExtremeLanding } from "@/components/resina-extreme-landing";
+import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 import heroAsset from "@/assets/hero.jpg.asset.json";
 import frustratedMobileAsset from "@/assets/frustrated-context.jpg.asset.json";
 import mentorAsset from "@/assets/mentor-marcelo.jpg.asset.json";
@@ -43,6 +44,7 @@ import {
 } from "@/components/ui/carousel";
 
 const heroImage = heroAsset.url;
+const heroMobileCropped = heroMobileAsset.url;
 const mentorImg = mentorAsset.url;
 const resultImgs = [result1Asset.url, result2Asset.url, result3Asset.url];
 const tanaraImgs = [tanara1Asset.url, tanara2Asset.url, tanara3Asset.url, tanara4Asset.url];
@@ -65,34 +67,23 @@ const CLARITY_ID = "ygyfml90y4";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Formação Micropigmentador Hiper-Realista | Marcelo Alves" },
+      { title: "Resina Extreme | Ofertas de 1, 2 e 3 unidades" },
       {
         name: "description",
-        content:
-          "Domine a técnica italiana de micropigmentação hiper-realista, cobre até R$1.000 por atendimento e torne-se referência na sua cidade.",
+        content: "Resina Extreme: 1 unidade por R$ 89,99, 2 por R$ 119,99 ou 3 por R$ 134,99. Pagamento na entrega sujeito à confirmação de cobertura e condições no checkout.",
       },
-      { property: "og:title", content: "Formação Micropigmentador Hiper-Realista" },
+      { property: "og:title", content: "Resina Extreme | Escolha sua oferta" },
       {
         property: "og:description",
-        content:
-          "Aprenda design, colorimetria e fixação de fios hiper-realistas com Marcelo Alves.",
+        content: "Compare as ofertas de 1, 2 e 3 unidades. Pagamento na entrega sujeito à confirmação de cobertura e condições no checkout.",
       },
-      { property: "og:image", content: heroImage },
-    ],
-    links: [
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "pt_BR" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Resina Extreme | Escolha sua oferta" },
       {
-        rel: "preload",
-        as: "image",
-        href: heroImage,
-        fetchPriority: "high",
-        media: "(min-width: 768px)",
-      },
-      {
-        rel: "preload",
-        as: "image",
-        href: heroMobileCropped,
-        fetchPriority: "high",
-        media: "(max-width: 767px)",
+        name: "twitter:description",
+        content: "1 unidade por R$ 89,99, 2 por R$ 119,99 ou 3 por R$ 134,99. Consulte cobertura e condições no checkout.",
       },
     ],
     scripts: [
@@ -107,7 +98,7 @@ export const Route = createFileRoute("/")({
     ],
   }),
 
-  component: LandingPage,
+  component: ResinaExtremeLanding,
 });
 
 const WHATSAPP_URL =
@@ -477,7 +468,8 @@ function useClarityTracking() {
   }, []);
 }
 
-function LandingPage() {
+// Conteúdo legado não renderizado pela rota; preservado para revisão do rastreamento.
+export function LandingPage() {
   useReveal();
   useClarityTracking();
 
